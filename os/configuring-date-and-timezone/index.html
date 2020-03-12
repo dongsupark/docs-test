@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Configuring date and time zone - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="./">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../collecting-crash-logs/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../configuring-dns/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#configuring-date-and-time-zone">Configuring date and time zone</a></li>
+            <li><a href="#viewing-and-changing-time-and-date">Viewing and changing time and date</a></li>
+            <li><a href="#time-synchronization">Time synchronization</a></li>
+            <li><a href="#switching-from-timesyncd-to-ntpd">Switching from timesyncd to ntpd</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="configuring-date-and-time-zone">Configuring date and time zone<a class="headerlink" href="#configuring-date-and-time-zone" title="Permanent link">&para;</a></h1>
+<p>By default, Flatcar Container Linux machines keep time in the Coordinated Universal Time (UTC) zone and synchronize their clocks with the Network Time Protocol (NTP). This page contains information about customizing those defaults, explains the change in NTP client daemons in recent Flatcar Container Linux versions, and offers advice on best practices for timekeeping in Flatcar Container Linux clusters.</p>
+<h2 id="viewing-and-changing-time-and-date">Viewing and changing time and date<a class="headerlink" href="#viewing-and-changing-time-and-date" title="Permanent link">&para;</a></h2>
+<p>The <a href="http://www.freedesktop.org/software/systemd/man/timedatectl.html"><code class="codehilite">timedatectl(1)</code></a> command displays and sets the date, time, and time zone.</p>
+<pre class="codehilite"><code>$ timedatectl status
+      Local time: Wed 2015-08-26 19:29:12 UTC
+  Universal time: Wed 2015-08-26 19:29:12 UTC
+        RTC time: Wed 2015-08-26 19:29:12
+       Time zone: UTC (UTC, +0000)
+ Network time on: no
+NTP synchronized: yes
+ RTC in local TZ: no
+      DST active: n/a</code></pre>
+
+<h3 id="recommended-utc-time">Recommended: UTC time<a class="headerlink" href="#recommended-utc-time" title="Permanent link">&para;</a></h3>
+<p>To avoid time zone confusion and the complexities of adjusting clocks for daylight saving time (or not) in accordance with regional custom, we recommend that all machines in Flatcar Container Linux clusters use UTC. This is the default time zone. To reset a machine to this default:</p>
+<pre class="codehilite"><code>$ sudo timedatectl set-timezone UTC</code></pre>
+
+<h3 id="changing-the-time-zone">Changing the time zone<a class="headerlink" href="#changing-the-time-zone" title="Permanent link">&para;</a></h3>
+<p>If your site or application requires a different system time zone, start by listing the available options:</p>
+<pre class="codehilite"><code>$ timedatectl list-timezones
+Africa/Abidjan
+Africa/Accra
+Africa/Addis_Ababa
+…</code></pre>
+
+<p>Pick a time zone from the list and set it:</p>
+<pre class="codehilite"><code>$ sudo timedatectl set-timezone America/New_York</code></pre>
+
+<p>Check the changes:</p>
+<pre class="codehilite"><code>$ timedatectl
+      Local time: Wed 2015-08-26 15:44:07 EDT
+  Universal time: Wed 2015-08-26 19:44:07 UTC
+        RTC time: Wed 2015-08-26 19:44:07
+       Time zone: America/New_York (EDT, -0400)
+ Network time on: no
+NTP synchronized: yes
+ RTC in local TZ: no
+      DST active: yes
+ Last DST change: DST began at
+                  Sun 2015-03-08 01:59:59 EST
+                  Sun 2015-03-08 03:00:00 EDT
+ Next DST change: DST ends (the clock jumps one hour backwards) at
+                  Sun 2015-11-01 01:59:59 EDT
+                  Sun 2015-11-01 01:00:00 EST</code></pre>
+
+<h2 id="time-synchronization">Time synchronization<a class="headerlink" href="#time-synchronization" title="Permanent link">&para;</a></h2>
+<p>Flatcar Container Linux clusters use NTP to synchronize the clocks of member nodes, and all machines start an NTP client at boot. Flatcar Container Linux versions later than <a href="https://coreos.com/releases/#681.0.0">681.0.0</a> use <a href="http://www.freedesktop.org/software/systemd/man/systemd-timesyncd.service.html"><code class="codehilite">systemd-timesyncd(8)</code></a> as the default NTP client. Earlier versions used <a href="http://ntp.org/"><code class="codehilite">ntpd(8)</code></a>. Use <code class="codehilite">systemctl</code> to check which service is running:</p>
+<pre class="codehilite"><code>$ systemctl status systemd-timesyncd ntpd
+● systemd-timesyncd.service - Network Time Synchronization
+   Loaded: loaded (/usr/lib64/systemd/system/systemd-timesyncd.service; disabled; vendor preset: disabled)
+   Active: active (running) since Thu 2015-05-14 05:43:20 UTC; 5 days ago
+     Docs: man:systemd-timesyncd.service(8)
+ Main PID: 480 (systemd-timesyn)
+   Status: &quot;Using Time Server 169.254.169.254:123 (169.254.169.254).&quot;
+   Memory: 448.0K
+   CGroup: /system.slice/systemd-timesyncd.service
+           └─480 /usr/lib/systemd/systemd-timesyncd
+
+● ntpd.service - Network Time Service
+   Loaded: loaded (/usr/lib64/systemd/system/ntpd.service; disabled; vendor preset: disabled)
+   Active: inactive (dead)</code></pre>
+
+<h3 id="recommended-ntp-sources">Recommended NTP sources<a class="headerlink" href="#recommended-ntp-sources" title="Permanent link">&para;</a></h3>
+<p>Unless you have a highly reliable and precise time server pool, use your cloud provider's NTP source, or, on bare metal, the default Flatcar Container Linux NTP servers:</p>
+<pre class="codehilite"><code>0.flatcar.pool.ntp.org
+1.flatcar.pool.ntp.org
+2.flatcar.pool.ntp.org
+3.flatcar.pool.ntp.org</code></pre>
+
+<h3 id="changing-ntp-time-sources">Changing NTP time sources<a class="headerlink" href="#changing-ntp-time-sources" title="Permanent link">&para;</a></h3>
+<p><code class="codehilite">Systemd-timesyncd</code> can discover NTP servers from DHCP, individual <a href="http://www.freedesktop.org/software/systemd/man/systemd.network.html">network</a> configs, the file <a href="http://www.freedesktop.org/software/systemd/man/timesyncd.conf.html"><code class="codehilite">timesyncd.conf</code></a>, or the default <code class="codehilite">*.flatcar.pool.ntp.org</code> pool.</p>
+<p>The default behavior uses NTP servers provided by DHCP. To disable this, write a configuration listing your preferred NTP servers into the file <code class="codehilite">/etc/systemd/network/50-dhcp-no-ntp.conf</code>:</p>
+<pre class="codehilite"><code class="language-ini">[Network]
+DHCP=v4
+NTP=0.pool.example.com 1.pool.example.com
+
+[DHCP]
+UseMTU=true
+UseDomains=true
+UseNTP=false</code></pre>
+
+<p>Then restart the network daemon:</p>
+<pre class="codehilite"><code>$ sudo systemctl restart systemd-networkd</code></pre>
+
+<p>NTP time sources can be set in <code class="codehilite">timesyncd.conf</code> with a <a href="../provisioning/">Container Linux Config</a> snippet like:</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  files:
+    - path: /etc/systemd/timesyncd.conf
+      filesystem: root
+      mode: 0644
+      contents:
+        inline: |
+          [Time]
+          NTP=0.pool.example.com 1.pool.example.com</code></pre>
+
+<h2 id="switching-from-timesyncd-to-ntpd">Switching from timesyncd to ntpd<a class="headerlink" href="#switching-from-timesyncd-to-ntpd" title="Permanent link">&para;</a></h2>
+<p>On Flatcar Container Linux 681.0.0 or later, you can switch from <code class="codehilite">systemd-timesyncd</code> back to <code class="codehilite">ntpd</code> with the following commands:</p>
+<pre class="codehilite"><code>$ sudo systemctl stop systemd-timesyncd
+$ sudo systemctl mask systemd-timesyncd
+$ sudo systemctl enable ntpd
+$ sudo systemctl start ntpd</code></pre>
+
+<p>or with this Container Linux Config snippet:</p>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: systemd-timesyncd.service
+      mask: true
+    - name: ntpd.service
+      enable: true</code></pre>
+
+<p>Because <code class="codehilite">timesyncd</code> and <code class="codehilite">ntpd</code> are mutually exclusive, it's important to <code class="codehilite">mask</code> the <code class="codehilite">systemd-tinesyncd</code> service. <code class="codehilite">Systemctl disable</code> or <code class="codehilite">stop</code> alone will not prevent a default service from starting again.</p>
+<h3 id="configuring-ntpd">Configuring ntpd<a class="headerlink" href="#configuring-ntpd" title="Permanent link">&para;</a></h3>
+<p>The <code class="codehilite">ntpd</code> service reads all configuration from the file <code class="codehilite">/etc/ntp.conf</code>. It does not use DHCP or other configuration sources. To use a different set of NTP servers, replace the <code class="codehilite">/etc/ntp.conf</code> symlink with something like the following:</p>
+<pre class="codehilite"><code>server 0.pool.example.com
+server 1.pool.example.com
+
+restrict default nomodify nopeer noquery limited kod
+restrict 127.0.0.1
+restrict [::1]</code></pre>
+
+<p>Then ask <code class="codehilite">ntpd</code> to reload its configuration:</p>
+<pre class="codehilite"><code>$ sudo systemctl reload ntpd</code></pre>
+
+<p>Or, in a <a href="../provisioning/">Container Linux Config</a>:</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  files:
+    - path: /etc/ntp.conf
+      filesystem: root
+      mode: 0644
+      contents:
+        inline: |
+          server 0.pool.example.com
+          server 1.pool.example.com
+
+          # - Allow only time queries, at a limited rate.
+          # - Allow all local queries (IPv4, IPv6)
+          restrict default nomodify nopeer noquery limited kod
+          restrict 127.0.0.1
+          restrict [::1]</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

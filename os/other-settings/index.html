@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Tips and other settings - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="./">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../notes-for-distributors/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../overview-of-systemctl/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#tips-and-other-settings">Tips and other settings</a></li>
+            <li><a href="#loading-kernel-modules">Loading kernel modules</a></li>
+            <li><a href="#tuning-sysctl-parameters">Tuning sysctl parameters</a></li>
+            <li><a href="#adding-custom-kernel-boot-options">Adding custom kernel boot options</a></li>
+            <li><a href="#adding-custom-messages-to-motd">Adding custom messages to MOTD</a></li>
+            <li><a href="#prevent-login-prompts-from-clearing-the-console">Prevent login prompts from clearing the console</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="tips-and-other-settings">Tips and other settings<a class="headerlink" href="#tips-and-other-settings" title="Permanent link">&para;</a></h1>
+<h2 id="loading-kernel-modules">Loading kernel modules<a class="headerlink" href="#loading-kernel-modules" title="Permanent link">&para;</a></h2>
+<p>Most Linux kernel modules get automatically loaded as-needed but there are a some situations where this doesn't work. Problems can arise if there is boot-time dependencies are sensitive to exactly when the module gets loaded. Module auto-loading can be broken all-together if the operation requiring the module happens inside of a container. <code class="codehilite">iptables</code> and other netfilter features can easily encounter both of these issues. To force a module to be loaded early during boot simply list them in a file under <code class="codehilite">/etc/modules-load.d</code>. The file name must end in <code class="codehilite">.conf</code>.</p>
+<pre class="codehilite"><code class="language-sh">echo nf_conntrack &gt; /etc/modules-load.d/nf.conf</code></pre>
+
+<p>Or, using a Container Linux Config:</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  files:
+    - path: /etc/modules-load.d/nf.conf
+      filesystem: root
+      mode: 0644
+      contents:
+        inline: nf_conntrack</code></pre>
+
+<h3 id="loading-kernel-modules-with-options">Loading kernel modules with options<a class="headerlink" href="#loading-kernel-modules-with-options" title="Permanent link">&para;</a></h3>
+<p>The following section demonstrates how to provide module options when loading. After these configs are processed, the dummy module is loaded into the kernel, and five dummy interfaces are added to the network stack.</p>
+<p>Further details can be found in the systemd man pages:
+<a href="http://www.freedesktop.org/software/systemd/man/modules-load.d.html">modules-load.d(5)</a>
+<a href="http://www.freedesktop.org/software/systemd/man/systemd-modules-load.service.html">systemd-modules-load.service(8)</a>
+<a href="http://linux.die.net/man/5/modprobe.d">modprobe.d(5)</a></p>
+<p>This example Container Linux Config loads the <code class="codehilite">dummy</code> network interface module with an option specifying the number of interfaces the module should create when loaded (<code class="codehilite">numdummies=5</code>):</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  files:
+    - path: /etc/modprobe.d/dummy.conf
+      filesystem: root
+      mode: 0644
+      contents:
+        inline: options dummy numdummies=5
+    - path: /etc/modules-load.d/dummy.conf
+      filesystem: root
+      mode: 0644
+      contents:
+        inline: dummy</code></pre>
+
+<h2 id="tuning-sysctl-parameters">Tuning sysctl parameters<a class="headerlink" href="#tuning-sysctl-parameters" title="Permanent link">&para;</a></h2>
+<p>The Linux kernel offers a plethora of knobs under <code class="codehilite">/proc/sys</code> to control the availability of different features and tune performance parameters. For one-shot changes values can be written directly to the files under <code class="codehilite">/proc/sys</code> but persistent settings must be written to <code class="codehilite">/etc/sysctl.d</code>:</p>
+<pre class="codehilite"><code class="language-sh">echo net.netfilter.nf_conntrack_max=131072 &gt; /etc/sysctl.d/nf.conf
+sysctl --system</code></pre>
+
+<p>Some parameters, such as the conntrack one above, are only available after the module they control has been loaded. To ensure any modules are loaded in advance use <code class="codehilite">modules-load.d</code> as described above. A complete Container Linux Config using both would look like:</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  files:
+    - path: /etc/modules-load.d/nf.conf
+      filesystem: root
+      mode: 0644
+      contents:
+        inline: |
+          nf_conntrack
+    - path: /etc/sysctl.d/nf.conf
+      filesystem: root
+      mode: 0644
+      contents:
+        inline: |
+          net.netfilter.nf_conntrack_max=131072</code></pre>
+
+<p>Further details can be found in the systemd man pages:
+<a href="http://www.freedesktop.org/software/systemd/man/sysctl.d.html">sysctl.d(5)</a>
+<a href="http://www.freedesktop.org/software/systemd/man/systemd-sysctl.service.html">systemd-sysctl.service(8)</a></p>
+<h2 id="adding-custom-kernel-boot-options">Adding custom kernel boot options<a class="headerlink" href="#adding-custom-kernel-boot-options" title="Permanent link">&para;</a></h2>
+<p>The Flatcar Container Linux bootloader parses the configuration file <code class="codehilite">/usr/share/oem/grub.cfg</code>, where custom kernel boot options may be set.</p>
+<p>The <code class="codehilite">/usr/share/oem/grub.cfg</code> file can be configured with Ignition. Note that Ignition runs after GRUB. Therefore, the GRUB configuration won't take effect until the next reboot of the node. </p>
+<p>Here's an example configuration:</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  filesystems:
+    - name: &quot;OEM&quot;
+      mount:
+        device: &quot;/dev/disk/by-label/OEM&quot;
+        format: &quot;ext4&quot;
+  files:
+    - filesystem: &quot;OEM&quot;
+      path: &quot;/grub.cfg&quot;
+      mode: 0644
+      append: true
+      contents:
+        inline: |
+          set linux_append=&quot;$linux_append flatcar.autologin=tty1&quot;</code></pre>
+
+<h3 id="enable-flatcar-container-linux-autologin">Enable Flatcar Container Linux autologin<a class="headerlink" href="#enable-flatcar-container-linux-autologin" title="Permanent link">&para;</a></h3>
+<p>To login without a password on every boot, edit <code class="codehilite">/usr/share/oem/grub.cfg</code> to add the line:</p>
+<pre class="codehilite"><code>set linux_append=&quot;$linux_append flatcar.autologin=tty1&quot;</code></pre>
+
+<h3 id="enable-systemd-debug-logging">Enable systemd debug logging<a class="headerlink" href="#enable-systemd-debug-logging" title="Permanent link">&para;</a></h3>
+<p>Edit <code class="codehilite">/usr/share/oem/grub.cfg</code> to add the following line, enabling systemd's most verbose <code class="codehilite">debug</code>-level logging:</p>
+<pre class="codehilite"><code>set linux_append=&quot;$linux_append systemd.log_level=debug&quot;</code></pre>
+
+<h3 id="mask-a-systemd-unit">Mask a systemd unit<a class="headerlink" href="#mask-a-systemd-unit" title="Permanent link">&para;</a></h3>
+<p>Completely disable the <code class="codehilite">systemd-networkd.service</code> unit by adding this line to <code class="codehilite">/usr/share/oem/grub.cfg</code>:</p>
+<pre class="codehilite"><code>set linux_append=&quot;$linux_append systemd.mask=systemd-networkd.service&quot;</code></pre>
+
+<h2 id="adding-custom-messages-to-motd">Adding custom messages to MOTD<a class="headerlink" href="#adding-custom-messages-to-motd" title="Permanent link">&para;</a></h2>
+<p>When logging in interactively, a brief message (the "Message of the Day (MOTD)") reports the Flatcar Container Linux release channel, version, and a list of any services or systemd units that have failed. Additional text can be added by dropping text files into <code class="codehilite">/etc/motd.d</code>. The directory may need to be created first, and the drop-in file name must end in <code class="codehilite">.conf</code>. Flatcar Container Linux versions 555.0.0 and greater support customization of the MOTD.</p>
+<pre class="codehilite"><code class="language-sh">mkdir -p /etc/motd.d
+echo &quot;This machine is dedicated to computing Pi&quot; &gt; /etc/motd.d/pi.conf</code></pre>
+
+<p>Or via a Container Linux Config:</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  files:
+    - path: /etc/motd.d/pi.conf
+      filesystem: root
+      mode: 0644
+      contents:
+        inline: This machine is dedicated to computing Pi</code></pre>
+
+<h2 id="prevent-login-prompts-from-clearing-the-console">Prevent login prompts from clearing the console<a class="headerlink" href="#prevent-login-prompts-from-clearing-the-console" title="Permanent link">&para;</a></h2>
+<p>The system boot messages that are printed to the console will be cleared when systemd starts a login prompt. In order to preserve these messages, the <code class="codehilite">getty</code> services will need to have their <code class="codehilite">TTYVTDisallocate</code> setting disabled. This can be achieved with a drop-in for the template unit, <code class="codehilite">getty@.service</code>. Note that the console will still scroll so the login prompt is at the top of the screen, but the boot messages will be available by scrolling.</p>
+<pre class="codehilite"><code class="language-sh">mkdir -p '/etc/systemd/system/getty@.service.d'
+echo -e '[Service]\nTTYVTDisallocate=no' &gt; '/etc/systemd/system/getty@.service.d/no-disallocate.conf'</code></pre>
+
+<p>Or via a Container Linux Config:</p>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: getty@.service
+      dropins:
+        - name: no-disallocate.conf
+          contents: |
+            [Service]
+            TTYVTDisallocate=no</code></pre>
+
+<p>When the <code class="codehilite">TTYVTDisallocate</code> setting is disabled, the console scrollback is not cleared on logout, not even by the <code class="codehilite">clear</code> command in the default <code class="codehilite">.bash_logout</code> file. Scrollback must be cleared explicitly, e.g. by running <code class="codehilite">echo -en '\033[3J' &gt; /dev/console</code> as the root user.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

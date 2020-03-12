@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Notes for distributors - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../network-config-with-networkd/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../other-settings/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#notes-for-distributors">Notes for distributors</a></li>
+            <li><a href="#importing-images">Importing images</a></li>
+            <li><a href="#image-customization">Image customization</a></li>
+            <li><a href="#handling-end-user-ignition-files">Handling end-user Ignition files</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="notes-for-distributors">Notes for distributors<a class="headerlink" href="#notes-for-distributors" title="Permanent link">&para;</a></h1>
+<h2 id="importing-images">Importing images<a class="headerlink" href="#importing-images" title="Permanent link">&para;</a></h2>
+<p>Images of Flatcar Container Linux alpha releases are hosted at <a href="https://alpha.release.flatcar-linux.net/amd64-usr/"><code class="codehilite">https://alpha.release.flatcar-linux.net/amd64-usr/</code></a>. There are directories for releases by version as well as <code class="codehilite">current</code> with a copy of the latest version. Similarly, beta releases can be found at <a href="https://beta.release.flatcar-linux.net/amd64-usr/"><code class="codehilite">https://beta.release.flatcar-linux.net/amd64-usr/</code></a>, edge releases at <a href="https://edge.release.flatcar-linux.net/amd64-usr/"><code class="codehilite">https://edge.release.flatcar-linux.net/amd64-usr/</code></a>, and stable releases at <a href="https://stable.release.flatcar-linux.net/amd64-usr/"><code class="codehilite">https://stable.release.flatcar-linux.net/amd64-usr/</code></a>.</p>
+<p>Each directory has a <code class="codehilite">version.txt</code> file containing version information for the files in that directory. If you are importing images for use inside your environment it is recommended that you fetch <code class="codehilite">version.txt</code> from the <code class="codehilite">current</code> directory and use its contents to compute the path to the other artifacts. For example, to download the alpha OpenStack version of Flatcar Container Linux:</p>
+<ol>
+<li>Download <code class="codehilite">https://alpha.release.flatcar-linux.net/amd64-usr/current/version.txt</code>.</li>
+<li>Parse <code class="codehilite">version.txt</code> to obtain the value of <code class="codehilite">COREOS_VERSION_ID</code>, for example <code class="codehilite">1576.1.0</code>.</li>
+<li>Download <code class="codehilite">https://alpha.release.flatcar-linux.net/amd64-usr/1576.1.0/flatcar_production_openstack_image.img.bz2</code>.</li>
+</ol>
+<p>It is recommended that you also verify files using the <a href="https://coreos.com/security/image-signing-key">Flatcar Container Linux Image Signing Key</a>. The GPG signature for each image is a detached <code class="codehilite">.sig</code> file that must be passed to <code class="codehilite">gpg --verify</code>. For example:</p>
+<pre class="codehilite"><code class="language-sh">wget https://alpha.release.flatcar-linux.net/amd64-usr/current/flatcar_production_openstack_image.img.bz2
+wget https://alpha.release.flatcar-linux.net/amd64-usr/current/flatcar_production_openstack_image.img.bz2.sig
+gpg --verify flatcar_production_openstack_image.img.bz2.sig</code></pre>
+
+<p>The signing key is rotated annually. We will announce upcoming rotations of the signing key on the <a href="https://groups.google.com/forum/#!forum/flatcar-linux-user">user mailing list</a>.</p>
+<h2 id="image-customization">Image customization<a class="headerlink" href="#image-customization" title="Permanent link">&para;</a></h2>
+<p>There are two predominant ways that a Flatcar Container Linux image can be easily customized for a specific operating environment: through Ignition, a first-boot provisioning tool that runs during a machine's boot process, and through <a href="https://github.com/flatcar-linux/coreos-cloudinit/blob/master/Documentation/cloud-config.md">cloud-config</a>, an older tool that runs every time a machine boots.</p>
+<h3 id="ignition">Ignition<a class="headerlink" href="#ignition" title="Permanent link">&para;</a></h3>
+<p><a href="https://coreos.com/blog/introducing-ignition.html">Ignition</a> is a tool that acquires a JSON config file when a machine first boots, and uses this config to perform tasks such as formatting disks, creating files, modifying and creating users, and adding systemd units. How Ignition acquires this config file varies per-platform, and it is highly recommended that providers ensure Ignition has <a href="https://github.com/flatcar-linux/ignition/blob/master/doc/supported-platforms.md">support for their platform</a>.</p>
+<p>Use Ignition to handle platform specific configuration such as custom networking, running an agent on the machine, or injecting files onto disk. To do this, place an Ignition config at <code class="codehilite">/usr/share/oem/base/base.ign</code> and it will be prepended to the user provided config. In addition, any config placed at <code class="codehilite">/usr/share/oem/base/default.ign</code> will be executed if a user config is not found. On platforms that support cloud-config, use this feature to run coreos-cloudinit when no Ignition config is provided.</p>
+<p>Additionally, it is recommended that providers ensure that <a href="https://github.com/flatcar-linux/coreos-metadata/">coreos-metadata</a> and <a href="https://github.com/coreos/container-linux-config-transpiler">ct</a> have support for their platform. This will allow a nicer user experience, as coreos-metadata will be able to install users' ssh keys and users will be able to reference dynamic data in their Container Linux Configs.</p>
+<h3 id="cloud-config">Cloud config<a class="headerlink" href="#cloud-config" title="Permanent link">&para;</a></h3>
+<p>A Flatcar Container Linux image can also be customized using <a href="https://github.com/flatcar-linux/coreos-cloudinit/blob/master/Documentation/cloud-config.md">cloud-config</a>. Users are recommended to instead use Container Linux Configs (that are converted into Ignition configs with <a href="https://github.com/coreos/container-linux-config-transpiler">ct</a>), for reasons <a href="https://coreos.com/blog/introducing-ignition.html">outlined in the blog post that introduced Ignition</a>.</p>
+<p>Providers that previously supported cloud-config should continue to do so, as not all users have switched over to Container Linux Configs. New platforms do not need to support cloud-config.</p>
+<p>Flatcar Container Linux will automatically parse and execute <code class="codehilite">/usr/share/oem/cloud-config.yml</code> if it exists.</p>
+<h2 id="handling-end-user-ignition-files">Handling end-user Ignition files<a class="headerlink" href="#handling-end-user-ignition-files" title="Permanent link">&para;</a></h2>
+<p>End-users should be able to provide an Ignition file to your platform while specifying their VM's parameters. This file should be made available to Flatcar Container Linux at the time of boot (e.g. at known network address, injected directly onto disk). Examples of these data sources can be found in the <a href="https://github.com/flatcar-linux/ignition/blob/master/doc/supported-platforms.md">Ignition documentation</a>.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

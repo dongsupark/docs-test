@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Examples - Flatcar Container Linux Documentation</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../../../os/quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="./">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../../../os/booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../../../os/booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../../../os/booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../../../os/booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../../../os/booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../../../os/installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../../../os/booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../../../os/root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../../../os/update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../../../os/update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../../../os/cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../../../os/verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../../../os/using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../../../os/using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../../../os/configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../../../os/configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../../../os/adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../../../os/other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../../../os/mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../../../os/power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../../../os/iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../../../os/adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../../../os/booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../../../os/getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../../../os/using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../../../os/switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../../../os/scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../../../os/sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../../../os/hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../../../os/trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../../../os/adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../../../os/selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../../../os/disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../../../os/btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../../../os/reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../../../os/collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../../../os/manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../../../os/customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../dynamic-data/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../getting-started/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#examples">Examples</a></li>
+            <li><a href="#users-and-groups">Users and groups</a></li>
+            <li><a href="#storage-and-files">Storage and files</a></li>
+            <li><a href="#systemd-units">systemd units</a></li>
+            <li><a href="#networkd-units">networkd units</a></li>
+            <li><a href="#etcd">etcd</a></li>
+            <li><a href="#updates-and-locksmithd">Updates and Locksmithd</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h1>
+<p>Here you can find a bunch of simple examples for using ct, with some explanations about what they do. The examples here are in no way comprehensive, for a full list of all the options present in ct check out the <a href="../configuration/">configuration specification</a>.</p>
+<h2 id="users-and-groups">Users and groups<a class="headerlink" href="#users-and-groups" title="Permanent link">&para;</a></h2>
+<pre class="codehilite"><code class="language-yaml">passwd:
+  users:
+    - name: core
+      password_hash: &quot;$6$43y3tkl...&quot;
+      ssh_authorized_keys:
+        - key1</code></pre>
+
+<p>This example modifies the existing <code class="codehilite">core</code> user, giving it a known password hash (this will enable login via password), and setting its ssh key.</p>
+<pre class="codehilite"><code class="language-yaml">passwd:
+  users:
+    - name: user1
+      password_hash: &quot;$6$43y3tkl...&quot;
+      ssh_authorized_keys:
+        - key1
+        - key2
+    - name: user2
+      ssh_authorized_keys:
+        - key3</code></pre>
+
+<p>This example will create two users, <code class="codehilite">user1</code> and <code class="codehilite">user2</code>. The first user has a password set and two ssh public keys authorized to log in as the user. The second user doesn't have a password set (so log in via password will be disabled), but have one ssh key.</p>
+<pre class="codehilite"><code class="language-yaml">passwd:
+  users:
+    - name: user1
+      password_hash: &quot;$6$43y3tkl...&quot;
+      ssh_authorized_keys:
+        - key1
+      home_dir: /home/user1
+      no_create_home: true
+      groups:
+        - wheel
+        - plugdev
+      shell: /bin/bash</code></pre>
+
+<p>This example creates one user, <code class="codehilite">user1</code>, with the password hash <code class="codehilite">$6$43y3tkl...</code>, and sets up one ssh public key for the user. The user is also given the home directory <code class="codehilite">/home/user1</code>, but it's not created, the user is added to the <code class="codehilite">wheel</code> and <code class="codehilite">plugdev</code> groups, and the user's shell is set to <code class="codehilite">/bin/bash</code>.</p>
+<h4 id="generating-a-password-hash">Generating a password hash<a class="headerlink" href="#generating-a-password-hash" title="Permanent link">&para;</a></h4>
+<p>If you choose to use a password instead of an SSH key, generating a safe hash is extremely important to the security of your system. Simplified hashes like md5crypt are trivial to crack on modern GPU hardware. Here are a few ways to generate secure hashes:</p>
+<pre class="codehilite"><code># On Debian/Ubuntu (via the package &quot;whois&quot;)
+mkpasswd --method=SHA-512 --rounds=4096
+
+# OpenSSL (note: this will only make md5crypt.  While better than plantext it should not be considered fully secure)
+openssl passwd -1
+
+# Python
+python -c &quot;import crypt,random,string; print(crypt.crypt(input('clear-text password: '), '\$6\$' + ''.join([random.choice(string.ascii_letters + string.digits) for _ in range(16)])))&quot;
+
+# Perl (change password and salt values)
+perl -e 'print crypt(&quot;password&quot;,&quot;\$6\$SALT\$&quot;) . &quot;\n&quot;'</code></pre>
+
+<p>Using a higher number of rounds will help create more secure passwords, but given enough time, password hashes can be reversed.  On most RPM based distributions there is a tool called mkpasswd available in the <code class="codehilite">expect</code> package, but this does not handle "rounds" nor advanced hashing algorithms.</p>
+<h2 id="storage-and-files">Storage and files<a class="headerlink" href="#storage-and-files" title="Permanent link">&para;</a></h2>
+<h3 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-yaml">storage:
+  files:
+    - path: /opt/file1
+      filesystem: root
+      contents:
+        inline: Hello, world!
+      mode: 0644
+      user:
+        id: 500
+      group:
+        id: 501</code></pre>
+
+<p>This example creates a file at <code class="codehilite">/opt/file</code> with the contents <code class="codehilite">Hello, world!</code>, permissions 0644 (so readable and writable by the owner, and only readable by everyone else), and the file is owned by user uid 500 and gid 501.</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  files:
+    - path: /opt/file2
+      filesystem: root
+      contents:
+        remote:
+          url: http://example.com/file2
+          compression: gzip
+          verification:
+            hash:
+              function: sha512
+              sum: 4ee6a9d20cc0e6c7ee187daffa6822bdef7f4cebe109eff44b235f97e45dc3d7a5bb932efc841192e46618f48a6f4f5bc0d15fd74b1038abf46bf4b4fd409f2e
+      mode: 0644</code></pre>
+
+<p>This example fetches a gzip-compressed file from <code class="codehilite">http://example.com/file2</code>, makes sure that it matches the provided sha512 hash, and writes it to <code class="codehilite">/opt/file2</code>.</p>
+<h3 id="filesystems">Filesystems<a class="headerlink" href="#filesystems" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-yaml">storage:
+  filesystems:
+    - name: filesystem1
+      mount:
+        device: /dev/disk/by-partlabel/ROOT
+        format: btrfs
+        wipe_filesystem: true
+        label: ROOT</code></pre>
+
+<p>This example formats the root filesystem to be <code class="codehilite">btrfs</code>, and names it <code class="codehilite">filesystem1</code> (primarily for use in the <code class="codehilite">files</code> section).</p>
+<h2 id="systemd-units">systemd units<a class="headerlink" href="#systemd-units" title="Permanent link">&para;</a></h2>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: etcd-member.service
+      dropins:
+        - name: conf1.conf
+          contents: |
+            [Service]
+            Environment=&quot;ETCD_NAME=infra0&quot;</code></pre>
+
+<p>This example adds a drop-in for the <code class="codehilite">etcd-member</code> unit, setting the name for etcd to <code class="codehilite">infra0</code> with an environment variable. More information on systemd dropins can be found in <a href="https://coreos.com/os/docs/latest/using-systemd-drop-in-units.html">the docs</a>.</p>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: hello.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=A hello world unit!
+
+        [Service]
+        Type=oneshot
+        ExecStart=/usr/bin/echo &quot;Hello, World!&quot;
+
+        [Install]
+        WantedBy=multi-user.target</code></pre>
+
+<p>This example creates a new systemd unit called hello.service, enables it so it will run on boot, and defines the contents to simply echo <code class="codehilite">&quot;Hello, World!&quot;</code>.</p>
+<h2 id="networkd-units">networkd units<a class="headerlink" href="#networkd-units" title="Permanent link">&para;</a></h2>
+<pre class="codehilite"><code class="language-yaml">networkd:
+  units:
+    - name: static.network
+      contents: |
+        [Match]
+        Name=enp2s0
+
+        [Network]
+        Address=192.168.0.15/24
+        Gateway=192.168.0.1</code></pre>
+
+<p>This example creates a networkd unit to set the IP address on the <code class="codehilite">enp2s0</code> interface to the static address <code class="codehilite">192.168.0.15/24</code>, and sets an appropriate gateway. More information on networkd units in CoreOS can be found in <a href="https://coreos.com/os/docs/latest/network-config-with-networkd.html">the docs</a>.</p>
+<h2 id="etcd">etcd<a class="headerlink" href="#etcd" title="Permanent link">&para;</a></h2>
+<pre class="codehilite"><code class="language-yaml">etcd:
+  version:                     &quot;3.0.15&quot;
+  name:                        &quot;{HOSTNAME}&quot;
+  advertise_client_urls:       &quot;http://{PRIVATE_IPV4}:2379&quot;
+  initial_advertise_peer_urls: &quot;http://{PRIVATE_IPV4}:2380&quot;
+  listen_client_urls:          &quot;http://0.0.0.0:2379&quot;
+  listen_peer_urls:            &quot;http://{PRIVATE_IPV4}:2380&quot;
+  initial_cluster:             &quot;{HOSTNAME}=http://{PRIVATE_IPV4}:2380&quot;</code></pre>
+
+<p>This example will create a dropin for the <code class="codehilite">etcd-member</code> systemd unit, configuring it to use the specified version and adding all the specified options. This will also enable the <code class="codehilite">etcd-member</code> unit.</p>
+<p>This is referencing dynamic data that isn't known until an instance is booted. For more information on how this works, please take a look at the <a href="../dynamic-data/">referencing dynamic data</a> document.</p>
+<h2 id="updates-and-locksmithd">Updates and Locksmithd<a class="headerlink" href="#updates-and-locksmithd" title="Permanent link">&para;</a></h2>
+<pre class="codehilite"><code class="language-yaml">update:
+  group:  &quot;beta&quot;
+locksmith:
+  reboot_strategy: &quot;etcd-lock&quot;
+  window_start:    &quot;Sun 1:00&quot;
+  window_length:   &quot;2h&quot;</code></pre>
+
+<p>This example configures the Container Linux instance to be a member of the beta group, configures locksmithd to acquire a lock in etcd before rebooting for an update, and only allows reboots during a 2 hour window starting at 1 AM on Sundays.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../../..';</script>
+        <script src="../../../js/base.js"></script>
+        <script src="../../../search/require.js"></script>
+        <script src="../../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

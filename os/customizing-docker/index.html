@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Customizing docker - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="./">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../customize-etcd-unit/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../customizing-sshd/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#customizing-docker">Customizing docker</a></li>
+            <li><a href="#enable-the-remote-api-on-a-new-socket">Enable the remote API on a new socket</a></li>
+            <li><a href="#enable-the-remote-api-with-tls-authentication">Enable the remote API with TLS authentication</a></li>
+            <li><a href="#use-attached-storage-for-docker-images">Use attached storage for Docker images</a></li>
+            <li><a href="#enabling-the-docker-debug-flag">Enabling the Docker debug flag</a></li>
+            <li><a href="#use-an-http-proxy">Use an HTTP proxy</a></li>
+            <li><a href="#increase-ulimits">Increase ulimits</a></li>
+            <li><a href="#using-a-dockercfg-file-for-authentication">Using a dockercfg file for authentication</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="customizing-docker">Customizing docker<a class="headerlink" href="#customizing-docker" title="Permanent link">&para;</a></h1>
+<p>The Docker systemd unit can be customized by overriding the unit that ships with the default Flatcar Container Linux settings. Common use-cases for doing this are covered below.</p>
+<h2 id="enable-the-remote-api-on-a-new-socket">Enable the remote API on a new socket<a class="headerlink" href="#enable-the-remote-api-on-a-new-socket" title="Permanent link">&para;</a></h2>
+<p>Create a file called <code class="codehilite">/etc/systemd/system/docker-tcp.socket</code> to make Docker available on a TCP socket on port 2375.</p>
+<pre class="codehilite"><code class="language-ini">[Unit]
+Description=Docker Socket for the API
+
+[Socket]
+ListenStream=2375
+BindIPv6Only=both
+Service=docker.service
+
+[Install]
+WantedBy=sockets.target</code></pre>
+
+<p>Then enable this new socket:</p>
+<pre class="codehilite"><code class="language-sh">systemctl enable docker-tcp.socket
+systemctl stop docker
+systemctl start docker-tcp.socket
+systemctl start docker</code></pre>
+
+<p>Test that it's working:</p>
+<pre class="codehilite"><code class="language-sh">docker -H tcp://127.0.0.1:2375 ps</code></pre>
+
+<h3 id="container-linux-config">Container Linux Config<a class="headerlink" href="#container-linux-config" title="Permanent link">&para;</a></h3>
+<p>To enable the remote API on every Flatcar Container Linux machine in a cluster, use a <a href="../provisioning/">Container Linux Config</a>. We need to provide the new socket file and Docker's socket activation support will automatically start using the socket:</p>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: docker-tcp.socket
+      enable: true
+      contents: |
+        [Unit]
+        Description=Docker Socket for the API
+
+        [Socket]
+        ListenStream=2375
+        BindIPv6Only=both
+        Service=docker.service
+
+        [Install]
+        WantedBy=sockets.target</code></pre>
+
+<p>To keep access to the port local, replace the <code class="codehilite">ListenStream</code> configuration above with:</p>
+<pre class="codehilite"><code class="language-yaml">        [Socket]
+        ListenStream=127.0.0.1:2375</code></pre>
+
+<h2 id="enable-the-remote-api-with-tls-authentication">Enable the remote API with TLS authentication<a class="headerlink" href="#enable-the-remote-api-with-tls-authentication" title="Permanent link">&para;</a></h2>
+<p>Docker TLS configuration consists of three parts: keys creation, configuring new <a href="https://www.freedesktop.org/software/systemd/man/systemd.socket.html">systemd socket</a> unit and systemd <a href="../using-systemd-drop-in-units/">drop-in</a> configuration.</p>
+<h3 id="tls-keys-creation">TLS keys creation<a class="headerlink" href="#tls-keys-creation" title="Permanent link">&para;</a></h3>
+<p>Please follow the <a href="../generate-self-signed-certificates/">instruction</a> to know how to create self-signed certificates and private keys. Then copy with following files into <code class="codehilite">/etc/docker</code> Flatcar Container Linux's directory and fix their permissions:</p>
+<pre class="codehilite"><code class="language-sh">scp ~/cfssl/{server.pem,server-key.pem,ca.pem} coreos.example.com:
+ssh core@coreos.example.com
+sudo mv {server.pem,server-key.pem,ca.pem} /etc/docker/
+sudo chown root:root /etc/docker/{server-key.pem,server.pem,ca.pem}
+sudo chmod 0600 /etc/docker/server-key.pem</code></pre>
+
+<p>On your local host copy certificates into <code class="codehilite">~/.docker</code>:</p>
+<pre class="codehilite"><code class="language-sh">mkdir ~/.docker
+chmod 700 ~/.docker
+cd ~/.docker
+cp -p ~/cfssl/ca.pem ca.pem
+cp -p ~/cfssl/client.pem cert.pem
+cp -p ~/cfssl/client-key.pem key.pem</code></pre>
+
+<h3 id="enable-the-secure-remote-api-on-a-new-socket">Enable the secure remote API on a new socket<a class="headerlink" href="#enable-the-secure-remote-api-on-a-new-socket" title="Permanent link">&para;</a></h3>
+<p>Create a file called <code class="codehilite">/etc/systemd/system/docker-tls-tcp.socket</code> to make Docker available on a secured TCP socket on port 2376.</p>
+<pre class="codehilite"><code class="language-ini">[Unit]
+Description=Docker Secured Socket for the API
+
+[Socket]
+ListenStream=2376
+BindIPv6Only=both
+Service=docker.service
+
+[Install]
+WantedBy=sockets.target</code></pre>
+
+<p>Then enable this new socket:</p>
+<pre class="codehilite"><code class="language-sh">systemctl enable docker-tls-tcp.socket
+systemctl stop docker
+systemctl start docker-tls-tcp.socket</code></pre>
+
+<h3 id="drop-in-configuration">Drop-in configuration<a class="headerlink" href="#drop-in-configuration" title="Permanent link">&para;</a></h3>
+<p>Create <code class="codehilite">/etc/systemd/system/docker.service.d/10-tls-verify.conf</code> <a href="../using-systemd-drop-in-units/">drop-in</a> for systemd Docker service:</p>
+<pre class="codehilite"><code class="language-ini">[Service]
+Environment=&quot;DOCKER_OPTS=--tlsverify --tlscacert=/etc/docker/ca.pem --tlscert=/etc/docker/server.pem --tlskey=/etc/docker/server-key.pem&quot;</code></pre>
+
+<p>Reload systemd config files and restart docker service:</p>
+<pre class="codehilite"><code class="language-sh">sudo systemctl daemon-reload
+sudo systemctl restart docker.service</code></pre>
+
+<p>Now you can access your Docker's API through TLS secured connection:</p>
+<pre class="codehilite"><code class="language-sh">docker --tlsverify -H tcp://server:2376 images
+# or
+docker --tlsverify -H tcp://server.example.com:2376 images</code></pre>
+
+<p>If you've experienceed problems connection to remote Docker API using TLS connection, you can debug it with <code class="codehilite">curl</code>:</p>
+<pre class="codehilite"><code class="language-sh">curl -v --cacert ~/.docker/ca.pem --cert ~/.docker/cert.pem --key ~/.docker/key.pem https://server:2376</code></pre>
+
+<p>Or on your Flatcar Container Linux host:</p>
+<pre class="codehilite"><code class="language-sh">journalctl -f -u docker.service</code></pre>
+
+<p>In addition you can export environment variables and use docker client without additional options:</p>
+<pre class="codehilite"><code class="language-sh">export DOCKER_HOST=tcp://server.example.com:2376 DOCKER_TLS_VERIFY=1
+docker images</code></pre>
+
+<h3 id="container-linux-config_1">Container Linux Config<a class="headerlink" href="#container-linux-config_1" title="Permanent link">&para;</a></h3>
+<p>A Container Linux Config for Docker TLS authentication will look like:</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  files:
+    - path: /etc/docker/ca.pem
+      filesystem: root
+      mode: 0644
+      contents:
+        inline: |
+          -----BEGIN CERTIFICATE-----
+          MIIFNDCCAx6gAwIBAgIBATALBgkqhkiG9w0BAQswLTEMMAoGA1UEBhMDVVNBMRAw
+          DgYDVQQKEwdldGNkLWNhMQswCQYDVQQLEwJDQTAeFw0xNTA5MDIxMDExMDhaFw0y
+          NTA5MDIxMDExMThaMC0xDDAKBgNVBAYTA1VTQTEQMA4GA1UEChMHZXRjZC1jYTEL
+          ... ... ...
+    - path: /etc/docker/server.pem
+      filesystem: root
+      mode: 0644
+      contents:
+        inline: |
+          -----BEGIN CERTIFICATE-----
+          MIIFajCCA1SgAwIBAgIBBTALBgkqhkiG9w0BAQswLTEMMAoGA1UEBhMDVVNBMRAw
+          DgYDVQQKEwdldGNkLWNhMQswCQYDVQQLEwJDQTAeFw0xNTA5MDIxMDM3MDFaFw0y
+          NTA5MDIxMDM3MDNaMEQxDDAKBgNVBAYTA1VTQTEQMA4GA1UEChMHZXRjZC1jYTEQ
+          ... ... ...
+    - path: /etc/docker/server-key.pem
+      filesystem: root
+      mode: 0644
+      contents:
+        inline: |
+          -----BEGIN RSA PRIVATE KEY-----
+          MIIJKAIBAAKCAgEA23Q4yELhNEywScrHl6+MUtbonCu59LIjpxDMAGxAHvWhWpEY
+          P5vfas8KgxxNyR+U8VpIjEXvwnhwCx/CSCJc3/VtU9v011Ir0WtTrNDocb90fIr3
+          YeRWq744UJpBeDHPV9opf8xFE7F74zWeTVMwtiMPKcQDzZ7XoNyJMxg1wmiMbdCj
+          ... ... ...
+systemd:
+  units:
+    - name: docker-tls-tcp.socket
+      enable: true
+      contents: |
+        [Unit]
+        Description=Docker Secured Socket for the API
+
+        [Socket]
+        ListenStream=2376
+        BindIPv6Only=both
+        Service=docker.service
+
+        [Install]
+        WantedBy=sockets.target
+docker:
+  flags:
+    - --tlsverify
+    - --tlscacert=/etc/docker/ca.pem
+    - --tlscert=/etc/docker/server.pem
+    - --tlskey=/etc/docker/server-key.pem</code></pre>
+
+<h2 id="use-attached-storage-for-docker-images">Use attached storage for Docker images<a class="headerlink" href="#use-attached-storage-for-docker-images" title="Permanent link">&para;</a></h2>
+<p>Docker containers can be very large and debugging a build process makes it easy to accumulate hundreds of containers. It's advantageous to use attached storage to expand your capacity for container images. Check out the guide to <a href="../mounting-storage/">mounting storage to your Flatcar Container Linux machine</a> for an example of how to bind mount storage into <code class="codehilite">/var/lib/docker</code>.</p>
+<h2 id="enabling-the-docker-debug-flag">Enabling the Docker debug flag<a class="headerlink" href="#enabling-the-docker-debug-flag" title="Permanent link">&para;</a></h2>
+<p>Set the <code class="codehilite">--debug</code> (<code class="codehilite">-D</code>) flag in the <code class="codehilite">DOCKER_OPTS</code> environment variable by using a drop-in file. For example, the following could be written to <code class="codehilite">/etc/systemd/system/docker.service.d/10-debug.conf</code>:</p>
+<pre class="codehilite"><code class="language-ini">[Service]
+Environment=DOCKER_OPTS=--debug</code></pre>
+
+<p>Now tell systemd about the new configuration and restart Docker:</p>
+<pre class="codehilite"><code class="language-sh">systemctl daemon-reload
+systemctl restart docker</code></pre>
+
+<p>To test our debugging stream, run a Docker command and then read the systemd journal, which should contain the output:</p>
+<pre class="codehilite"><code class="language-sh">docker ps
+journalctl -u docker</code></pre>
+
+<h3 id="container-linux-config_2">Container Linux Config<a class="headerlink" href="#container-linux-config_2" title="Permanent link">&para;</a></h3>
+<p>If you need to modify a flag across many machines, you can add the flag with a Container Linux Config:</p>
+<pre class="codehilite"><code class="language-yaml">docker:
+  flags:
+    - --debug</code></pre>
+
+<h2 id="use-an-http-proxy">Use an HTTP proxy<a class="headerlink" href="#use-an-http-proxy" title="Permanent link">&para;</a></h2>
+<p>If you're operating in a locked down networking environment, you can specify an HTTP proxy for Docker to use via an environment variable. First, create a directory for drop-in configuration for Docker:</p>
+<pre class="codehilite"><code class="language-sh">mkdir /etc/systemd/system/docker.service.d</code></pre>
+
+<p>Now, create a file called <code class="codehilite">/etc/systemd/system/docker.service.d/http-proxy.conf</code> that adds the environment variable:</p>
+<pre class="codehilite"><code class="language-ini">[Service]
+Environment=&quot;HTTP_PROXY=http://proxy.example.com:8080&quot;</code></pre>
+
+<p>To apply the change, reload the unit and restart Docker:</p>
+<pre class="codehilite"><code class="language-sh">systemctl daemon-reload
+systemctl restart docker</code></pre>
+
+<p>Proxy environment variables can also be set <a href="https://coreos.com/os/docs/latest/using-environment-variables-in-systemd-units.html#system-wide-environment-variables">system-wide</a>.</p>
+<h3 id="container-linux-config_3">Container Linux Config<a class="headerlink" href="#container-linux-config_3" title="Permanent link">&para;</a></h3>
+<p>The easiest way to use this proxy on all of your machines is via a Container Linux Config:</p>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: docker.service
+      enable: true
+      dropins:
+        - name: 20-http-proxy.conf
+          contents: |
+            [Service]
+            Environment=&quot;HTTP_PROXY=http://proxy.example.com:8080&quot;</code></pre>
+
+<h2 id="increase-ulimits">Increase ulimits<a class="headerlink" href="#increase-ulimits" title="Permanent link">&para;</a></h2>
+<p>If you need to increase certain ulimits that are too low for your application by default, like memlock, you will need to modify the Docker service to increase the limit. First, create a directory for drop-in configuration for Docker:</p>
+<pre class="codehilite"><code class="language-sh">mkdir /etc/systemd/system/docker.service.d</code></pre>
+
+<p>Now, create a file called <code class="codehilite">/etc/systemd/system/docker.service.d/increase-ulimit.conf</code> that adds increased limit:</p>
+<pre class="codehilite"><code class="language-ini">[Service]
+LimitMEMLOCK=infinity</code></pre>
+
+<p>To apply the change, reload the unit and restart Docker:</p>
+<pre class="codehilite"><code class="language-sh">systemctl daemon-reload
+systemctl restart docker</code></pre>
+
+<h3 id="container-linux-config_4">Container Linux Config<a class="headerlink" href="#container-linux-config_4" title="Permanent link">&para;</a></h3>
+<p>The easiest way to use these new ulimits on all of your machines is via a Container Linux Config:</p>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: docker.service
+      enable: true
+      dropins:
+        - name: 30-increase-ulimit.conf
+          contents: |
+            [Service]
+            LimitMEMLOCK=infinity</code></pre>
+
+<h2 id="using-a-dockercfg-file-for-authentication">Using a dockercfg file for authentication<a class="headerlink" href="#using-a-dockercfg-file-for-authentication" title="Permanent link">&para;</a></h2>
+<p>A json file <code class="codehilite">.dockercfg</code> can be created in your home directory that holds authentication information for a public or private Docker registry.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>
