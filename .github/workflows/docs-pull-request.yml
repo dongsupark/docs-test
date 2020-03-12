@@ -1,0 +1,20 @@
+on:
+  repository_dispatch:
+    types: [create-pull-request]
+
+jobs:
+  flatcar-docs-prs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: create pull request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: site
+          branch: site.test
+          author: Flatcar Buildbot <buildbot@flatcar-linux.org>
+          committer: Flatcar Buildbot <buildbot@flatcar-linux.org>
+          title: auto update of Flatcar docs
+          commit-message: auto update of Flatcar docs
+          body: auto update of Flatcar docs
