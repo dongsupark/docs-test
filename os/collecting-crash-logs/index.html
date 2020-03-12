@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Collecting crash logs - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="./">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../cluster-discovery/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../configuring-date-and-timezone/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#collecting-crash-logs">Collecting crash logs</a></li>
+            <li><a href="#using-pstore">Using pstore</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="collecting-crash-logs">Collecting crash logs<a class="headerlink" href="#collecting-crash-logs" title="Permanent link">&para;</a></h1>
+<p>In the unfortunate case that an OS crashes, it's often extremely helpful to gather information about the event. There are two popular tools used to accomplished this goal: kdump and pstore. Flatcar Container Linux relies on pstore, a persistent storage abstraction provided by the Linux kernel, to store logs in the event of a kernel panic. Since this mechanism is just an abstraction, it depends on hardware support to actually persist the data across reboots. If the hardware support is absent, the pstore will remain empty. On AMD64 machines, pstore is typically backed by the ACPI error record serialization table (ERST).</p>
+<h2 id="using-pstore">Using pstore<a class="headerlink" href="#using-pstore" title="Permanent link">&para;</a></h2>
+<p>On Flatcar Container Linux, the pstore is automatically mounted to <code class="codehilite">/sys/fs/pstore</code>. The contents of the store can be explored using standard filesystem tools:</p>
+<pre class="codehilite"><code>$ ls /sys/fs/pstore/</code></pre>
+
+<p>On this particular machine, there isn't anything in the pstore yet. In order to test the mechanism, a kernel panic can be triggered:</p>
+<pre class="codehilite"><code>$ echo c &gt; /proc/sysrq-trigger</code></pre>
+
+<p>Once the machine boots, the pstore can again be inspected:</p>
+<pre class="codehilite"><code>$ ls /sys/fs/pstore/
+dmesg-erst-6319986351055831041  dmesg-erst-6319986351055831044
+dmesg-erst-6319986351055831042  dmesg-erst-6319986351055831045
+dmesg-erst-6319986351055831043</code></pre>
+
+<p>Now there are a series of dmesg logs, stored in the ACPI ERST. Looking at the first file, the cause of the panic can be discovered:</p>
+<pre class="codehilite"><code>$ cat /sys/fs/pstore/dmesg-erst-6319986351055831041
+Oops#1 Part1
+...
+&lt;6&gt;[  201.650687] sysrq: SysRq : Trigger a crash
+&lt;1&gt;[  201.654822] BUG: unable to handle kernel NULL pointer dereference at           (null)
+&lt;1&gt;[  201.662670] IP: [&lt;ffffffffbd3d1956&gt;] sysrq_handle_crash+0x16/0x20
+&lt;4&gt;[  201.668783] PGD 0 
+&lt;4&gt;[  201.670809] Oops: 0002 [#1] SMP
+&lt;4&gt;[  201.673948] Modules linked in: coretemp sb_edac edac_core x86_pkg_temp_thermal kvm_intel ipmi_ssif kvm mei_me irqbypass i2c_i801 mousedev evdev mei ipmi_si ipmi_msghandler tpm_tis button tpm sch_fq_codel ip_tables hid_generic usbhid hid sd_mod squashfs loop igb ahci xhci_pci ehci_pci i2c_algo_bit libahci xhci_hcd ehci_hcd i2c_core libata i40e hwmon usbcore ptp crc32c_intel scsi_mod usb_common pps_core dm_mirror dm_region_hash dm_log dm_mod autofs4
+&lt;4&gt;[  201.714354] CPU: 0 PID: 1899 Comm: bash Not tainted 4.7.0-coreos #1
+&lt;4&gt;[  201.720612] Hardware name: Supermicro SYS-F618R3-FT/X10DRFF, BIOS 1.0b 01/07/2015
+&lt;4&gt;[  201.728083] task: ffff881fdca79d40 ti: ffff881fd92d0000 task.ti: ffff881fd92d0000
+&lt;4&gt;[  201.735553] RIP: 0010:[&lt;ffffffffbd3d1956&gt;]  [&lt;ffffffffbd3d1956&gt;] sysrq_handle_crash+0x16/0x20
+&lt;4&gt;[  201.744083] RSP: 0018:ffff881fd92d3d98  EFLAGS: 00010286
+&lt;4&gt;[  201.749388] RAX: 000000000000000f RBX: 0000000000000063 RCX: 0000000000000000
+&lt;4&gt;[  201.756511] RDX: 0000000000000000 RSI: ffff881fff80dbc8 RDI: 0000000000000063
+&lt;4&gt;[  201.763635] RBP: ffff881fd92d3d98 R08: ffff88407ff57b80 R09: 00000000000000c2
+&lt;4&gt;[  201.770759] R10: ffff881fe4fab624 R11: 00000000000005dd R12: 0000000000000007
+&lt;4&gt;[  201.777885] R13: 0000000000000000 R14: ffffffffbdac37a0 R15: 0000000000000000
+&lt;4&gt;[  201.785009] FS:  00007fa68acee700(0000) GS:ffff881fff800000(0000) knlGS:0000000000000000
+&lt;4&gt;[  201.793085] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+&lt;4&gt;[  201.798825] CR2: 0000000000000000 CR3: 0000001fdcc97000 CR4: 00000000001406f0
+&lt;4&gt;[  201.805949] Stack:
+&lt;4&gt;[  201.807961]  ffff881fd92d3dc8 ffffffffbd3d2146 0000000000000002 fffffffffffffffb
+&lt;4&gt;[  201.815413]  00007fa68acf6000 ffff883fe2e46f00 ffff881fd92d3de0 ffffffffbd3d259f
+&lt;4&gt;[  201.822866]  ffff881fe4fab5c0 ffff881fd92d3e00 ffffffffbd24fda8 ffff883fe2e46f00
+&lt;4&gt;[  201.830320] Call Trace:
+&lt;4&gt;[  201.832769]  [&lt;ffffffffbd3d2146&gt;] __handle_sysrq+0xf6/0x150
+&lt;4&gt;[  201.838331]  [&lt;ffffffffbd3d259f&gt;] write_sysrq_trigger+0x2f/0x40
+&lt;4&gt;[  201.844244]  [&lt;ffffffffbd24fda8&gt;] proc_reg_write+0x48/0x70
+&lt;4&gt;[  201.849723]  [&lt;ffffffffbd1e4697&gt;] __vfs_write+0x37/0x140
+&lt;4&gt;[  201.855038]  [&lt;ffffffffbd283e0d&gt;] ? security_file_permission+0x3d/0xc0
+&lt;4&gt;[  201.861561]  [&lt;ffffffffbd0c1062&gt;] ? percpu_down_read+0x12/0x60
+&lt;4&gt;[  201.867383]  [&lt;ffffffffbd1e55b8&gt;] vfs_write+0xb8/0x1a0
+&lt;4&gt;[  201.872514]  [&lt;ffffffffbd1e6a25&gt;] SyS_write+0x55/0xc0
+&lt;4&gt;[  201.877562]  [&lt;ffffffffbd003c6d&gt;] do_syscall_64+0x5d/0x150
+&lt;4&gt;[  201.883047]  [&lt;ffffffffbd58e161&gt;] entry_SYSCALL64_slow_path+0x25/0x25
+&lt;4&gt;[  201.889474] Code: df ff 48 c7 c7 f3 a3 7d bd e8 47 c5 d3 ff e9 de fe ff ff 66 90 0f 1f 44 00 00 55 c7 05 48 b4 66 00 01 00 00 00 48 89 e5 0f ae f8 &lt;c6&gt; 04 25 00 00 00 00 01 5d c3 0f 1f 44 00 00 55 31 c0 c7 05 5e 
+&lt;1&gt;[  201.909425] RIP  [&lt;ffffffffbd3d1956&gt;] sysrq_handle_crash+0x16/0x20
+&lt;4&gt;[  201.915615]  RSP &lt;ffff881fd92d3d98&gt;
+&lt;4&gt;[  201.919097] CR2: 0000000000000000
+&lt;4&gt;[  201.922450] ---[ end trace 8794939ba0598b91 ]---</code></pre>
+
+<p>The cause of the panic was a system request! The remaining files in the pstore contain more of the logs leading up to the panic as well as more context. Each of the files has a small, descriptive header describing the source of the logs. Looking at each of the headers shows the rough structure of the logs:</p>
+<pre class="codehilite"><code>$ head --lines=1 /sys/fs/pstore/dmesg-erst-6319986351055831041
+Oops#1 Part1
+
+$ head --lines=1 /sys/fs/pstore/dmesg-erst-6319986351055831042
+Oops#1 Part2
+
+$ head --lines=1 /sys/fs/pstore/dmesg-erst-6319986351055831043
+Panic#2 Part1
+
+$ head --lines=1 /sys/fs/pstore/dmesg-erst-6319986351055831044
+Panic#2 Part2
+
+$ head --lines=1 /sys/fs/pstore/dmesg-erst-6319986351055831045
+Panic#2 Part3</code></pre>
+
+<p>It is important to note that the pstore typically has very limited storage space (on the order of kilobytes) and will not overwrite entries when out of space. The files in <code class="codehilite">/sys/fs/pstore</code> must be removed to free up space. The typical approach is to move the files from the pstore to a more permanent storage location on boot, but Flatcar Container Linux will not do this automatically for you.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

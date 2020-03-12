@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Getting started with systemd - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="./">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../getting-started-with-docker/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../hardening-guide/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#getting-started-with-systemd">Getting started with systemd</a></li>
+            <li><a href="#terminology">Terminology</a></li>
+            <li><a href="#unit-file">Unit file</a></li>
+            <li><a href="#advanced-unit-files">Advanced unit files</a></li>
+            <li><a href="#unit-specifiers">Unit specifiers</a></li>
+            <li><a href="#instantiated-units">Instantiated units</a></li>
+            <li><a href="#more-information">More information</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="getting-started-with-systemd">Getting started with systemd<a class="headerlink" href="#getting-started-with-systemd" title="Permanent link">&para;</a></h1>
+<p>systemd is an init system that provides many powerful features for starting, stopping, and managing processes. Within Flatcar Container Linux, you will almost exclusively use systemd to manage the lifecycle of your Docker containers.</p>
+<h2 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">&para;</a></h2>
+<p>systemd consists of two main concepts: a unit and a target. A unit is a configuration file that describes the properties of the process that you'd like to run. This is normally a <code class="codehilite">docker run</code> command or something similar. A target is a grouping mechanism that allows systemd to start up groups of processes at the same time. This happens at every boot as processes are started at different run levels.</p>
+<p>systemd is the first process started on Flatcar Container Linux and it reads different targets and starts the processes specified which allows the operating system to start. The target that you'll interact with is the <code class="codehilite">multi-user.target</code> which holds all of the general use unit files for our containers.</p>
+<p>Each target is actually a collection of symlinks to our unit files. This is specified in the unit file by <code class="codehilite">WantedBy=multi-user.target</code>. Running <code class="codehilite">systemctl enable foo.service</code> creates symlinks to the unit inside <code class="codehilite">multi-user.target.wants</code>.</p>
+<h2 id="unit-file">Unit file<a class="headerlink" href="#unit-file" title="Permanent link">&para;</a></h2>
+<p>On Flatcar Container Linux, unit files are located at <code class="codehilite">/etc/systemd/system</code>. Let's create a simple unit named <code class="codehilite">hello.service</code>:</p>
+<pre class="codehilite"><code class="language-ini">[Unit]
+Description=MyApp
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill busybox1
+ExecStartPre=-/usr/bin/docker rm busybox1
+ExecStartPre=/usr/bin/docker pull busybox
+ExecStart=/usr/bin/docker run --name busybox1 busybox /bin/sh -c &quot;trap 'exit 0' INT TERM; while true; do echo Hello World; sleep 1; done&quot;
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+
+<p>The <code class="codehilite">Description</code> shows up in the systemd log and a few other places. Write something that will help you understand exactly what this does later on.</p>
+<p><code class="codehilite">After=docker.service</code> and <code class="codehilite">Requires=docker.service</code> means this unit will only start after <code class="codehilite">docker.service</code> is active. You can define as many of these as you want.</p>
+<p><code class="codehilite">ExecStart=</code> allows you to specify any command that you'd like to run when this unit is started. The pid assigned to this process is what systemd will monitor to determine whether the process has crashed or not. Do not run docker containers with <code class="codehilite">-d</code> as this will prevent the container from starting as a child of this pid. systemd will think the process has exited and the unit will be stopped.</p>
+<p><code class="codehilite">WantedBy=</code> is the target that this unit is a part of.</p>
+<p>To start a new unit, we need to tell systemd to create the symlink and then start the file:</p>
+<pre class="codehilite"><code class="language-sh">$ sudo systemctl enable /etc/systemd/system/hello.service
+$ sudo systemctl start hello.service</code></pre>
+
+<p>To verify the unit started, you can see the list of containers running with <code class="codehilite">docker ps</code> and read the unit's output with <code class="codehilite">journalctl</code>:</p>
+<pre class="codehilite"><code class="language-sh">$ journalctl -f -u hello.service
+-- Logs begin at Fri 2014-02-07 00:05:55 UTC. --
+Feb 11 17:46:26 localhost docker[23470]: Hello World
+Feb 11 17:46:27 localhost docker[23470]: Hello World
+Feb 11 17:46:28 localhost docker[23470]: Hello World
+...</code></pre>
+
+<p><a class="btn btn-default" href="overview-of-systemctl.md">Overview of systemctl</a>
+<a class="btn btn-default" href="reading-the-system-log.md">Reading the System Log</a></p>
+<h2 id="advanced-unit-files">Advanced unit files<a class="headerlink" href="#advanced-unit-files" title="Permanent link">&para;</a></h2>
+<p>systemd provides a high degree of functionality in your unit files. Here's a curated list of useful features listed in the order they'll occur in the lifecycle of a unit:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ExecStartPre</td>
+<td>Commands that will run before <code class="codehilite">ExecStart</code>.</td>
+</tr>
+<tr>
+<td>ExecStart</td>
+<td>Main commands to run for this unit.</td>
+</tr>
+<tr>
+<td>ExecStartPost</td>
+<td>Commands that will run after all <code class="codehilite">ExecStart</code> commands have completed.</td>
+</tr>
+<tr>
+<td>ExecReload</td>
+<td>Commands that will run when this unit is reloaded via <code class="codehilite">systemctl reload foo.service</code></td>
+</tr>
+<tr>
+<td>ExecStop</td>
+<td>Commands that will run when this unit is considered failed or if it is stopped via <code class="codehilite">systemctl stop foo.service</code></td>
+</tr>
+<tr>
+<td>ExecStopPost</td>
+<td>Commands that will run after <code class="codehilite">ExecStop</code> has completed.</td>
+</tr>
+<tr>
+<td>RestartSec</td>
+<td>The amount of time to sleep before restarting a service. Useful to prevent your failed service from attempting to restart itself every 100ms.</td>
+</tr>
+</tbody>
+</table>
+<p>The full list is located on the <a href="http://www.freedesktop.org/software/systemd/man/systemd.service.html">systemd man page</a>.</p>
+<p>Let's put a few of these concepts together to register new units within etcd. Imagine we had another container running that would read these values from etcd and act upon them.</p>
+<p>We can use <code class="codehilite">ExecStartPre</code> to scrub existing container state. The <code class="codehilite">docker kill</code> will force any previous copy of this container to stop, which is useful if we restarted the unit but Docker didn't stop the container for some reason. The <code class="codehilite">=-</code> is systemd syntax to ignore errors for this command. We need to do this because Docker will return a non-zero exit code if we try to stop a container that doesn't exist. We don't consider this an error (because we want the container stopped) so we tell systemd to ignore the possible failure.</p>
+<p><code class="codehilite">docker rm</code> will remove the container and <code class="codehilite">docker pull</code> will pull down the latest version. You can optionally pull down a specific version as a Docker tag: <code class="codehilite">coreos/apache:1.2.3</code></p>
+<p><code class="codehilite">ExecStart</code> is where the container is started from the container image that we pulled above.</p>
+<p>Since our container will be started in <code class="codehilite">ExecStart</code>, it makes sense for our etcd command to run as <code class="codehilite">ExecStartPost</code> to ensure that our container is started and functioning.</p>
+<p>When the service is told to stop, we need to stop the Docker container using its <code class="codehilite">--name</code> from the run command. We also need to clean up our etcd key when the container exits or the unit is failed by using <code class="codehilite">ExecStopPost</code>.</p>
+<pre class="codehilite"><code class="language-ini">[Unit]
+Description=My Advanced Service
+After=etcd2.service
+After=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill apache1
+ExecStartPre=-/usr/bin/docker rm apache1
+ExecStartPre=/usr/bin/docker pull coreos/apache
+ExecStart=/usr/bin/docker run --name apache1 -p 8081:80 coreos/apache /usr/sbin/apache2ctl -D FOREGROUND
+ExecStartPost=/usr/bin/etcdctl set /domains/example.com/10.10.10.123:8081 running
+ExecStop=/usr/bin/docker stop apache1
+ExecStopPost=/usr/bin/etcdctl rm /domains/example.com/10.10.10.123:8081
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+
+<p>While it's possible to manage the starting, stopping, and removal of the container in a single <code class="codehilite">ExecStart</code> command by using <code class="codehilite">docker run --rm</code>, it's a good idea to separate the container's lifecycle into <code class="codehilite">ExecStartPre</code>, <code class="codehilite">ExecStart</code>, and <code class="codehilite">ExecStop</code> options as we've done above. This gives you a chance to inspect the container's state after it stops or fails.</p>
+<h2 id="unit-specifiers">Unit specifiers<a class="headerlink" href="#unit-specifiers" title="Permanent link">&para;</a></h2>
+<p>In our last example we had to hardcode our IP address when we announced our container in etcd. That's not scalable and systemd has a few variables built in to help us out. Here's a few of the most useful:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="codehilite">%n</code></td>
+<td>Full unit name</td>
+<td>Useful if the name of your unit is unique enough to be used as an argument on a command.</td>
+</tr>
+<tr>
+<td><code class="codehilite">%m</code></td>
+<td>Machine ID</td>
+<td>Useful for namespacing etcd keys by machine. Example: <code class="codehilite">/machines/%m/units</code></td>
+</tr>
+<tr>
+<td><code class="codehilite">%b</code></td>
+<td>BootID</td>
+<td>Similar to the machine ID, but this value is random and changes on each boot</td>
+</tr>
+<tr>
+<td><code class="codehilite">%H</code></td>
+<td>Hostname</td>
+<td>Allows you to run the same unit file across many machines. Useful for service discovery. Example: <code class="codehilite">/domains/example.com/%H:8081</code></td>
+</tr>
+</tbody>
+</table>
+<p>A full list of specifiers can be found on the <a href="http://www.freedesktop.org/software/systemd/man/systemd.unit.html#Specifiers">systemd man page</a>.</p>
+<h2 id="instantiated-units">Instantiated units<a class="headerlink" href="#instantiated-units" title="Permanent link">&para;</a></h2>
+<p>Since systemd is based on symlinks, there are a few interesting tricks you can leverage that are very powerful when used with containers. If you create multiple symlinks to the same unit file, the following variables become available to you:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="codehilite">%p</code></td>
+<td>Prefix name</td>
+<td>Refers to any string before <code class="codehilite">@</code> in your unit name.</td>
+</tr>
+<tr>
+<td><code class="codehilite">%i</code></td>
+<td>Instance name</td>
+<td>Refers to the string between the <code class="codehilite">@</code> and the suffix.</td>
+</tr>
+</tbody>
+</table>
+<p>In our earlier example we had to hardcode our IP address when registering within etcd:</p>
+<pre class="codehilite"><code class="language-ini">ExecStartPost=/usr/bin/etcdctl set /domains/example.com/10.10.10.123:8081 running</code></pre>
+
+<p>We can enhance this by using <code class="codehilite">%H</code> and <code class="codehilite">%i</code> to dynamically announce the hostname and port. Specify the port after the <code class="codehilite">@</code> by using two unit files named <code class="codehilite">foo@123.service</code> and <code class="codehilite">foo@456.service</code>:</p>
+<pre class="codehilite"><code class="language-ini">ExecStartPost=/usr/bin/etcdctl set /domains/example.com/%H:%i running</code></pre>
+
+<p>This gives us the flexibility to use a single unit file to announce multiple copies of the same container on a single machine (no port overlap) and on multiple machines (no hostname overlap).</p>
+<h2 id="more-information">More information<a class="headerlink" href="#more-information" title="Permanent link">&para;</a></h2>
+<p><a class="btn btn-default" href="http://www.freedesktop.org/software/systemd/man/systemd.service.html">systemd.service Docs</a>
+<a class="btn btn-default" href="http://www.freedesktop.org/software/systemd/man/systemd.unit.html">systemd.unit Docs</a>
+<a class="btn btn-default" href="http://www.freedesktop.org/software/systemd/man/systemd.target.html">systemd.target Docs</a></p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

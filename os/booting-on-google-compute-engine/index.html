@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Running Flatcar Container Linux on Google Compute Engine - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="./">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../booting-on-ecs/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../booting-on-vagrant/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#running-flatcar-container-linux-on-google-compute-engine">Running Flatcar Container Linux on Google Compute Engine</a></li>
+            <li><a href="#choosing-a-channel">Choosing a channel</a></li>
+            <li><a href="#uploading-an-image">Uploading an Image</a></li>
+            <li><a href="#upgrade-from-coreos-container-linux">Upgrade from CoreOS Container Linux</a></li>
+            <li><a href="#container-linux-config">Container Linux Config</a></li>
+            <li><a href="#ssh-and-users">SSH and users</a></li>
+            <li><a href="#using-flatcar-container-linux">Using Flatcar Container Linux</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="running-flatcar-container-linux-on-google-compute-engine">Running Flatcar Container Linux on Google Compute Engine<a class="headerlink" href="#running-flatcar-container-linux-on-google-compute-engine" title="Permanent link">&para;</a></h1>
+<p>Before proceeding, you will need a GCE account (<a href="https://cloud.google.com/free-trial/?utm_source=flatcar&amp;utm_medium=partners&amp;utm_campaign=partner-free-trial">GCE free trial </a>) and <a href="https://cloud.google.com/sdk/">install gcloud</a> on your machine. In each command below, be sure to insert your project name in place of <code class="codehilite">&lt;project-id&gt;</code>.</p>
+<p>After installation, log into your account with <code class="codehilite">gcloud auth login</code> and enter your project ID when prompted.</p>
+<h2 id="choosing-a-channel">Choosing a channel<a class="headerlink" href="#choosing-a-channel" title="Permanent link">&para;</a></h2>
+<p>Flatcar Container Linux is designed to be updated automatically with different schedules per channel. You can <a href="../update-strategies/">disable this feature</a>, although we don't recommend it. Read the <a href="https://flatcar-linux.org/releases">release notes</a> for specific features and bug fixes.</p>
+<p>Create 3 instances from the image above using our Ignition from <code class="codehilite">example.ign</code>:</p>
+<div id="gce-create">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#stable-create" data-toggle="tab">Stable Channel</a></li>
+    <li><a href="#beta-create" data-toggle="tab">Beta Channel</a></li>
+    <li><a href="#alpha-create" data-toggle="tab">Alpha Channel</a></li>
+    <li><a href="#edge-create" data-toggle="tab">Edge Channel</a></li>
+  </ul>
+  <div class="tab-content coreos-docs-image-table">
+    <div class="tab-pane active" id="stable-create">
+      <p>The Stable channel should be used by production clusters. Versions of Flatcar Container Linux are battle-tested within the Beta and Alpha channels before being promoted. The current version is Flatcar Container Linux 2345.3.0.</p>
+      <pre>gcloud compute instances create flatcar1 flatcar2 flatcar3 --image-project flatcar-cloud --image-family flatcar-stable --zone us-central1-a --machine-type n1-standard-1 --metadata-from-file user-data=config.ign</pre>
+    </div>
+    <div class="tab-pane" id="beta-create">
+      <p>The Beta channel consists of promoted Alpha releases. The current version is Flatcar Container Linux 2411.1.0.</p>
+      <pre>gcloud compute instances create flatcar1 flatcar2 flatcar3 --image-project flatcar-cloud --image-family flatcar-beta --zone us-central1-a --machine-type n1-standard-1 --metadata-from-file user-data=config.ign</pre>
+    </div>
+    <div class="tab-pane" id="alpha-create">
+      <p>The Alpha channel closely tracks master and is released frequently. The newest versions of system libraries and utilities will be available for testing. The current version is Flatcar Container Linux 2430.0.0.</p>
+      <pre>gcloud compute instances create flatcar1 flatcar2 flatcar3 --image-project flatcar-cloud --image-family flatcar-alpha --zone us-central1-a --machine-type n1-standard-1 --metadata-from-file user-data=config.ign</pre>
+    </div>
+    <div class="tab-pane" id="edge-create">
+      <p>The Edge channel includes bleeding-edge features with the newest versions of the Linux kernel, systemd
+      and other core packages. Can be highly unstable. The current version is Flatcar Container Linux 2430.99.0.</p>
+      <pre>gcloud compute instances create flatcar1 flatcar2 flatcar3 --image-project flatcar-cloud --image-family flatcar-edge --zone us-central1-a --machine-type n1-standard-1 --metadata-from-file user-data=config.ign</pre>
+    </div>
+  </div>
+</div>
+
+<h2 id="uploading-an-image">Uploading an Image<a class="headerlink" href="#uploading-an-image" title="Permanent link">&para;</a></h2>
+<p>Official Flatcar Container Linux images are not available on Google Cloud at the moment. However, you can run Flatcar Container Linux today by uploading an image to your account.</p>
+<p>To do so, run the following command:
+<pre class="codehilite"><code class="language-sh">docker run -it quay.io/kinvolk/google-cloud-flatcar-image-upload \
+  --bucket-name &lt;bucket name&gt; \
+  --project-id &lt;project id&gt;</code></pre></p>
+<p>Where:</p>
+<ul>
+<li><code class="codehilite">&lt;bucket name&gt;</code> should be a valid <a href="https://cloud.google.com/storage/docs/key-terms#bucket-names">bucket</a> name.</li>
+<li><code class="codehilite">&lt;project id&gt;</code> should be your project ID.</li>
+</ul>
+<p>During execution, the script will ask you to log into your Google account and then create all necessary resources for
+uploading an image. It will then download the requested Flatcar Container Linux image and upload it to the Google Cloud.</p>
+<p>To see all available options, run:
+<pre class="codehilite"><code class="language-sh">docker run -it quay.io/kinvolk/google-cloud-flatcar-image-upload --help
+
+Usage: /usr/local/bin/upload_images.sh [OPTION...]
+
+ Required arguments:
+  -b, --bucket-name Name of GCP bucket for storing images.
+  -p, --project-id  ID of the project for creating bucket.
+
+ Optional arguments:
+  -c, --channel     Flatcar Container Linux release channel. Defaults to 'stable'.
+  -v, --version     Flatcar Container Linux version. Defaults to 'current'.
+  -i, --image-name  Image name, which will be used later in Lokomotive configuration. Defaults to 'flatcar-&lt;channel&gt;'.
+
+ Optional flags:
+   -f, --force-reupload If used, image will be uploaded even if it already exist in the bucket.
+   -F, --force-recreate If user, if compute image already exist, it will be removed and recreated.</code></pre></p>
+<p>The Dockerfile for the <code class="codehilite">quay.io/kinvolk/google-cloud-flatcar-image-upload</code> image is managed <a href="https://github.com/kinvolk/flatcar-cloud-image-uploader/blob/master/google-cloud-flatcar-image-upload">here</a>.</p>
+<h2 id="upgrade-from-coreos-container-linux">Upgrade from CoreOS Container Linux<a class="headerlink" href="#upgrade-from-coreos-container-linux" title="Permanent link">&para;</a></h2>
+<p>You can also <a href="../update-from-container-linux/">upgrade from an existing CoreOS Container Linux system</a>.</p>
+<h2 id="container-linux-config">Container Linux Config<a class="headerlink" href="#container-linux-config" title="Permanent link">&para;</a></h2>
+<p>Flatcar Container Linux allows you to configure machine parameters, configure networking, launch systemd units on startup, and more via Container Linux Configs. These configs are then transpiled into Ignition configs and given to booting machines. Head over to the <a href="../provisioning/">docs to learn about the supported features</a>.</p>
+<p>You can provide a raw Ignition config to Flatcar Container Linux via the Google Cloud console's metadata field <code class="codehilite">user-data</code> or via a flag using <code class="codehilite">gcloud</code>.</p>
+<p>As an example, this config will configure and start etcd:</p>
+<pre class="codehilite"><code class="language-yaml">etcd:
+  # All options get passed as command line flags to etcd.
+  # Any information inside curly braces comes from the machine at boot time.
+
+  # multi_region and multi_cloud deployments need to use {PUBLIC_IPV4}
+  advertise_client_urls:       &quot;http://{PRIVATE_IPV4}:2379&quot;
+  initial_advertise_peer_urls: &quot;http://{PRIVATE_IPV4}:2380&quot;
+  # listen on both the official ports and the legacy ports
+  # legacy ports can be omitted if your application doesn't depend on them
+  listen_client_urls:          &quot;http://0.0.0.0:2379&quot;
+  listen_peer_urls:            &quot;http://{PRIVATE_IPV4}:2380&quot;
+  # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
+  # specify the initial size of your cluster with ?size=X
+  discovery:                   &quot;https://discovery.etcd.io/&lt;token&gt;&quot;</code></pre>
+
+<h3 id="additional-storage">Additional storage<a class="headerlink" href="#additional-storage" title="Permanent link">&para;</a></h3>
+<p>Additional disks attached to instances can be mounted with a <code class="codehilite">.mount</code> unit. Each disk can be accessed via <code class="codehilite">/dev/disk/by-id/google-&lt;disk-name&gt;</code>. Here's the Container Linux Config to format and mount a disk called <code class="codehilite">database-backup</code>:</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  filesystems:
+    - mount:
+        device: /dev/disk/by-id/scsi-0Google_PersistentDisk_database-backup
+        format: ext4
+
+systemd:
+  units:
+    - name: media-backup.mount
+      enable: true
+      contents: |
+        [Mount]
+        What=/dev/disk/by-id/scsi-0Google_PersistentDisk_database-backup
+        Where=/media/backup
+        Type=ext4
+
+        [Install]
+        RequiredBy=local-fs.target</code></pre>
+
+<p>For more information about mounting storage, Google's <a href="https://developers.google.com/compute/docs/disks#attach_disk">own documentation</a> is the best source. You can also read about <a href="../mounting-storage/">mounting storage on Flatcar Container Linux</a>.</p>
+<h3 id="adding-more-machines">Adding more machines<a class="headerlink" href="#adding-more-machines" title="Permanent link">&para;</a></h3>
+<p>To add more instances to the cluster, just launch more with the same Ignition config inside of the project.</p>
+<h2 id="ssh-and-users">SSH and users<a class="headerlink" href="#ssh-and-users" title="Permanent link">&para;</a></h2>
+<p>Users are added to Container Linux on GCE by the user provided configuration (i.e. Ignition, cloudinit) and by either the GCE account manager or <a href="https://cloud.google.com/compute/docs/instances/managing-instance-access">GCE OS Login</a>. OS Login is used if it is enabled for the instance, otherwise the GCE account manager is used.</p>
+<h3 id="using-the-gce-account-manager">Using the GCE account manager<a class="headerlink" href="#using-the-gce-account-manager" title="Permanent link">&para;</a></h3>
+<p>You can log in your Flatcar Container Linux instances using:</p>
+<pre class="codehilite"><code class="language-sh">gcloud compute ssh --zone us-central1-a core@&lt;instance-name&gt;</code></pre>
+
+<p>Users other than <code class="codehilite">core</code>, which are set up by the GCE account manager, may not be a member of required groups. If you have issues, try running commands such as <code class="codehilite">journalctl</code> with sudo.</p>
+<h3 id="using-os-login">Using OS Login<a class="headerlink" href="#using-os-login" title="Permanent link">&para;</a></h3>
+<p>You can log in using your Google account on instances with OS Login enabled. OS Login needs to be <a href="https://cloud.google.com/compute/docs/instances/managing-instance-access#enable_oslogin">enabled in the GCE console</a> and on the instance. It is enabled by default on instances provisioned with Container Linux 1898.0.0 or later. Once enabled, you can log into your Container Linux instances using:</p>
+<pre class="codehilite"><code class="language-sh">gcloud compute ssh --zone us-central1-a &lt;instance-name&gt;</code></pre>
+
+<p>This will use your GCE user to log in.</p>
+<h4 id="disabling-os-login-on-newly-provisioned-nodes">Disabling OS Login on newly provisioned nodes<a class="headerlink" href="#disabling-os-login-on-newly-provisioned-nodes" title="Permanent link">&para;</a></h4>
+<p>You can disable the OS Login functionality by masking the <code class="codehilite">oem-gce-enable-oslogin.service</code> unit:</p>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: oem-gce-enable-oslogin.service
+      mask: true</code></pre>
+
+<p>When disabling OS Login functionality on the instance, it is also recommended to disable it in the GCE console.</p>
+<h2 id="using-flatcar-container-linux">Using Flatcar Container Linux<a class="headerlink" href="#using-flatcar-container-linux" title="Permanent link">&para;</a></h2>
+<p>Now that you have a machine booted it is time to play around. Check out the <a href="../quickstart/">Flatcar Container Linux Quickstart</a> guide or dig into <a href="https://docs.flatcar-linux.org">more specific topics</a>.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>
