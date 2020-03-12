@@ -1,0 +1,3223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Running Flatcar Container Linux on EC2 - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="./">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../booting-on-digitalocean/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../booting-on-ecs/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#running-flatcar-container-linux-on-ec2">Running Flatcar Container Linux on EC2</a></li>
+            <li><a href="#choosing-a-channel">Choosing a channel</a></li>
+            <li><a href="#container-linux-configs">Container Linux Configs</a></li>
+            <li><a href="#ssh-to-your-instances">SSH to your instances</a></li>
+            <li><a href="#multiple-clusters">Multiple clusters</a></li>
+            <li><a href="#manual-setup">Manual setup</a></li>
+            <li><a href="#installation-from-a-vmdk-image">Installation from a VMDK image</a></li>
+            <li><a href="#using-flatcar-container-linux">Using Flatcar Container Linux</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="running-flatcar-container-linux-on-ec2">Running Flatcar Container Linux on EC2<a class="headerlink" href="#running-flatcar-container-linux-on-ec2" title="Permanent link">&para;</a></h1>
+<p>The current AMIs for all Flatcar Container Linux channels and EC2 regions are listed below and updated frequently. Using CloudFormation is the easiest way to launch a cluster, but it is also possible to follow the manual steps at the end of the article. Questions can be directed to the Flatcar Container Linux <a href="irc://irc.freenode.org:6667/#flatcar">IRC channel</a> or <a href="https://groups.google.com/forum/#!forum/flatcar-linux-user">user mailing list</a>.</p>
+<h2 id="choosing-a-channel">Choosing a channel<a class="headerlink" href="#choosing-a-channel" title="Permanent link">&para;</a></h2>
+<p>Flatcar Container Linux is designed to be updated automatically with different schedules per channel. You can <a href="../update-strategies/">disable this feature</a>, although we don't recommend it. Read the <a href="https://flatcar-linux.org/releases">release notes</a> for specific features and bug fixes.</p>
+<div id="ec2-images">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#stable" data-toggle="tab">Stable Channel</a></li>
+    <li><a href="#beta" data-toggle="tab">Beta Channel</a></li>
+    <li><a href="#alpha" data-toggle="tab">Alpha Channel</a></li>
+    <li><a href="#edge" data-toggle="tab">Edge Channel</a></li>
+  </ul>
+  <div class="tab-content coreos-docs-image-table">
+    <div class="tab-pane" id="alpha">
+      <div class="channel-info">
+        <p>The Alpha channel closely tracks master and is released frequently. The newest versions of system libraries and utilities will be available for testing. The current version is Flatcar Container Linux 2430.0.0.</p>
+        View as json feed: <a class="btn btn-link btn-icon-left co-p-docs-rss" href="https://alpha.release.flatcar-linux.net/amd64-usr/current/flatcar_production_ami_all.json"><span class="fa fa-rss"></span>amd64</a>
+        
+        <a class="btn btn-link btn-icon-left co-p-docs-rss" href="https://alpha.release.flatcar-linux.net/arm64-usr/current/flatcar_production_ami_all.json"><span class="fa fa-rss"></span>arm64</a>
+        
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>EC2 Region</th>
+            <th>AMI Type</th>
+            <th>AMI ID</th>
+            <th>CloudFormation</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+        
+        <tr>
+          <td rowspan="2">ap-east-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-east-1#launchAmi=ami-0730934311a5bcae9">ami-0730934311a5bcae9</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-east-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=ap-east-1#launchAmi=ami-0c10dd776de6227ff">ami-0c10dd776de6227ff</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-east-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-northeast-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-northeast-1#launchAmi=ami-0beec89908dd94f09">ami-0beec89908dd94f09</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=ap-northeast-1#launchAmi=ami-049220f3fd045b312">ami-049220f3fd045b312</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-northeast-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-northeast-2#launchAmi=ami-0825c0e2a992ce82e">ami-0825c0e2a992ce82e</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=ap-northeast-2#launchAmi=ami-05b6ad44bf0b14893">ami-05b6ad44bf0b14893</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-south-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-south-1#launchAmi=ami-0690e97cfe41a6b13">ami-0690e97cfe41a6b13</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=ap-south-1#launchAmi=ami-0b40ead16298f0a52">ami-0b40ead16298f0a52</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-southeast-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-southeast-1#launchAmi=ami-0335a2279da35dfff">ami-0335a2279da35dfff</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=ap-southeast-1#launchAmi=ami-086d5171d02d07018">ami-086d5171d02d07018</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-southeast-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-southeast-2#launchAmi=ami-081e8adfc2cf19c1a">ami-081e8adfc2cf19c1a</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-2#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=ap-southeast-2#launchAmi=ami-02fbc7ba3ec21b1a9">ami-02fbc7ba3ec21b1a9</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-2#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ca-central-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ca-central-1#launchAmi=ami-0c02cd7e6ac19f591">ami-0c02cd7e6ac19f591</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ca-central-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=ca-central-1#launchAmi=ami-03d8c91552321606c">ami-03d8c91552321606c</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=ca-central-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-central-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-central-1#launchAmi=ami-02eb205f202bb4c72">ami-02eb205f202bb4c72</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=eu-central-1#launchAmi=ami-083a11bc5c5051eb7">ami-083a11bc5c5051eb7</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-north-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-north-1#launchAmi=ami-0a95a9dc85e8a2461">ami-0a95a9dc85e8a2461</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-north-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=eu-north-1#launchAmi=ami-077473e023b8f174e">ami-077473e023b8f174e</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-north-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-west-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-00ccc647f05ddd3aa">ami-00ccc647f05ddd3aa</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-0a8485bdb18256a40">ami-0a8485bdb18256a40</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-west-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-2#launchAmi=ami-056852bc96569fe08">ami-056852bc96569fe08</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-2#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-2#launchAmi=ami-0f8202f7ca36312b3">ami-0f8202f7ca36312b3</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-2#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-west-3</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-3#launchAmi=ami-0accf48d59191570b">ami-0accf48d59191570b</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-3#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-3#launchAmi=ami-034f6f7b93e0db846">ami-034f6f7b93e0db846</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-3#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">me-south-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=me-south-1#launchAmi=ami-0084b95db06577671">ami-0084b95db06577671</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=me-south-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=me-south-1#launchAmi=ami-0e0b9af8ca9c5f236">ami-0e0b9af8ca9c5f236</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=me-south-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">sa-east-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=sa-east-1#launchAmi=ami-0bf7b668ee92d4674">ami-0bf7b668ee92d4674</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=sa-east-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=sa-east-1#launchAmi=ami-0b9bf9c472f3241d8">ami-0b9bf9c472f3241d8</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=sa-east-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-east-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-0f66e97cb7e04c4e0">ami-0f66e97cb7e04c4e0</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-0cfd37a9abd675ca7">ami-0cfd37a9abd675ca7</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-east-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-east-2#launchAmi=ami-0f5e079d5b04876cc">ami-0f5e079d5b04876cc</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-2#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=us-east-2#launchAmi=ami-0607714ce1b3fbb31">ami-0607714ce1b3fbb31</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-2#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-west-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-west-1#launchAmi=ami-07b237219e5bed78b">ami-07b237219e5bed78b</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-west-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=us-west-1#launchAmi=ami-05f9780467484ea8a">ami-05f9780467484ea8a</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=us-west-1#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-west-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-west-2#launchAmi=ami-0a5fa4f2f22b57332">ami-0a5fa4f2f22b57332</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-west-2#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=us-west-2#launchAmi=ami-0c315d73cc9b906a0">ami-0c315d73cc9b906a0</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=us-west-2#cstack=sn%7EFlatcar-alpha%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-alpha-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+        </tr>
+        
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane" id="beta">
+      <div class="channel-info">
+        <p>The Beta channel consists of promoted Alpha releases. The current version is Flatcar Container Linux 2411.1.0.</p>
+        View as json feed: <a class="btn btn-link btn-icon-left co-p-docs-rss" href="https://beta.release.flatcar-linux.net/amd64-usr/current/flatcar_production_ami_all.json"><span class="fa fa-rss"></span>amd64</a>
+        
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>EC2 Region</th>
+            <th>AMI Type</th>
+            <th>AMI ID</th>
+            <th>CloudFormation</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+        
+        <tr>
+          <td rowspan="2">ap-east-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-east-1#launchAmi=ami-02918e8edbfe46f1b">ami-02918e8edbfe46f1b</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-east-1#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-northeast-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-northeast-1#launchAmi=ami-0f154b3c307f1cf4f">ami-0f154b3c307f1cf4f</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-northeast-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-northeast-2#launchAmi=ami-023c0dfbebdae2c69">ami-023c0dfbebdae2c69</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-south-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-south-1#launchAmi=ami-09651dd69419579e5">ami-09651dd69419579e5</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-southeast-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-southeast-1#launchAmi=ami-067c84092bed1494e">ami-067c84092bed1494e</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-southeast-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-southeast-2#launchAmi=ami-0b2550c5f8f21c241">ami-0b2550c5f8f21c241</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-2#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ca-central-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ca-central-1#launchAmi=ami-0bdc66e5e2e49332f">ami-0bdc66e5e2e49332f</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ca-central-1#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-central-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-central-1#launchAmi=ami-07aaca615d8577415">ami-07aaca615d8577415</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-north-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-north-1#launchAmi=ami-0acd8ec481843ca0d">ami-0acd8ec481843ca0d</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-north-1#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-west-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-0f00e16b1a51c24fc">ami-0f00e16b1a51c24fc</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-west-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-2#launchAmi=ami-0fffead496ee149b7">ami-0fffead496ee149b7</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-2#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-west-3</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-3#launchAmi=ami-038ec204929de378d">ami-038ec204929de378d</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-3#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">me-south-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=me-south-1#launchAmi=ami-0f10124c14b2fa24e">ami-0f10124c14b2fa24e</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=me-south-1#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">sa-east-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=sa-east-1#launchAmi=ami-08324d8d6d8b2c55c">ami-08324d8d6d8b2c55c</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=sa-east-1#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-east-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-0dcf1a289a891d420">ami-0dcf1a289a891d420</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-east-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-east-2#launchAmi=ami-056e8a76adaeca2c0">ami-056e8a76adaeca2c0</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-2#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-west-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-west-1#launchAmi=ami-01d83944bb98bf04c">ami-01d83944bb98bf04c</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-west-1#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-west-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-west-2#launchAmi=ami-0852372186beff7ed">ami-0852372186beff7ed</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-west-2#cstack=sn%7EFlatcar-beta%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-beta-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane" id="edge">
+      <div class="channel-info">
+        <p>The Edge channel includes bleeding-edge features with the newest versions of the Linux kernel, systemd and other core packages. Can be highly unstable. The current version is Flatcar Container Linux 2430.99.0.</p>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>EC2 Region</th>
+            <th>AMI Type</th>
+            <th>AMI ID</th>
+            <th>CloudFormation</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+        
+        <tr>
+          <td rowspan="2">ap-east-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-east-1#launchAmi=ami-013a97215b260ff49">ami-013a97215b260ff49</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-east-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=ap-east-1#launchAmi=ami-007c395a13c3bebd2">ami-007c395a13c3bebd2</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-east-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-northeast-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-northeast-1#launchAmi=ami-020bf711a53526af6">ami-020bf711a53526af6</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=ap-northeast-1#launchAmi=ami-073a8f21236b18876">ami-073a8f21236b18876</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-northeast-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-northeast-2#launchAmi=ami-00f56ce8897df52ea">ami-00f56ce8897df52ea</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=ap-northeast-2#launchAmi=ami-0e75e400db1551949">ami-0e75e400db1551949</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-south-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-south-1#launchAmi=ami-0c4ac47749e42bfb3">ami-0c4ac47749e42bfb3</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=ap-south-1#launchAmi=ami-000aac8d84bf86dad">ami-000aac8d84bf86dad</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-southeast-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-southeast-1#launchAmi=ami-06cd560aa5daf6605">ami-06cd560aa5daf6605</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=ap-southeast-1#launchAmi=ami-0bdb2d17b033c9e57">ami-0bdb2d17b033c9e57</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-southeast-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-southeast-2#launchAmi=ami-0eeb8c93f6403ff05">ami-0eeb8c93f6403ff05</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-2#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=ap-southeast-2#launchAmi=ami-07fe1477069803752">ami-07fe1477069803752</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-2#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ca-central-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ca-central-1#launchAmi=ami-0c7fe09b10e2b51d9">ami-0c7fe09b10e2b51d9</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ca-central-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=ca-central-1#launchAmi=ami-07984b6cd8e48cf26">ami-07984b6cd8e48cf26</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=ca-central-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-central-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-central-1#launchAmi=ami-05f72d7c928cf38b5">ami-05f72d7c928cf38b5</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=eu-central-1#launchAmi=ami-0bf019bf01ce5e71f">ami-0bf019bf01ce5e71f</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-north-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-north-1#launchAmi=ami-04f9342bab755e3d0">ami-04f9342bab755e3d0</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-north-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=eu-north-1#launchAmi=ami-01a8deee8dd7db069">ami-01a8deee8dd7db069</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-north-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-west-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-0fd134aa9fc54a842">ami-0fd134aa9fc54a842</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-05728a2a3ae00692e">ami-05728a2a3ae00692e</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-west-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-2#launchAmi=ami-07e1c9468996844ac">ami-07e1c9468996844ac</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-2#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-2#launchAmi=ami-0deedefa3f0171906">ami-0deedefa3f0171906</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-2#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-west-3</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-3#launchAmi=ami-05600c71824598d7d">ami-05600c71824598d7d</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-3#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-3#launchAmi=ami-015a0b1330e4f397d">ami-015a0b1330e4f397d</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-3#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">me-south-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=me-south-1#launchAmi=ami-01d87e9e6f7de7986">ami-01d87e9e6f7de7986</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=me-south-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=me-south-1#launchAmi=ami-0c053a9fded6e2843">ami-0c053a9fded6e2843</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=me-south-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">sa-east-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=sa-east-1#launchAmi=ami-08c25916ebfa8cc57">ami-08c25916ebfa8cc57</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=sa-east-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=sa-east-1#launchAmi=ami-0f0151babdeed35ba">ami-0f0151babdeed35ba</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=sa-east-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-east-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-091a7a49c5c6dd8b2">ami-091a7a49c5c6dd8b2</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-0b9df6c7e97631ad0">ami-0b9df6c7e97631ad0</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-east-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-east-2#launchAmi=ami-0ae797dd9cc55b2db">ami-0ae797dd9cc55b2db</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-2#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=us-east-2#launchAmi=ami-016b724674866cc10">ami-016b724674866cc10</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-2#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-west-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-west-1#launchAmi=ami-08e969c1c13e20f96">ami-08e969c1c13e20f96</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-west-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=us-west-1#launchAmi=ami-0e7fcd343cb576f49">ami-0e7fcd343cb576f49</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=us-west-1#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+          
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-west-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-west-2#launchAmi=ami-02a6472eb307b9c36">ami-02a6472eb307b9c36</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-west-2#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <td class="rowspan-padding"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (arm64)</a></td>
+          <td><a href="https://console.aws.amazon.com/ec2/home?region=us-west-2#launchAmi=ami-033a518ae5bf097aa">ami-033a518ae5bf097aa</a></td>
+          <td><a href="https://console.aws.amazon.com/cloudformation/home?region=us-west-2#cstack=sn%7EFlatcar-edge%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-edge-arm64-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+          
+          
+        </tr>
+        
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane active" id="stable">
+      <div class="channel-info">
+        <p>The Stable channel should be used by production clusters. Versions of Flatcar Container Linux are battle-tested within the Beta and Alpha channels before being promoted. The current version is Flatcar Container Linux 2345.3.0.</p>
+        View as json feed: <a class="btn btn-link btn-icon-left co-p-docs-rss" href="https://stable.release.flatcar-linux.net/amd64-usr/current/flatcar_production_ami_all.json"><span class="fa fa-rss"></span>amd64</a>
+        
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>EC2 Region</th>
+            <th>AMI Type</th>
+            <th>AMI ID</th>
+            <th>CloudFormation</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+        
+        <tr>
+          <td rowspan="2">ap-east-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-east-1#launchAmi=ami-0a813620447e80b05">ami-0a813620447e80b05</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-east-1#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-northeast-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-northeast-1#launchAmi=ami-02af6d096f0a2f96c">ami-02af6d096f0a2f96c</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-northeast-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-northeast-2#launchAmi=ami-0dd7a397031040ff1">ami-0dd7a397031040ff1</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-south-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-south-1#launchAmi=ami-03205de7c095444bb">ami-03205de7c095444bb</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-southeast-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-southeast-1#launchAmi=ami-0666b8c77a4148316">ami-0666b8c77a4148316</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ap-southeast-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ap-southeast-2#launchAmi=ami-0be9b0ada4e9f0c7a">ami-0be9b0ada4e9f0c7a</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-2#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">ca-central-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=ca-central-1#launchAmi=ami-0b0044f3e521384ae">ami-0b0044f3e521384ae</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=ca-central-1#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-central-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-central-1#launchAmi=ami-0c9ac894c7ec2e6dd">ami-0c9ac894c7ec2e6dd</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-north-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-north-1#launchAmi=ami-06420e2a1713889dd">ami-06420e2a1713889dd</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-north-1#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-west-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-09f0cd6af1e455cd9">ami-09f0cd6af1e455cd9</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-west-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-2#launchAmi=ami-0b1588137b7790e8c">ami-0b1588137b7790e8c</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-2#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">eu-west-3</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=eu-west-3#launchAmi=ami-01a8e028daf4d66cf">ami-01a8e028daf4d66cf</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-3#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">me-south-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=me-south-1#launchAmi=ami-0a6518241a90f491f">ami-0a6518241a90f491f</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=me-south-1#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">sa-east-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=sa-east-1#launchAmi=ami-037e10c3bd117fb3e">ami-037e10c3bd117fb3e</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=sa-east-1#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-east-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-007776654941e2586">ami-007776654941e2586</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-east-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-east-2#launchAmi=ami-0b0a4944bd30c6b85">ami-0b0a4944bd30c6b85</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-2#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-west-1</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-west-1#launchAmi=ami-02fefca3d52d15b1d">ami-02fefca3d52d15b1d</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-west-1#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        
+        <tr>
+          <td rowspan="2">us-west-2</td>
+          <td class="dashed"><a href="http://aws.amazon.com/amazon-linux-ami/instance-type-matrix/">HVM (amd64)</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/ec2/home?region=us-west-2#launchAmi=ami-0390d41fd4e4a3529">ami-0390d41fd4e4a3529</a></td>
+          <td class="dashed"><a href="https://console.aws.amazon.com/cloudformation/home?region=us-west-2#cstack=sn%7EFlatcar-stable%7Cturl%7Ehttps:%2F%2Fflatcar-prod-ami-import-eu-central-1.s3.amazonaws.com%2Fdist%2Faws%2Fflatcar-stable-hvm.template" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" alt="Launch Stack"/></a></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<p>CloudFormation will launch a cluster of Flatcar Container Linux machines with a security and autoscaling group.</p>
+<h2 id="container-linux-configs">Container Linux Configs<a class="headerlink" href="#container-linux-configs" title="Permanent link">&para;</a></h2>
+<p>Flatcar Container Linux allows you to configure machine parameters, configure networking, launch systemd units on startup, and more via Container Linux Configs. These configs are then transpiled into Ignition configs and given to booting machines. Head over to the <a href="../provisioning/">docs to learn about the supported features</a>.</p>
+<p>You can provide a raw Ignition config to Flatcar Container Linux via the Amazon web console or <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">via the EC2 API</a>.</p>
+<p>As an example, this Container Linux Config will configure and start etcd:</p>
+<pre class="codehilite"><code class="language-yaml">etcd:
+  # All options get passed as command line flags to etcd.
+  # Any information inside curly braces comes from the machine at boot time.
+
+  # multi_region and multi_cloud deployments need to use {PUBLIC_IPV4}
+  advertise_client_urls:       &quot;http://{PRIVATE_IPV4}:2379&quot;
+  initial_advertise_peer_urls: &quot;http://{PRIVATE_IPV4}:2380&quot;
+  # listen on both the official ports and the legacy ports
+  # legacy ports can be omitted if your application doesn't depend on them
+  listen_client_urls:          &quot;http://0.0.0.0:2379&quot;
+  listen_peer_urls:            &quot;http://{PRIVATE_IPV4}:2380&quot;
+  # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
+  # specify the initial size of your cluster with ?size=X
+  discovery:                   &quot;https://discovery.etcd.io/&lt;token&gt;&quot;</code></pre>
+
+<h3 id="instance-storage">Instance storage<a class="headerlink" href="#instance-storage" title="Permanent link">&para;</a></h3>
+<p>Ephemeral disks and additional EBS volumes attached to instances can be mounted with a <code class="codehilite">.mount</code> unit. Amazon's block storage devices are attached differently <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames">depending on the instance type</a>. Here's the Container Linux Config to format and mount the first ephemeral disk, <code class="codehilite">xvdb</code>, on most instance types:</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  filesystems:
+    - mount:
+        device: /dev/xvdb
+        format: ext4
+        wipe_filesystem: true
+
+systemd:
+  units:
+    - name: media-ephemeral.mount
+      enable: true
+      contents: |
+        [Mount]
+        What=/dev/xvdb
+        Where=/media/ephemeral
+        Type=ext4
+
+        [Install]
+        RequiredBy=local-fs.target</code></pre>
+
+<p>For more information about mounting storage, Amazon's <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html">own documentation</a> is the best source. You can also read about <a href="../mounting-storage/">mounting storage on Flatcar Container Linux</a>.</p>
+<h3 id="adding-more-machines">Adding more machines<a class="headerlink" href="#adding-more-machines" title="Permanent link">&para;</a></h3>
+<p>To add more instances to the cluster, just launch more with the same Container Linux Config, the appropriate security group and the AMI for that region. New instances will join the cluster regardless of region if the security groups are configured correctly.</p>
+<h2 id="ssh-to-your-instances">SSH to your instances<a class="headerlink" href="#ssh-to-your-instances" title="Permanent link">&para;</a></h2>
+<p>Flatcar Container Linux is set up to be a little more secure than other cloud images. By default, it uses the <code class="codehilite">core</code> user instead of <code class="codehilite">root</code> and doesn't use a password for authentication. You'll need to add an SSH key(s) via the AWS console or add keys/passwords via your Container Linux Config in order to log in.</p>
+<p>To connect to an instance after it's created, run:</p>
+<pre class="codehilite"><code class="language-sh">ssh core@&lt;ip address&gt;</code></pre>
+
+<h2 id="multiple-clusters">Multiple clusters<a class="headerlink" href="#multiple-clusters" title="Permanent link">&para;</a></h2>
+<p>If you would like to create multiple clusters you will need to change the "Stack Name". You can find the direct <a href="https://flatcar-prod-ami-import-eu-central-1.s3.amazonaws.com/dist/aws/flatcar-stable-hvm.template">template file on S3</a>.</p>
+<h2 id="manual-setup">Manual setup<a class="headerlink" href="#manual-setup" title="Permanent link">&para;</a></h2>
+<p>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<strong>TL;DR:</strong> launch three instances of <a href="https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-0f66e97cb7e04c4e0">ami-0f66e97cb7e04c4e0</a> (amd64) in <strong>us-east-1</strong> with a security group that has open port 22, 2379, 2380, 4001, and 7001 and the same "User Data" of each host. SSH uses the <code class="codehilite">core</code> user and you have <a href="https://github.com/flatcar-linux/etcd/tree/master/Documentation">etcd</a> and <a href="https://docs.docker.io">Docker</a> to play with.
+  
+
+  
+
+  
+
+  
+</p>
+<h3 id="creating-the-security-group">Creating the security group<a class="headerlink" href="#creating-the-security-group" title="Permanent link">&para;</a></h3>
+<p>You need open port 2379, 2380, 7001 and 4001 between servers in the <code class="codehilite">etcd</code> cluster. Step by step instructions below.</p>
+<p><em>This step is only needed once</em></p>
+<p>First we need to create a security group to allow Flatcar Container Linux instances to communicate with one another.</p>
+<ol>
+<li>Go to the <a href="https://console.aws.amazon.com/ec2/home?region=us-east-1#s=SecurityGroups">security group</a> page in the EC2 console.</li>
+<li>Click "Create Security Group"<ul>
+<li>Name: flatcar-testing</li>
+<li>Description: Flatcar Container Linux instances</li>
+<li>VPC: No VPC</li>
+<li>Click: "Yes, Create"</li>
+</ul>
+</li>
+<li>In the details of the security group, click the <code class="codehilite">Inbound</code> tab</li>
+<li>First, create a security group rule for SSH<ul>
+<li>Create a new rule: <code class="codehilite">SSH</code></li>
+<li>Source: 0.0.0.0/0</li>
+<li>Click: "Add Rule"</li>
+</ul>
+</li>
+<li>Add two security group rules for etcd communication<ul>
+<li>Create a new rule: <code class="codehilite">Custom TCP rule</code></li>
+<li>Port range: 2379</li>
+<li>Source: type "flatcar-testing" until your security group auto-completes. Should be something like "sg-8d4feabc"</li>
+<li>Click: "Add Rule"</li>
+<li>Repeat this process for port range 2380, 4001 and 7001 as well</li>
+</ul>
+</li>
+<li>Click "Apply Rule Changes"</li>
+</ol>
+<h3 id="launching-a-test-cluster">Launching a test cluster<a class="headerlink" href="#launching-a-test-cluster" title="Permanent link">&para;</a></h3>
+<div id="ec2-manual">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#stable-manual" data-toggle="tab">Stable Channel</a></li>
+    <li><a href="#beta-manual" data-toggle="tab">Beta Channel</a></li>
+    <li><a href="#alpha-manual" data-toggle="tab">Alpha Channel</a></li>
+  </ul>
+  <div class="tab-content coreos-docs-image-table">
+    <div class="tab-pane" id="alpha-manual">
+      <p>We will be launching three instances, with a few parameters in the User Data, and selecting our security group.</p>
+      <ol>
+        <li>
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            Open the <a href="https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-0f66e97cb7e04c4e0" target="_blank">quick launch wizard</a> to boot ami-0f66e97cb7e04c4e0 (amd64).
+          
+        
+          
+        
+          
+        
+          
+        
+        </li>
+        <li>
+          On the second page of the wizard, launch 3 servers to test our clustering
+          <ul>
+            <li>Number of instances: 3</li>
+            <li>Click "Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Next, we need to specify a discovery URL, which contains a unique token that allows us to find other hosts in our cluster. If you're launching your first machine, generate one at <a href="https://discovery.etcd.io/new?size=3">https://discovery.etcd.io/new?size=3</a>, configure the `?size=` to your initial cluster size and add it to the metadata. You should re-use this key for each machine in the cluster.
+        </li>
+        <li>
+          Use <a href="provisioning.md">ct</a> to convert the following configuration into an Ignition config, and back in the EC2 dashboard, paste it into the "User Data" field.
+          wzxhzdk:3
+          <ul>
+            <li>Paste configuration into "User Data"</li>
+            <li>"Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Storage Configuration
+          <ul>
+            <li>"Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Tags
+          <ul>
+            <li>"Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Create Key Pair
+          <ul>
+            <li>Choose a key of your choice, it will be added in addition to the one in the gist.</li>
+            <li>"Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Choose one or more of your existing Security Groups
+          <ul>
+            <li>"flatcar-testing" as above.</li>
+            <li>"Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Launch!
+        </li>
+      </ol>
+    </div>
+    <div class="tab-pane" id="beta-manual">
+      <p>We will be launching three instances, with a few parameters in the User Data, and selecting our security group.</p>
+      <ol>
+        <li>
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            Open the <a href="https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-0dcf1a289a891d420" target="_blank">quick launch wizard</a> to boot ami-0dcf1a289a891d420 (amd64).
+          
+        
+          
+        
+          
+        
+          
+        
+        </li>
+        <li>
+          On the second page of the wizard, launch 3 servers to test our clustering
+          <ul>
+            <li>Number of instances: 3</li>
+            <li>Click "Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Next, we need to specify a discovery URL, which contains a unique token that allows us to find other hosts in our cluster. If you're launching your first machine, generate one at <a href="https://discovery.etcd.io/new?size=3">https://discovery.etcd.io/new?size=3</a>, configure the `?size=` to your initial cluster size and add it to the metadata. You should re-use this key for each machine in the cluster.
+        </li>
+        <li>
+          Use <a href="provisioning.md">ct</a> to convert the following configuration into an Ignition config, and back in the EC2 dashboard, paste it into the "User Data" field.
+          wzxhzdk:4
+          <ul>
+            <li>Paste configuration into "User Data"</li>
+            <li>"Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Storage Configuration
+          <ul>
+            <li>"Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Tags
+          <ul>
+            <li>"Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Create Key Pair
+          <ul>
+            <li>Choose a key of your choice, it will be added in addition to the one in the gist.</li>
+            <li>"Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Choose one or more of your existing Security Groups
+          <ul>
+            <li>"flatcar-testing" as above.</li>
+            <li>"Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Launch!
+        </li>
+      </ol>
+    </div>
+    <div class="tab-pane active" id="stable-manual">
+      <p>We will be launching three instances, with a few parameters in the User Data, and selecting our security group.</p>
+      <ol>
+        <li>
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            Open the <a href="https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-007776654941e2586" target="_blank">quick launch wizard</a> to boot ami-007776654941e2586 (amd64).
+          
+        
+          
+        
+          
+        
+          
+        
+        </li>
+        <li>
+          On the second page of the wizard, launch 3 servers to test our clustering
+          <ul>
+            <li>Number of instances: 3</li>
+            <li>Click "Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Next, we need to specify a discovery URL, which contains a unique token that allows us to find other hosts in our cluster. If you're launching your first machine, generate one at <a href="https://discovery.etcd.io/new?size=3">https://discovery.etcd.io/new?size=3</a>, configure the `?size=` to your initial cluster size and add it to the metadata. You should re-use this key for each machine in the cluster.
+        </li>
+        <li>
+          Use <a href="provisioning.md">ct</a> to convert the following configuration into an Ignition config, and back in the EC2 dashboard, paste it into the "User Data" field.
+          wzxhzdk:5
+          <ul>
+            <li>Paste configuration into "User Data"</li>
+            <li>"Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Storage Configuration
+          <ul>
+            <li>"Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Tags
+          <ul>
+            <li>"Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Create Key Pair
+          <ul>
+            <li>Choose a key of your choice, it will be added in addition to the one in the gist.</li>
+            <li>"Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Choose one or more of your existing Security Groups
+          <ul>
+            <li>"flatcar-testing" as above.</li>
+            <li>"Continue"</li>
+          </ul>
+        </li>
+        <li>
+          Launch!
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<h2 id="installation-from-a-vmdk-image">Installation from a VMDK image<a class="headerlink" href="#installation-from-a-vmdk-image" title="Permanent link">&para;</a></h2>
+<p>One of the possible ways of installation is to import the generated VMDK Flatcar image as a snapshot. The image file will be in <code class="codehilite">https://${CHANNEL}.release.flatcar-linux.net/${ARCH}-usr/${VERSION}/flatcar_production_ami_vmdk_image.vmdk.bz2</code>.
+Make sure you download the signature (it's available in <code class="codehilite">https://${CHANNEL}.release.flatcar-linux.net/${ARCH}-usr/${VERSION}/flatcar_production_ami_vmdk_image.vmdk.bz2.sig</code>) and check it before proceeding.</p>
+<pre class="codehilite"><code>$ wget https://alpha.release.flatcar-linux.net/amd64-usr/current/flatcar_production_ami_vmdk_image.vmdk.bz2
+$ wget https://alpha.release.flatcar-linux.net/amd64-usr/current/flatcar_production_ami_vmdk_image.vmdk.bz2.sig
+$ gpg --verify flatcar_production_ami_vmdk_image.vmdk.bz2.sig
+gpg: assuming signed data in 'flatcar_production_ami_vmdk_image.vmdk.bz2'
+gpg: Signature made Thu 15 Mar 2018 10:27:57 AM CET
+gpg:                using RSA key A621F1DA96C93C639506832D603443A1D0FC498C
+gpg: Good signature from &quot;Flatcar Buildbot (Official Builds) &lt;buildbot@flatcar-linux.org&gt;&quot; [ultimate]</code></pre>
+
+<p>Then, follow the instructions in <a href="https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-import-snapshot.html">Importing a Disk as a Snapshot Using VM Import/Export</a>. You'll need to upload the uncompressed vmdk file to S3.</p>
+<p>After the snapshot is imported, you can go to "Snapshots" in the EC2 dashboard, and generate an AMI image from it.
+To make it work, use <code class="codehilite">/dev/sda2</code> as the "Root device name" and you probably want to select "Hardware-assisted virtualization" as "Virtualization type".</p>
+<h2 id="using-flatcar-container-linux">Using Flatcar Container Linux<a class="headerlink" href="#using-flatcar-container-linux" title="Permanent link">&para;</a></h2>
+<p>Now that you have a machine booted it is time to play around. Check out the <a href="../quickstart/">Flatcar Container Linux Quickstart</a> guide or dig into <a href="https://docs.flatcar-linux.org">more specific topics</a>.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

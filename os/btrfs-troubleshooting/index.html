@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Working with btrfs and common troubleshooting - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="./">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../booting-with-qemu/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../cluster-architectures/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#working-with-btrfs-and-common-troubleshooting">Working with btrfs and common troubleshooting</a></li>
+            <li><a href="#no-space-left-on-device">No space left on device</a></li>
+            <li><a href="#adding-a-new-physical-disk">Adding a new physical disk</a></li>
+            <li><a href="#disable-copy-on-write">Disable copy-on-write</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="working-with-btrfs-and-common-troubleshooting">Working with btrfs and common troubleshooting<a class="headerlink" href="#working-with-btrfs-and-common-troubleshooting" title="Permanent link">&para;</a></h1>
+<p>btrfs is a copy-on-write filesystem with full support in the upstream Linux kernel and several desirable features. In the past, Flatcar Container Linux shipped with a btrfs root filesystem to support Docker filesystem requirements at the time. As of version 561.0.0, Flatcar Container Linux ships with ext4 as the default root filesystem by default while still supporting Docker. Btrfs is still supported and works with the latest Flatcar Container Linux releases and Docker, but we recommend using ext4.</p>
+<p>btrfs was marked as experimental for a long time, but it's now fully production-ready and supported by a number of Linux distributions.</p>
+<p>Notable Features of btrfs:</p>
+<ul>
+<li>Ability to add/remove block devices without interruption</li>
+<li>Ability to balance the filesystem without interruption</li>
+<li>RAID 0, RAID 1, RAID 5, RAID 6 and RAID 10</li>
+<li>Snapshots and file cloning</li>
+</ul>
+<p>This guide won't cover these topics &mdash; it's mostly focused on troubleshooting.</p>
+<p>For a more complete troubleshooting experience, let's explore how btrfs works under the hood.</p>
+<p>btrfs stores data in chunks across all of the block devices on the system. The total storage across these devices is shown in the standard output of <code class="codehilite">df -h</code>.</p>
+<p>Raw data and filesystem metadata are stored in one or many chunks, typically ~1GiB in size. When RAID is configured, these chunks are replicated instead of individual files.</p>
+<p>A copy-on-write filesystem maintains many changes of a single file, which is helpful for snapshotting and other advanced features, but can lead to fragmentation with some workloads.</p>
+<h2 id="no-space-left-on-device">No space left on device<a class="headerlink" href="#no-space-left-on-device" title="Permanent link">&para;</a></h2>
+<p>When the filesystem is out of chunks to write data into, <code class="codehilite">No space left on device</code> will be reported. This will prevent journal files from being recorded, containers from starting and so on.</p>
+<p>The common reaction to this error is to run <code class="codehilite">df -h</code> and you'll see that there is still some free space. That command isn't measuring the btrfs primitives (chunks, metadata, etc), which is what really matters.</p>
+<p>Running <code class="codehilite">sudo btrfs fi show</code> will give you the btrfs view of how much free space you have. When starting/stopping many Docker containers or doing a large amount of random writes, chunks will become duplicated in an inefficient manner over time.</p>
+<p>Re-balancing the filesystem (<a href="https://btrfs.wiki.kernel.org/index.php/Balance_Filters">official btrfs docs</a>) will relocate data from empty or near-empty chunks to free up space. This operation can be done without downtime.</p>
+<p>First, let's see how much free space we have:</p>
+<pre class="codehilite"><code class="language-sh">$ sudo btrfs fi show
+Label: 'ROOT'  uuid: 82a40c46-557e-4848-ad4d-10c6e36ed5ad
+  Total devices 1 FS bytes used 13.44GiB
+  devid    1 size 32.68GiB used 32.68GiB path /dev/xvda9
+
+Btrfs v3.14_pre20140414</code></pre>
+
+<p>The answer: not a lot. We can re-balance to fix that.</p>
+<p>The re-balance command can be configured to only relocate data in chunks up to a certain percentage used. This will prevent you from moving around a lot of data without a lot of benefit. If your disk is completely full, you may need to delete a few containers to create space for the re-balance operation to work with.</p>
+<p>Let's try to relocate chunks with less than 5% of usage:</p>
+<pre class="codehilite"><code class="language-sh">$ sudo btrfs fi balance start -dusage=5 /
+Done, had to relocate 5 out of 45 chunks
+$ sudo btrfs fi show
+Label: 'ROOT'  uuid: 82a40c46-557e-4848-ad4d-10c6e36ed5ad
+  Total devices 1 FS bytes used 13.39GiB
+  devid    1 size 32.68GiB used 28.93GiB path /dev/xvda9
+
+Btrfs v3.14_pre20140414</code></pre>
+
+<p>The operation took about a minute on a cloud server and gained us 4GiB of space on the filesystem. It's up to you to find out what percentage works best for your workload, the speed of your disks, etc.</p>
+<p>If your balance operation is taking a long time, you can open a new shell and find the status:</p>
+<pre class="codehilite"><code>$ sudo btrfs balance status /
+Balance on '/' is running
+0 out of about 1 chunks balanced (1 considered), 100% left</code></pre>
+
+<h2 id="adding-a-new-physical-disk">Adding a new physical disk<a class="headerlink" href="#adding-a-new-physical-disk" title="Permanent link">&para;</a></h2>
+<p>New physical disks can be added to an existing btrfs filesystem. The first step is to have the new block device <a href="../mounting-storage/">mounted on the machine</a>. Afterwards, let btrfs know about the new device and re-balance the file system. The key step here is re-balancing, which will move the data and metadata across both block devices. Expect this process to take some time:</p>
+<pre class="codehilite"><code class="language-sh">$ btrfs device add /dev/sdc /
+$ btrfs filesystem balance /</code></pre>
+
+<h2 id="disable-copy-on-write">Disable copy-on-write<a class="headerlink" href="#disable-copy-on-write" title="Permanent link">&para;</a></h2>
+<p>Copy-On-write isn't ideal for workloads that create or modify many small files, such as databases. Without disabling COW, you can heavily fragment the file system as explained above.</p>
+<p>The best strategy for successfully running a database in a container is to disable COW on directory/volume that is mounted into the container.</p>
+<p>The COW setting is stored as a file attribute and is modified with a utility called <code class="codehilite">chattr</code>. To disable COW for a MySQL container's volume, run:</p>
+<pre class="codehilite"><code class="language-sh">$ sudo mkdir /var/lib/mysql
+$ sudo chattr -R +C /var/lib/mysql</code></pre>
+
+<p>The directory <code class="codehilite">/var/lib/mysql</code> is now ready to be used by a Docker container without COW. Let's break down the command:</p>
+<p><code class="codehilite">-R</code> indicates that want to recursively change the file attribute
+<code class="codehilite">+C</code> means we want to set the NOCOW attribute on the file/directory</p>
+<p>To verify, we can run:</p>
+<pre class="codehilite"><code class="language-sh">$ sudo lsattr /var/lib/
+---------------- /var/lib/portage
+---------------- /var/lib/gentoo
+---------------- /var/lib/iptables
+---------------- /var/lib/ip6tables
+---------------- /var/lib/arpd
+---------------- /var/lib/ipset
+---------------- /var/lib/dbus
+---------------- /var/lib/systemd
+---------------- /var/lib/polkit-1
+---------------- /var/lib/dhcpcd
+---------------- /var/lib/ntp
+---------------- /var/lib/nfs
+---------------- /var/lib/etcd
+---------------- /var/lib/docker
+---------------- /var/lib/update_engine
+---------------C /var/lib/mysql</code></pre>
+
+<h3 id="disable-via-a-unit-file">Disable via a unit file<a class="headerlink" href="#disable-via-a-unit-file" title="Permanent link">&para;</a></h3>
+<p>Setting the file attributes can be done via a systemd unit using two <code class="codehilite">ExecStartPre</code> commands:</p>
+<pre class="codehilite"><code class="language-ini">ExecStartPre=/usr/bin/mkdir -p /var/lib/mysql
+ExecStartPre=/usr/bin/chattr -R +C /var/lib/mysql</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

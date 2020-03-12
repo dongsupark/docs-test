@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Reboot strategies on updates - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="./">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../trusted-computing-hardware-requirements/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../using-environment-variables-in-systemd-units/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#reboot-strategies-on-updates">Reboot strategies on updates</a></li>
+            <li><a href="#reboot-strategy-options">Reboot strategy options</a></li>
+            <li><a href="#updating-pxeipxe-machines">Updating PXE/iPXE machines</a></li>
+            <li><a href="#disable-automatic-updates-daemon">Disable Automatic Updates Daemon</a></li>
+            <li><a href="#updating-behind-a-proxy">Updating behind a proxy</a></li>
+            <li><a href="#manually-triggering-an-update">Manually triggering an update</a></li>
+            <li><a href="#auto-updates-with-a-maintenance-window">Auto-updates with a maintenance window</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="reboot-strategies-on-updates">Reboot strategies on updates<a class="headerlink" href="#reboot-strategies-on-updates" title="Permanent link">&para;</a></h1>
+<p>The overarching goal of Flatcar Container Linux is to secure the Internet's backend infrastructure. We believe that automatically updating the operating system is one of the best tools to achieve this goal.</p>
+<p>We realize that each Flatcar Container Linux cluster has a unique tolerance for risk and the operational needs of your applications are complex. In order to meet everyone's needs, there are three update strategies that we have developed based on feedback during our alpha period.</p>
+<p>It's important to note that updates are always downloaded to the passive partition when they become available. A reboot is the last step of the update, where the active and passive partitions are swapped (<a href="../manual-rollbacks/">rollback instructions</a>). These strategies control how that reboot occurs:</p>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="codehilite">etcd-lock</code></td>
+<td>Reboot after first taking a distributed lock in etcd</td>
+</tr>
+<tr>
+<td><code class="codehilite">reboot</code></td>
+<td>Reboot immediately after an update is applied</td>
+</tr>
+<tr>
+<td><code class="codehilite">off</code></td>
+<td>Do not reboot after updates are applied</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reboot-strategy-options">Reboot strategy options<a class="headerlink" href="#reboot-strategy-options" title="Permanent link">&para;</a></h2>
+<p>The reboot strategy can be set with a Container Linux Config:</p>
+<pre class="codehilite"><code class="language-yaml">locksmith:
+  reboot_strategy: &quot;etcd-lock&quot;</code></pre>
+
+<h3 id="etcd-lock">etcd-lock<a class="headerlink" href="#etcd-lock" title="Permanent link">&para;</a></h3>
+<p>The <code class="codehilite">etcd-lock</code> strategy mandates that each machine acquire and hold a reboot lock before it is allowed to reboot. The main goal behind this strategy is to allow for an update to be applied to a cluster quickly, without losing the quorum membership in etcd or rapidly reducing capacity for the services running on the cluster. The reboot lock is held until the machine releases it after a successful update.</p>
+<p>The number of machines allowed to reboot simultaneously is configurable via a command line utility:</p>
+<pre class="codehilite"><code class="language-sh">$ locksmithctl set-max 4
+Old: 1
+New: 4</code></pre>
+
+<p>This setting is stored in etcd so it won't have to be configured for subsequent machines.</p>
+<p>To view the number of available slots and find out which machines in the cluster are holding locks, run:</p>
+<pre class="codehilite"><code class="language-sh">$ locksmithctl status
+Available: 0
+Max: 1
+
+MACHINE ID
+69d27b356a94476da859461d3a3bc6fd</code></pre>
+
+<p>If needed, you can manually clear a lock by providing the machine ID:</p>
+<pre class="codehilite"><code class="language-sh">locksmithctl unlock 69d27b356a94476da859461d3a3bc6fd</code></pre>
+
+<h3 id="reboot-immediately">Reboot immediately<a class="headerlink" href="#reboot-immediately" title="Permanent link">&para;</a></h3>
+<p>The <code class="codehilite">reboot</code> strategy works exactly like it sounds: the machine is rebooted as soon as the update has been installed to the passive partition. If the applications running on your cluster are highly resilient, this strategy was made for you.</p>
+<h3 id="off">Off<a class="headerlink" href="#off" title="Permanent link">&para;</a></h3>
+<p>The <code class="codehilite">off</code> strategy is also straightforward. The update will be installed onto the passive partition and await a reboot command to complete the update. We don't recommend this strategy unless you reboot frequently as part of your normal operations workflow.</p>
+<h2 id="updating-pxeipxe-machines">Updating PXE/iPXE machines<a class="headerlink" href="#updating-pxeipxe-machines" title="Permanent link">&para;</a></h2>
+<p>PXE/iPXE machines download a new copy of Flatcar Container Linux every time they are started thus are dependent on the version of Flatcar Container Linux they are served. If you don't automatically load new Flatcar Container Linux images into your PXE/iPXE server, your machines will never have new features or security updates.</p>
+<p>An easy solution to this problem is to use iPXE and reference images <a href="../booting-with-ipxe/#setting-up-ipxe-boot-script">directly from the Flatcar Container Linux storage site</a>. The <code class="codehilite">alpha</code> URL is automatically pointed to the new version of Flatcar Container Linux as it is released.</p>
+<h2 id="disable-automatic-updates-daemon">Disable Automatic Updates Daemon<a class="headerlink" href="#disable-automatic-updates-daemon" title="Permanent link">&para;</a></h2>
+<p>In case when you don't want to install updates onto the passive partition and avoid update process on failure reboot, you can disable <code class="codehilite">update-engine</code> service manually with <code class="codehilite">sudo systemctl stop update-engine</code> command (it will be enabled automatically next reboot).</p>
+<p>If you wish to disable automatic updates permanently, use can configure this with a Container Linux Config. This example will stop <code class="codehilite">update-engine</code>, which executes the updates, and <code class="codehilite">locksmithd</code>, which coordinates reboots across the cluster:</p>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: update-engine.service
+      mask: true
+    - name: locksmithd.service
+      mask: true</code></pre>
+
+<h2 id="updating-behind-a-proxy">Updating behind a proxy<a class="headerlink" href="#updating-behind-a-proxy" title="Permanent link">&para;</a></h2>
+<p>Public Internet access is required to contact CoreUpdate and download new versions of Flatcar Container Linux. If direct access is not available the <code class="codehilite">update-engine</code> service may be configured to use a HTTP or SOCKS proxy using curl-compatible environment variables, such as <code class="codehilite">HTTPS_PROXY</code> or <code class="codehilite">ALL_PROXY</code>.
+See <a href="http://curl.haxx.se/docs/manpage.html#ALLPROXY">curl's documentation</a> for details.</p>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: update-engine.service
+      dropins:
+        - name: 50-proxy.conf
+          contents: |
+            [Service]
+            Environment=ALL_PROXY=http://proxy.example.com:3128</code></pre>
+
+<p>Proxy environment variables can also be set <a href="https://coreos.com/os/docs/latest/using-environment-variables-in-systemd-units.html#system-wide-environment-variables">system-wide</a>.</p>
+<h2 id="manually-triggering-an-update">Manually triggering an update<a class="headerlink" href="#manually-triggering-an-update" title="Permanent link">&para;</a></h2>
+<p>Each machine should check in about 10 minutes after boot and roughly every hour after that. If you'd like to see it sooner, you can force an update check, which will skip any rate-limiting settings that are configured in CoreUpdate.</p>
+<pre class="codehilite"><code>$ update_engine_client -check_for_update
+[0123/220706:INFO:update_engine_client.cc(245)] Initiating update check and install.</code></pre>
+
+<h2 id="auto-updates-with-a-maintenance-window">Auto-updates with a maintenance window<a class="headerlink" href="#auto-updates-with-a-maintenance-window" title="Permanent link">&para;</a></h2>
+<p>Locksmith supports maintenance windows in addition to the reboot strategies mentioned earlier. Maintenance windows define a window of time during which a reboot can occur. These operate in addition to reboot strategies, so if the machine has a maintenance window and requires a reboot lock, the machine will only reboot when it has the lock during that window.</p>
+<p>Windows are defined by a start time and a length. In this example, the window is defined to be every Thursday between 04:00 and 05:00:</p>
+<pre class="codehilite"><code class="language-yaml">locksmith:
+  reboot_strategy: reboot
+  window_start: Thu 04:00
+  window_length: 1h</code></pre>
+
+<p>This will configure a Flatcar Container Linux machine to follow the <code class="codehilite">reboot</code> strategy, and thus when an update is ready it will simply reboot instead of attempting to grab a lock in etcd. This machine however has also been configured to only reboot between 04:00 and 05:00 on Thursdays, so if an update occurs outside of this window the machine will then wait until it is inside of this window to reboot.</p>
+<p>For more information about the supported syntax, refer to the <a href="https://github.com/flatcar-linux/locksmith#reboot-windows">Locksmith documentation</a>.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

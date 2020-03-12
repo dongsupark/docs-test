@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Booting Flatcar Container Linux via PXE - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="./">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../booting-with-libvirt/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../booting-with-qemu/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#booting-flatcar-container-linux-via-pxe">Booting Flatcar Container Linux via PXE</a></li>
+            <li><a href="#configuring-pxelinux">Configuring pxelinux</a></li>
+            <li><a href="#booting-the-box">Booting the box</a></li>
+            <li><a href="#logging-in">Logging in</a></li>
+            <li><a href="#update-process">Update Process</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#adding-a-custom-oem">Adding a Custom OEM</a></li>
+            <li><a href="#using-flatcar-container-linux">Using Flatcar Container Linux</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="booting-flatcar-container-linux-via-pxe">Booting Flatcar Container Linux via PXE<a class="headerlink" href="#booting-flatcar-container-linux-via-pxe" title="Permanent link">&para;</a></h1>
+<p>These instructions will walk you through booting Flatcar Container Linux via PXE on real or virtual hardware. By default, this will run Flatcar Container Linux completely out of RAM. Flatcar Container Linux can also be <a href="../installing-to-disk/">installed to disk</a>.</p>
+<p>A minimum of 3 GB of RAM is required to boot Flatcar Container Linux via PXE.</p>
+<h2 id="configuring-pxelinux">Configuring pxelinux<a class="headerlink" href="#configuring-pxelinux" title="Permanent link">&para;</a></h2>
+<p>This guide assumes you already have a working PXE server using <a href="http://www.syslinux.org/wiki/index.php/PXELINUX">pxelinux</a>. If you need suggestions on how to set a server up, check out guides for <a href="http://www.debian-administration.org/articles/478">Debian</a>, <a href="http://docs.fedoraproject.org/en-US/Fedora/7/html/Installation_Guide/ap-pxe-server.html">Fedora</a> or <a href="https://help.ubuntu.com/community/DisklessUbuntuHowto">Ubuntu</a>.</p>
+<h3 id="setting-up-pxelinuxcfg">Setting up pxelinux.cfg<a class="headerlink" href="#setting-up-pxelinuxcfg" title="Permanent link">&para;</a></h3>
+<p>When configuring the Flatcar Container Linux pxelinux.cfg there are a few kernel options that may be useful but all are optional.</p>
+<ul>
+<li><strong>rootfstype=tmpfs</strong>: Use tmpfs for the writable root filesystem. This is the default behavior.</li>
+<li><strong>rootfstype=btrfs</strong>: Use btrfs in RAM for the writable root filesystem. The filesystem will consume more RAM as it grows, up to a max of 50%. The limit isn't currently configurable.</li>
+<li><strong>root</strong>: Use a local filesystem for root instead of one of two in-ram options above. The filesystem must be formatted (perhaps using Ignition) but may be completely blank; it will be initialized on boot. The filesystem may be specified by any of the usual ways including device, label, or UUID; e.g: <code class="codehilite">root=/dev/sda1</code>, <code class="codehilite">root=LABEL=ROOT</code> or <code class="codehilite">root=UUID=2c618316-d17a-4688-b43b-aa19d97ea821</code>.</li>
+<li><strong>sshkey</strong>: Add the given SSH public key to the <code class="codehilite">core</code> user's authorized_keys file. Replace the example key below with your own (it is usually in <code class="codehilite">~/.ssh/id_rsa.pub</code>)</li>
+<li><strong>console</strong>: Enable kernel output and a login prompt on a given tty. The default, <code class="codehilite">tty0</code>, generally maps to VGA. Can be used multiple times, e.g. <code class="codehilite">console=tty0 console=ttyS0</code></li>
+<li><strong>flatcar.autologin</strong>: Drop directly to a shell on a given console without prompting for a password. Useful for troubleshooting but use with caution. For any console that doesn't normally get a login prompt by default be sure to combine with the <code class="codehilite">console</code> option, e.g. <code class="codehilite">console=tty0 console=ttyS0 flatcar.autologin=tty1 flatcar.autologin=ttyS0</code>. Without any argument it enables access on all consoles. Note that for the VGA console the login prompts are on virtual terminals (<code class="codehilite">tty1</code>, <code class="codehilite">tty2</code>, etc), not the VGA console itself (<code class="codehilite">tty0</code>).</li>
+<li><strong>flatcar.first_boot=1</strong>: Download an Ignition config and use it to provision your booted system. Ignition configs are generated from Container Linux Configs. See the <a href="../provisioning/">config transpiler documentation</a> for more information. If a local filesystem is used for the root partition, pass this parameter only on the first boot.</li>
+<li><strong>ignition.config.url</strong>: Download the Ignition config from the specified URL. <code class="codehilite">http</code>, <code class="codehilite">https</code>, <code class="codehilite">s3</code>, and <code class="codehilite">tftp</code> schemes are supported.</li>
+<li><strong>ip</strong>: Configure temporary static networking for initramfs. This parameter does not influence the final network configuration of the node and is mostly useful for first-boot provisioning of systems in DHCP-less environments. See <a href="https://coreos.com/ignition/docs/latest/network-configuration.html#using-static-ip-addresses-with-ignition">Ignition documentation</a> for the complete syntax.</li>
+</ul>
+<p>This is an example pxelinux.cfg file that assumes Flatcar Container Linux is the only option. You should be able to copy this verbatim into <code class="codehilite">/var/lib/tftpboot/pxelinux.cfg/default</code> after providing an Ignition config URL:</p>
+<pre class="codehilite"><code class="language-sh">default flatcar
+prompt 1
+timeout 15
+
+display boot.msg
+
+label flatcar
+  menu default
+  kernel flatcar_production_pxe.vmlinuz
+  initrd flatcar_production_pxe_image.cpio.gz
+  append flatcar.first_boot=1 ignition.config.url=https://example.com/pxe-config.ign</code></pre>
+
+<p>Here's a common config example which should be located at the URL from above:</p>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: etcd2.service
+      enable: true
+
+passwd:
+  users:
+    - name: core
+      ssh_authorized_keys:
+        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGdByTgSVHq...</code></pre>
+
+<h3 id="choose-a-channel">Choose a channel<a class="headerlink" href="#choose-a-channel" title="Permanent link">&para;</a></h3>
+<p>Flatcar Container Linux is designed to be updated automatically with different schedules per channel. You can <a href="../update-strategies/">disable this feature</a>, although we don't recommend it. Read the <a href="https://flatcar-linux.org/releases">release notes</a> for specific features and bug fixes.</p>
+<p>PXE booted machines cannot currently update themselves when new versions are released to a channel. To update to the latest version of Flatcar Container Linux download/verify these files again and reboot.</p>
+<div id="pxe-create">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#stable-create" data-toggle="tab">Stable Channel</a></li>
+    <li><a href="#beta-create" data-toggle="tab">Beta Channel</a></li>
+    <li><a href="#alpha-create" data-toggle="tab">Alpha Channel</a></li>
+    <li><a href="#edge-create" data-toggle="tab">Edge Channel</a></li>
+  </ul>
+  <div class="tab-content coreos-docs-image-table">
+    <div class="tab-pane" id="alpha-create">
+      <p>The Alpha channel closely tracks master and is released frequently. The newest versions of system libraries and utilities will be available for testing. The current version is Flatcar Container Linux 2430.0.0.</p>
+      <p>In the config above you can see that a Kernel image and a initramfs file is needed. Download these two files into your tftp root.</p>
+      <p>The <code>flatcar_production_pxe.vmlinuz.sig</code> and <code>flatcar_production_pxe_image.cpio.gz.sig</code> files can be used to <a href="notes-for-distributors.md#importing-images">verify the downloaded files</a>.</p>
+      <pre>
+cd /var/lib/tftpboot
+wget https://alpha.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe.vmlinuz
+wget https://alpha.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe.vmlinuz.sig
+wget https://alpha.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe_image.cpio.gz
+wget https://alpha.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe_image.cpio.gz.sig
+gpg --verify flatcar_production_pxe.vmlinuz.sig
+gpg --verify flatcar_production_pxe_image.cpio.gz.sig
+      </pre>
+    </div>
+    <div class="tab-pane" id="beta-create">
+      <p>The Beta channel consists of promoted Alpha releases. The current version is Flatcar Container Linux 2411.1.0.</p>
+      <p>In the config above you can see that a Kernel image and a initramfs file is needed. Download these two files into your tftp root.</p>
+      <p>The <code>flatcar_production_pxe.vmlinuz.sig</code> and <code>flatcar_production_pxe_image.cpio.gz.sig</code> files can be used to <a href="notes-for-distributors.md#importing-images">verify the downloaded files</a>.</p>
+      <pre>
+cd /var/lib/tftpboot
+wget https://beta.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe.vmlinuz
+wget https://beta.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe.vmlinuz.sig
+wget https://beta.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe_image.cpio.gz
+wget https://beta.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe_image.cpio.gz.sig
+gpg --verify flatcar_production_pxe.vmlinuz.sig
+gpg --verify flatcar_production_pxe_image.cpio.gz.sig
+      </pre>
+    </div>
+    <div class="tab-pane" id="edge-create">
+      <p>The Edge channel includes bleeding-edge features with the newest versions of the Linux kernel, systemd and other core packages. Can be highly unstable. The current version is Flatcar Container Linux 2430.99.0.</p>
+      <p>In the config above you can see that a Kernel image and a initramfs file is needed. Download these two files into your tftp root.</p>
+      <p>The <code>flatcar_production_pxe.vmlinuz.sig</code> and <code>flatcar_production_pxe_image.cpio.gz.sig</code> files can be used to <a href="notes-for-distributors.md#importing-images">verify the downloaded files</a>.</p>
+      <pre>
+cd /var/lib/tftpboot
+wget https://edge.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe.vmlinuz
+wget https://edge.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe.vmlinuz.sig
+wget https://edge.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe_image.cpio.gz
+wget https://edge.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe_image.cpio.gz.sig
+gpg --verify flatcar_production_pxe.vmlinuz.sig
+gpg --verify flatcar_production_pxe_image.cpio.gz.sig
+      </pre>
+    </div>
+    <div class="tab-pane active" id="stable-create">
+      <p>The Stable channel should be used by production clusters. Versions of Flatcar Container Linux are battle-tested within the Beta and Alpha channels before being promoted. The current version is Flatcar Container Linux 2345.3.0.</p>
+      <p>In the config above you can see that a Kernel image and a initramfs file is needed. Download these two files into your tftp root.</p>
+      <p>The <code>flatcar_production_pxe.vmlinuz.sig</code> and <code>flatcar_production_pxe_image.cpio.gz.sig</code> files can be used to <a href="notes-for-distributors.md#importing-images">verify the downloaded files</a>.</p>
+      <pre>
+cd /var/lib/tftpboot
+wget https://stable.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe.vmlinuz
+wget https://stable.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe.vmlinuz.sig
+wget https://stable.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe_image.cpio.gz
+wget https://stable.release.flatcar-linux.net/amd64-usr/current/flatcar_production_pxe_image.cpio.gz.sig
+gpg --verify flatcar_production_pxe.vmlinuz.sig
+gpg --verify flatcar_production_pxe_image.cpio.gz.sig
+      </pre>
+    </div>
+  </div>
+</div>
+
+<h2 id="booting-the-box">Booting the box<a class="headerlink" href="#booting-the-box" title="Permanent link">&para;</a></h2>
+<p>After setting up the PXE server as outlined above you can start the target machine in PXE boot mode. The machine should grab the image from the server and boot into Flatcar Container Linux. If something goes wrong you can direct questions to the <a href="irc://irc.freenode.org:6667/#flatcar">IRC channel</a> or <a href="https://groups.google.com/forum/#!forum/flatcar-linux-user">mailing list</a>.</p>
+<pre class="codehilite"><code class="language-sh">This is localhost.unknown_domain (Linux x86_64 3.10.10+) 19:53:36
+SSH host key: 24:2e:f1:3f:5f:9c:63:e5:8c:17:47:32:f4:09:5d:78 (RSA)
+SSH host key: ed:84:4d:05:e3:7d:e3:d0:b9:58:90:58:3b:99:3a:4c (DSA)
+ens0: 10.0.2.15 fe80::5054:ff:fe12:3456
+localhost login:</code></pre>
+
+<h2 id="logging-in">Logging in<a class="headerlink" href="#logging-in" title="Permanent link">&para;</a></h2>
+<p>The IP address for the machine should be printed out to the terminal for convenience. If it doesn't show up immediately, press enter a few times and it should show up. Now you can simply SSH in using public key authentication:</p>
+<pre class="codehilite"><code class="language-sh">ssh core@10.0.2.15</code></pre>
+
+<h2 id="update-process">Update Process<a class="headerlink" href="#update-process" title="Permanent link">&para;</a></h2>
+<p>Since our upgrade process requires a disk, this image does not have the option to update itself. Instead, the box simply needs to be rebooted and will be running the latest version, assuming that the image served by the PXE server is regularly updated.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>Once booted it is possible to <a href="../installing-to-disk/">install Flatcar Container Linux on a local disk</a> or to just use local storage for the writable root filesystem while continuing to boot Flatcar Container Linux itself via PXE.</p>
+<p>If you plan on using Docker we recommend using a local ext4 filesystem with overlayfs, however, btrfs is also available to use if needed.</p>
+<p>For example, to setup an ext4 root filesystem on <code class="codehilite">/dev/sda</code>:</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  disks:
+  - device: /dev/sda
+    wipe_table: true
+    partitions:
+    - label: ROOT
+  filesystems:
+  - mount:
+      device: /dev/disk/by-partlabel/ROOT
+      format: ext4
+      wipe_filesystem: true
+      label: ROOT</code></pre>
+
+<p>And add <code class="codehilite">root=/dev/sda1</code> or <code class="codehilite">root=LABEL=ROOT</code> to the kernel options as documented above.</p>
+<p>Similarly, to setup a btrfs root filesystem on <code class="codehilite">/dev/sda</code>:</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  disks:
+  - device: /dev/sda
+    wipe_table: true
+    partitions:
+    - label: ROOT
+  filesystems:
+  - mount:
+      device: /dev/disk/by-partlabel/ROOT
+      format: btrfs
+      wipe_filesystem: true
+      label: ROOT</code></pre>
+
+<h2 id="adding-a-custom-oem">Adding a Custom OEM<a class="headerlink" href="#adding-a-custom-oem" title="Permanent link">&para;</a></h2>
+<p>Similar to the <a href="../notes-for-distributors/#image-customization">OEM partition</a> in Flatcar Container Linux disk images, PXE images can be customized with an <a href="https://coreos.com/ignition/docs/latest">Ignition config</a> bundled in the initramfs. Simply create a <code class="codehilite">./usr/share/oem/</code> directory, add a <code class="codehilite">config.ign</code> file containing the Ignition config, and add the directory tree as an additional initramfs:</p>
+<pre class="codehilite"><code class="language-sh">mkdir -p usr/share/oem
+cp example.ign ./usr/share/oem/config.ign
+find usr | cpio -o -H newc -O oem.cpio
+gzip oem.cpio</code></pre>
+
+<p>Confirm the archive looks correct and has your config inside of it:</p>
+<pre class="codehilite"><code class="language-sh">gzip --stdout --decompress oem.cpio.gz | cpio -it
+./
+usr
+usr/share
+usr/share/oem
+usr/share/oem/config.ign</code></pre>
+
+<p>Add the <code class="codehilite">oem.cpio.gz</code> file to your PXE boot directory, then <a href="http://www.syslinux.org/wiki/index.php?title=SYSLINUX#INITRD_initrd_file">append it</a> to the <code class="codehilite">initrd</code> line in your <code class="codehilite">pxelinux.cfg</code>:</p>
+<pre class="codehilite"><code>...
+initrd flatcar_production_pxe_image.cpio.gz,oem.cpio.gz
+kernel flatcar_production_pxe.vmlinuz flatcar.first_boot=1
+...</code></pre>
+
+<h2 id="using-flatcar-container-linux">Using Flatcar Container Linux<a class="headerlink" href="#using-flatcar-container-linux" title="Permanent link">&para;</a></h2>
+<p>Now that you have a machine booted it is time to play around. Check out the <a href="../quickstart/">Flatcar Container Linux Quickstart</a> guide or dig into <a href="https://docs.flatcar-linux.org">more specific topics</a>.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>
