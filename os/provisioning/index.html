@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Provisioning - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="./">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../power-management/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../quickstart/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#provisioning">Provisioning</a></li>
+            <li><a href="#container-linux-config">Container Linux Config</a></li>
+            <li><a href="#ignition-config">Ignition Config</a></li>
+            <li><a href="#config-transpiler">Config Transpiler</a></li>
+            <li><a href="#migrating-from-cloud-configs">Migrating from cloud configs</a></li>
+            <li><a href="#using-container-linux-configs">Using Container Linux Configs</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="provisioning">Provisioning<a class="headerlink" href="#provisioning" title="Permanent link">&para;</a></h1>
+<p>Flatcar Container Linux automates machine provisioning with a specialized system for applying initial configuration. This system implements a process of (trans)compilation and validation for machine configs, and an atomic service to apply validated configurations to machines.</p>
+<h2 id="container-linux-config">Container Linux Config<a class="headerlink" href="#container-linux-config" title="Permanent link">&para;</a></h2>
+<p>Flatcar Container Linux admins define these configurations in a format called the <a href="https://github.com/coreos/container-linux-config-transpiler/blob/master/doc/configuration.md">Container Linux Config</a>, which was originally designed for CoreOS Container Linux, but works perfectly well with Flatcar Container Linux. Container Linux Configs are structured as YAML, and intended to be human-readable. The Container Linux Config has features devoted to configuring Flatcar Container Linux services such as <a href="https://github.com/flatcar-linux/etcd">etcd</a>, <a href="https://github.com/rkt/rkt">rkt</a>, Docker, <a href="https://github.com/coreos/flannel">flannel</a>, and <a href="https://github.com/flatcar-linux/locksmith">locksmith</a>. <strong>The defining feature of the config is that it cannot be sent directly to a Flatcar Container Linux provisioning target</strong>. Instead, it is first validated and transformed into a machine-readable and wire-efficient form.</p>
+<p>The following examples demonstrate the simplicity of the Container Linux Config format.</p>
+<p>This extremely simple Container Linux Config will fetch and run the current release of etcd:</p>
+<pre class="codehilite"><code class="language-yaml">etcd:</code></pre>
+
+<p>Extend the definition to specify the version of etcd to run. The following example will provision a new Flatcar Container Linux machine to fetch and run the etcd service, version 3.1.6:</p>
+<pre class="codehilite"><code class="language-yaml">etcd:
+  version: 3.1.6</code></pre>
+
+<p>Use variable replacement to configure the etcd service with the provisioning target's public and private IPv4 addresses, making it repeatable across a group of machines.</p>
+<pre class="codehilite"><code class="language-yaml">etcd:
+  advertise_client_urls:       http://{PUBLIC_IPV4}:2379
+  initial_advertise_peer_urls: http://{PRIVATE_IPV4}:2380
+  listen_client_urls:          http://0.0.0.0:2379
+  listen_peer_urls:            http://{PRIVATE_IPV4}:2380
+  discovery:                   https://discovery.etcd.io/&lt;token&gt;</code></pre>
+
+<p><code class="codehilite">PUBLIC_IPV4</code> and <code class="codehilite">PRIVATE_IPV4</code> are automatically populated from the environment in which Flatcar Container Linux runs, if this metadata exists. Given the many different environments in which Flatcar Container Linux can run, it's difficult if not impossible to accurately determine these variables in every instance. Be certain to check this value as a troubleshooting measure.</p>
+<p>For example, the default metadata for an EC2 environment would be used: <code class="codehilite">public_ipv4</code> and <code class="codehilite">local_ipv4</code>. On Azure, <em>either</em> the virtual IP or public IP could be used for the <code class="codehilite">PUBLIC_IPV4</code> (<code class="codehilite">ct</code> makes a best guess and uses the virtual IP, but this could change in the future), and the dynamic IP would be used for the <code class="codehilite">PRIVATE_IPV4</code>. On bare metal, this information cannot be reliably derived in a general manner, so these variables cannot be used.</p>
+<p>Because variable expansion is unpredictable and complex, and because it is also common for users to inadvertently write invalid configs, the use of a transformation tool is strongly encouraged. The default tool recommended for this task is the <a href="https://github.com/coreos/container-linux-config-transpiler/blob/master/doc/overview.md">Config Transpiler</a> (ct for short). The Config Transpiler will validate and transform a Container Linux Config into the format that Flatcar Container Linux can consume: the Ignition Config.</p>
+<h2 id="ignition-config">Ignition Config<a class="headerlink" href="#ignition-config" title="Permanent link">&para;</a></h2>
+<p>Ignition, the utility in Flatcar Container Linux responsible for provisioning the machine, fetches and executes the Ignition Config. Flatcar Container Linux directly consumes the Ignition Config configuration format.</p>
+<p>Ignition Configs are mostly static, distro-agnostic, and meant to be generated by a machine rather than a human. While they can be written directly by users, it is highly discouraged due to the ease with which errors may be introduced. Rather than writing Ignition Configs directly, users are encouraged to use provisioning tools like <a href="https://github.com/coreos/matchbox">Matchbox</a>, which transparently translate Container Linux Configs to Ignition Configs, or to use the Config Transpiler itself.</p>
+<p><img alt="visual overview of the alternate ct workflows" src="../img/ct-workflow.svg" /></p>
+<p>As shown in this diagram, <code class="codehilite">ct</code> is manually invoked only when users are manually provisioning machines. If a provisioning tool like Matchbox is used, <code class="codehilite">ct</code> will transparently be incorporated into the deployment pipeline. In which case, the user only needs to prepare a Container Linux Config - Ignition and the Ignition Config are merely an implementation detail.</p>
+<h2 id="config-transpiler">Config Transpiler<a class="headerlink" href="#config-transpiler" title="Permanent link">&para;</a></h2>
+<p>The Container Linux Config Transpiler abstracts the details of configuring Flatcar Container Linux. It's responsible for transforming a Container Linux Config written by a user into an Ignition Config to be consumed by instances of Flatcar Container Linux.</p>
+<p>The Container Linux Config Transpiler command line interface, <code class="codehilite">ct</code> for short, can be downloaded from its <a href="https://github.com/coreos/container-linux-config-transpiler/releases">GitHub Releases page</a>.</p>
+<p>The following config will configure an etcd cluster using the machine's public and private IP addresses:</p>
+<pre class="codehilite"><code class="language-yaml">etcd:
+  advertise_client_urls:       http://{PUBLIC_IPV4}:2379
+  initial_advertise_peer_urls: http://{PRIVATE_IPV4}:2380
+  listen_client_urls:          http://0.0.0.0:2379
+  listen_peer_urls:            http://{PRIVATE_IPV4}:2380
+  discovery:                   https://discovery.etcd.io/&lt;token&gt;</code></pre>
+
+<p>As suggested earlier, <code class="codehilite">ct</code> requires information about the target environment before it can transform configs which use templating. If this config is passed to <code class="codehilite">ct</code> without any other arguments, <code class="codehilite">ct</code> fails with the following error message:</p>
+<pre class="codehilite"><code>$ ct &lt; example.yml
+error: platform must be specified to use templating</code></pre>
+
+<p>This message states that because the config takes advantage of templating (in this case,  <code class="codehilite">PUBLIC_IPV4</code>), <code class="codehilite">ct</code> must be invoked with the <code class="codehilite">--platform</code> argument. This extra information is used by <code class="codehilite">ct</code> to make the platform-specific customizations necessary. Keeping the Container Linux Config and the invocation arguments separate allows the Container Linux Config to remain largely platform independent.</p>
+<p>CT can be invoked again and given Amazon EC2 as an example:</p>
+<pre class="codehilite"><code>$ ct --platform=ec2 &lt; example.yml
+{&quot;ignition&quot;:{&quot;version&quot;:&quot;2.0.0&quot;,&quot;config&quot;...</code></pre>
+
+<p>This time, <code class="codehilite">ct</code> successfully runs and produces the following Ignition Config:</p>
+<pre class="codehilite"><code class="language-json">{
+  &quot;ignition&quot;: { &quot;version&quot;: &quot;2.0.0&quot; },
+  &quot;systemd&quot;: {
+    &quot;units&quot;: [{
+      &quot;name&quot;: &quot;etcd-member.service&quot;,
+      &quot;enable&quot;: true,
+      &quot;dropins&quot;: [{
+        &quot;name&quot;: &quot;20-clct-etcd-member.conf&quot;,
+        &quot;contents&quot;: &quot;[Unit]\nRequires=coreos-metadata.service\nAfter=coreos-metadata.service\n\n[Service]\nEnvironmentFile=/run/metadata/coreos\nExecStart=\nExecStart=/usr/lib/coreos/etcd-wrapper $ETCD_OPTS \\\n  --listen-peer-urls=\&quot;http://${COREOS_EC2_IPV4_LOCAL}:2380\&quot; \\\n  --listen-client-urls=\&quot;http://0.0.0.0:2379\&quot; \\\n  --initial-advertise-peer-urls=\&quot;http://${COREOS_EC2_IPV4_LOCAL}:2380\&quot; \\\n  --advertise-client-urls=\&quot;http://${COREOS_EC2_IPV4_PUBLIC}:2379\&quot; \\\n  --discovery=\&quot;https://discovery.etcd.io/\u003ctoken\u003e\&quot;&quot;
+      }]
+    }]
+  }
+}</code></pre>
+
+<p>This Ignition Config enables and configures etcd as specified in the above Container Linux Config. This can be more easily seen if the contents of the etcd drop-in are formatted nicely:</p>
+<pre class="codehilite"><code class="language-ini">[Unit]
+Requires=coreos-metadata.service
+After=coreos-metadata.service
+
+[Service]
+EnvironmentFile=/run/metadata/coreos
+ExecStart=
+ExecStart=/usr/lib/coreos/etcd-wrapper $ETCD_OPTS \
+  --listen-peer-urls=&quot;http://${COREOS_EC2_IPV4_LOCAL}:2380&quot; \
+  --listen-client-urls=&quot;http://0.0.0.0:2379&quot; \
+  --initial-advertise-peer-urls=&quot;http://${COREOS_EC2_IPV4_LOCAL}:2380&quot; \
+  --advertise-client-urls=&quot;http://${COREOS_EC2_IPV4_PUBLIC}:2379&quot; \
+  --discovery=&quot;https://discovery.etcd.io/&lt;token&gt;&quot;</code></pre>
+
+<p>The details of these changes are covered in depth in Ignition's <a href="../../ignition/metadata/">metadata documentation</a>, but the gist is that <code class="codehilite">coreos-metadata</code> is used to fetch the IP addresses from the Amazon APIs and then <code class="codehilite">systemd</code> is leveraged to substitute the IP addresses into the invocation of etcd. The result is that even though Ignition only runs once, <code class="codehilite">coreos-metadata</code> fetches the IP addresses whenever etcd is run, allowing etcd to use IP addresses that have the potential to change.</p>
+<h2 id="migrating-from-cloud-configs">Migrating from cloud configs<a class="headerlink" href="#migrating-from-cloud-configs" title="Permanent link">&para;</a></h2>
+<p>Previously, the recommended way to provision a Flatcar Container Linux machine was with a cloud-config. These configs would be given to a Flatcar Container Linux machine and a utility called <a href="https://github.com/flatcar-linux/coreos-cloudinit">coreos-cloudinit</a> would read this file and apply the configuration on every boot.</p>
+<p>For a <a href="../../ignition/what-is-ignition/#ignition-vs-coreos-cloudinit">number of reasons</a>, coreos-cloudinit has been deprecated in favor of Container Linux Configs and Ignition. For help migrating from these legacy cloud-configs to Container Linux Configs, refer to the <a href="../migrating-to-clcs/">migration guide</a>.</p>
+<h2 id="using-container-linux-configs">Using Container Linux Configs<a class="headerlink" href="#using-container-linux-configs" title="Permanent link">&para;</a></h2>
+<p>Now that the basics of Container Linux Configs have been covered, a good next step is to read through the <a href="https://github.com/coreos/container-linux-config-transpiler/blob/master/doc/examples.md">examples</a> and start experimenting. The <a href="https://github.com/flatcar-linux/ignition/blob/master/doc/getting-started.md#troubleshooting">troubleshooting guide</a> is a good reference for debugging issues.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

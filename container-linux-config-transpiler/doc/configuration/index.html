@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Configuration Specification # - Flatcar Container Linux Documentation</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../../../os/quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="./">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../../../os/booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../../../os/booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../../../os/booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../../../os/booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../../../os/booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../../../os/installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../../../os/booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../../../os/root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../../../os/update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../../../os/update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../../../os/cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../../../os/verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../../../os/using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../../../os/using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../../../os/configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../../../os/configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../../../os/adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../../../os/other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../../../os/mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../../../os/power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../../../os/iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../../../os/adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../../../os/booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../../../os/getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../../../os/using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../../../os/switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../../../os/scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../../../os/sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../../../os/hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../../../os/trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../../../os/adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../../../os/selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../../../os/disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../../../os/btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../../../os/reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../../../os/collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../../../os/manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../os/getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../../../os/customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../../README/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../dynamic-data/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#configuration-specification">Configuration Specification</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="configuration-specification">Configuration Specification<a class="headerlink" href="#configuration-specification" title="Permanent link">&para;</a></h1>
+<p>A Container Linux Configuration, to be processed by ct, is a YAML document conforming to the following specification:</p>
+<p><em>Note: all fields are optional unless otherwise marked</em></p>
+<ul>
+<li><strong>ignition</strong> (object): metadata about the configuration itself.<ul>
+<li><strong>config</strong> (objects): options related to the configuration.<ul>
+<li><strong>append</strong> (list of objects): a list of the configs to be appended to the current config.<ul>
+<li><strong>source</strong> (string, required): the URL of the config. Supported schemes are http, https, s3, tftp, and <a href="https://tools.ietf.org/html/rfc2397">data</a>. Note: When using http, it is advisable to use the verification option to ensure the contents haven't been modified.</li>
+<li><strong>verification</strong> (object): options related to the verification of the config.<ul>
+<li><strong>hash</strong> (object): the hash of the config<ul>
+<li><strong>function</strong> (string): the function used to hash the config. Supported functions are sha512.</li>
+<li><strong>sum</strong> (string): the resulting sum of the hash applied to the contents.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>replace</strong> (object): the config that will replace the current.<ul>
+<li><strong>source</strong> (string, required): the URL of the config. Supported schemes are http, https, s3, tftp, and <a href="https://tools.ietf.org/html/rfc2397">data</a>. Note: When using http, it is advisable to use the verification option to ensure the contents haven't been modified.</li>
+<li><strong>verification</strong> (object): options related to the verification of the config.<ul>
+<li><strong>hash</strong> (object): the hash of the config<ul>
+<li><strong>function</strong> (string): the function used to hash the config. Supported functions are sha512.</li>
+<li><strong>sum</strong> (string): the resulting sum of the hash applied to the contents.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>timeouts</strong> (object): options relating to http timeouts when fetching files over http or https.<ul>
+<li><strong>http_response_headers</strong> (integer): the time to wait (in seconds) for the server's response headers (but not the body) after making a request. 0 indicates no timeout. Default is 10 seconds.</li>
+<li><strong>http_total</strong> (integer): the time limit (in seconds) for the operation (connection, request, and response), including retries. 0 indicates no timeout. Default is 0.</li>
+</ul>
+</li>
+<li><strong>security</strong> (object): options relating to network security.<ul>
+<li><strong>tls</strong> (object): options relating to TLS when fetching resources over <code class="codehilite">https</code>.<ul>
+<li><strong>certificate_authorities</strong> (object): the list of additional certificate authorities (in addition to the system authorities) to be used for TLS verification when fetching over <code class="codehilite">https</code>.<ul>
+<li><strong>source</strong> (string, required): the URL of the certificate (in PEM format). Supported schemes are <code class="codehilite">http</code>, <code class="codehilite">https</code>, <code class="codehilite">s3</code>, <code class="codehilite">tftp</code>, and <a href="https://tools.ietf.org/html/rfc2397"><code class="codehilite">data</code></a>. Note: When using <code class="codehilite">http</code>, it is advisable to use the verification option to ensure the contents haven't been modified.</li>
+<li><strong>verification</strong> (object): options related to the verification of the certificate.<ul>
+<li><strong>hash</strong> (string): the hash of the certificate, in the form <code class="codehilite">&lt;type&gt;-&lt;value&gt;</code> where type is sha512.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>storage</strong> (object): describes the desired state of the system's storage devices.<ul>
+<li><strong>disks</strong> (list of objects): the list of disks to be configured and their options.<ul>
+<li><strong>device</strong> (string, required): the absolute path to the device. Devices are typically referenced by the <code class="codehilite">/dev/disk/by-*</code> symlinks.</li>
+<li><strong>wipe_table</strong> (boolean): whether or not the partition tables shall be wiped. When true, the partition tables are erased before any further manipulation. Otherwise, the existing entries are left intact.</li>
+<li><strong>partitions</strong> (list of objects): the list of partitions and their configuration for this particular disk.<ul>
+<li><strong>label</strong> (string): the PARTLABEL for the partition.</li>
+<li><strong>number</strong> (integer): the partition number, which dictates it's position in the partition table (one-indexed). If zero, use the next available partition slot.</li>
+<li><strong>size</strong> (string): the size of the partition with a unit (KiB, MiB, GiB). If zero, the partition will fill the remainder of the disk.</li>
+<li><strong>start</strong> (string): the start of the partition with a unit (KiB, MiB, GiB). If zero, the partition will be positioned at the earliest available part of the disk.</li>
+<li><strong>type_guid</strong> (string): the GPT <a href="http://en.wikipedia.org/wiki/GUID_Partition_Table#Partition_type_GUIDs">partition type GUID</a>. If omitted, the default will be 0FC63DAF-8483-4772-8E79-3D69D8477DE4 (Linux filesystem data). The keywords <code class="codehilite">linux_filesystem_data</code>, <code class="codehilite">raid_partition</code>, <code class="codehilite">swap_partition</code>, and <code class="codehilite">raid_containing_root</code> can also be used.</li>
+<li><strong>guid</strong> (string): the GPT unique partition GUID.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>raid</strong> (list of objects): the list of RAID arrays to be configured.<ul>
+<li><strong>name</strong> (string, required): the name to use for the resulting md device.</li>
+<li><strong>level</strong> (string, required): the redundancy level of the array (e.g. linear, raid1, raid5, etc.).</li>
+<li><strong>devices</strong> (list of strings, required): the list of devices (referenced by their absolute path) in the array.</li>
+<li><strong>spares</strong> (integer): the number of spares (if applicable) in the array.</li>
+<li><strong>options</strong> (list of strings): any additional options to be passed to mdadm.</li>
+</ul>
+</li>
+<li><strong>filesystems</strong> (list of objects): the list of filesystems to be configured and/or used in the "files" section. Either "mount" or "path" needs to be specified.<ul>
+<li><strong>name</strong> (string): the identifier for the filesystem, internal to Ignition. This is only required if the filesystem needs to be referenced in the "files" section.</li>
+<li><strong>mount</strong> (object): contains the set of mount and formatting options for the filesystem. A non-null entry indicates that the filesystem should be mounted before it is used by Ignition.<ul>
+<li><strong>device</strong> (string, required): the absolute path to the device. Devices are typically referenced by the <code class="codehilite">/dev/disk/by-*</code> symlinks.</li>
+<li><strong>format</strong> (string, required): the filesystem format (ext4, btrfs, or xfs).</li>
+<li><strong>wipe_filesystem</strong> (boolean): whether or not to wipe the device before filesystem creation, see <a href="https://github.com/coreos/ignition/blob/master/doc/operator-notes.md#filesystem-reuse-semantics">Ignition's documentation on filesystems</a> for more information.</li>
+<li><strong>label</strong> (string): the label of the filesystem.</li>
+<li><strong>uuid</strong> (string): the uuid of the filesystem.</li>
+<li><strong>options</strong> (list of strings): any additional options to be passed to the format-specific mkfs utility.</li>
+<li><strong>create</strong> (object, DEPRECATED): contains the set of options to be used when creating the filesystem. A non-null entry indicates that the filesystem shall be created.<ul>
+<li><strong>force</strong> (boolean, DEPRECATED): whether or not the create operation shall overwrite an existing filesystem.</li>
+<li><strong>options</strong> (list of strings, DEPRECATED): any additional options to be passed to the format-specific mkfs utility.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>path</strong> (string): the mount-point of the filesystem. A non-null entry indicates that the filesystem has already been mounted by the system at the specified path. This is really only useful for "/sysroot".</li>
+</ul>
+</li>
+<li><strong>files</strong> (list of objects): the list of files, rooted in this particular filesystem, to be written.<ul>
+<li><strong>filesystem</strong> (string, required): the internal identifier of the filesystem. This matches the last filesystem with the given identifier.</li>
+<li><strong>path</strong> (string, required): the absolute path to the file.</li>
+<li><strong>overwrite</strong> (boolean): whether to delete preexisting nodes at the path. Defaults to true.</li>
+<li><strong>append</strong> (boolean): whether to append to the specified file. Creates a new file if nothing exists at the path. Cannot be set if overwrite is set to true.</li>
+<li><strong>contents</strong> (object): options related to the contents of the file.<ul>
+<li><strong>inline</strong> (string): the contents of the file.</li>
+<li><strong>local</strong> (string): the path to a local file, relative to the <code class="codehilite">--files-dir</code> directory. When using local files, the <code class="codehilite">--files-dir</code> flag must be passed to <code class="codehilite">ct</code>. The file contents are included in the generated config.</li>
+<li><strong>remote</strong> (object): options related to the fetching of remote file contents. Remote files are fetched by Ignition when Ignition runs, the contents are not included in the generated config.<ul>
+<li><strong>compression</strong> (string): the type of compression used on the contents (null or gzip)</li>
+<li><strong>url</strong> (string): the URL of the file contents. Supported schemes are http, https, tftp, s3, and <a href="https://tools.ietf.org/html/rfc2397">data</a>. Note: When using http, it is advisable to use the verification option to ensure the contents haven't been modified.</li>
+<li><strong>verification</strong> (object): options related to the verification of the file contents.<ul>
+<li><strong>hash</strong> (object): the hash of the config<ul>
+<li><strong>function</strong> (string): the function used to hash the config. Supported functions are sha512.</li>
+<li><strong>sum</strong> (string): the resulting sum of the hash applied to the contents.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>mode</strong> (integer): the file's permission mode.</li>
+<li><strong>user</strong> (object): specifies the file's owner.<ul>
+<li><strong>id</strong> (integer): the user ID of the owner.</li>
+<li><strong>name</strong> (string): the user name of the owner.</li>
+</ul>
+</li>
+<li><strong>group</strong> (object): specifies the group of the owner.<ul>
+<li><strong>id</strong> (integer): the group ID of the owner.</li>
+<li><strong>name</strong> (string): the group name of the owner.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>directories</strong> (list of objects): the list of directories to be created.<ul>
+<li><strong>filesystem</strong> (string, required): the internal identifier of the filesystem in which to create the directory. This matches the last filesystem with the given identifier.</li>
+<li><strong>path</strong> (string, required): the absolute path to the directory.</li>
+<li><strong>overwrite</strong> (boolean): whether to delete preexisting nodes at the path.</li>
+<li><strong>mode</strong> (integer): the directory's permission mode.</li>
+<li><strong>user</strong> (object): specifies the directory's owner.<ul>
+<li><strong>id</strong> (integer): the user ID of the owner.</li>
+<li><strong>name</strong> (string): the user name of the owner.</li>
+</ul>
+</li>
+<li><strong>group</strong> (object): specifies the group of the owner.<ul>
+<li><strong>id</strong> (integer): the group ID of the owner.</li>
+<li><strong>name</strong> (string): the group name of the owner.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>links</strong> (list of objects): the list of links to be created<ul>
+<li><strong>filesystem</strong> (string, required): the internal identifier of the filesystem in which to write the link. This matches the last filesystem with the given identifier.</li>
+<li><strong>path</strong> (string, required): the absolute path to the link</li>
+<li><strong>overwrite</strong> (boolean): whether to delete preexisting nodes at the path.</li>
+<li><strong>user</strong> (object): specifies the symbolic link's owner.<ul>
+<li><strong>id</strong> (integer): the user ID of the owner.</li>
+<li><strong>name</strong> (string): the user name of the owner.</li>
+</ul>
+</li>
+<li><strong>group</strong> (object): specifies the group of the owner.<ul>
+<li><strong>id</strong> (integer): the group ID of the owner.</li>
+<li><strong>name</strong> (string): the group name of the owner.</li>
+</ul>
+</li>
+<li><strong>target</strong> (string, required): the target path of the link</li>
+<li><strong>hard</strong> (boolean): a symbolic link is created if this is false, a hard one if this is true.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>systemd</strong> (object): describes the desired state of the systemd units.<ul>
+<li><strong>units</strong> (list of objects): the list of systemd units.<ul>
+<li><strong>name</strong> (string, required): the name of the unit. This must be suffixed with a valid unit type (e.g. "thing.service").</li>
+<li><strong>enable</strong> (boolean, DEPRECATED): whether or not the service shall be enabled. When true, the service is enabled. In order for this to have any effect, the unit must have an install section.</li>
+<li><strong>enabled</strong> (boolean): whether or not the service shall be enabled. When true, the service is enabled. When false, the service is disabled. When omitted, the service is unmodified. In order for this to have any effect, the unit must have an install section.</li>
+<li><strong>mask</strong> (boolean): whether or not the service shall be masked. When true, the service is masked by symlinking it to <code class="codehilite">/dev/null</code>.</li>
+<li><strong>contents</strong> (string): the contents of the unit.</li>
+<li><strong>dropins</strong> (list of objects): the list of drop-ins for the unit.<ul>
+<li><strong>name</strong> (string, required): the name of the drop-in. This must be suffixed with ".conf".</li>
+<li><strong>contents</strong> (string): the contents of the drop-in.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>networkd</strong> (object): describes the desired state of the networkd files.<ul>
+<li><strong>units</strong> (list of objects): the list of networkd files.<ul>
+<li><strong>name</strong> (string, required): the name of the file. This must be suffixed with a valid unit type (e.g. "00-eth0.network").</li>
+<li><strong>contents</strong> (string): the contents of the networkd file.</li>
+<li><strong>dropins</strong> (list of objects): the list of drop-ins for the unit.<ul>
+<li><strong>name</strong> (string, required): the name of the drop-in. This must be suffixed with ".conf".</li>
+<li><strong>contents</strong> (string): the contents of the drop-in.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>passwd</strong> (object): describes the desired additions to the passwd database.<ul>
+<li><strong>users</strong> (list of objects): the list of accounts that shall exist.<ul>
+<li><strong>name</strong> (string, required): the username for the account.</li>
+<li><strong>password_hash</strong> (string): the encrypted password for the account.</li>
+<li><strong>ssh_authorized_keys</strong> (list of strings): a list of SSH keys to be added to the user's authorized_keys.</li>
+<li><strong>uid</strong> (integer): the user ID of the account.</li>
+<li><strong>gecos</strong> (string): the GECOS field of the account.</li>
+<li><strong>home_dir</strong> (string): the home directory of the account.</li>
+<li><strong>no_create_home</strong> (boolean): whether or not to create the user's home directory. This only has an effect if the account doesn't exist yet.</li>
+<li><strong>primary_group</strong> (string): the name of the primary group of the account.</li>
+<li><strong>groups</strong> (list of strings): the list of supplementary groups of the account.</li>
+<li><strong>no_user_group</strong> (boolean): whether or not to create a group with the same name as the user. This only has an effect if the account doesn't exist yet.</li>
+<li><strong>no_log_init</strong> (boolean): whether or not to add the user to the lastlog and faillog databases. This only has an effect if the account doesn't exist yet.</li>
+<li><strong>shell</strong> (string): the login shell of the new account.</li>
+<li><strong>system</strong> (bool): whether or not to make the account a system account. This only has an effect if the account doesn't exist yet.</li>
+<li><strong>create</strong> (object, DEPRECATED): contains the set of options to be used when creating the user. A non-null entry indicates that the user account shall be created.<ul>
+<li><strong>uid</strong> (integer, DEPRECATED): the user ID of the new account.</li>
+<li><strong>gecos</strong> (string, DEPRECATED): the GECOS field of the new account.</li>
+<li><strong>home_dir</strong> (string, DEPRECATED): the home directory of the new account.</li>
+<li><strong>no_create_home</strong> (boolean, DEPRECATED): whether or not to create the user's home directory.</li>
+<li><strong>primary_group</strong> (string, DEPRECATED): the name or ID of the primary group of the new account.</li>
+<li><strong>groups</strong> (list of strings, DEPRECATED): the list of supplementary groups of the new account.</li>
+<li><strong>no_user_group</strong> (boolean, DEPRECATED): whether or not to create a group with the same name as the user.</li>
+<li><strong>no_log_init</strong> (boolean, DEPRECATED): whether or not to add the user to the lastlog and faillog databases.</li>
+<li><strong>shell</strong> (string, DEPRECATED): the login shell of the new account.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>groups</strong> (list of objects): the list of groups to be added.<ul>
+<li><strong>name</strong> (string, required): the name of the group.</li>
+<li><strong>gid</strong> (integer): the group ID of the new group.</li>
+<li><strong>password_hash</strong> (string): the encrypted password of the new group.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>etcd</strong><ul>
+<li><strong>version</strong> (string): the version of etcd to be run</li>
+<li><strong><em>other options</em></strong> (string): this section accepts any valid etcd options for the version of etcd specified. For a comprehensive list, please consult etcd's documentation. Note all options here should be in snake_case, not spine-case.</li>
+</ul>
+</li>
+<li><strong>flannel</strong><ul>
+<li><strong>version</strong> (string): the version of flannel to be run</li>
+<li><strong>network_config</strong> (string): the flannel configuration to be written into etcd before flannel starts.</li>
+<li><strong><em>other options</em></strong> (string): this section accepts any valid flannel options for the version of flannel specified. For a comprehensive list, please consult flannel's documentation. Note all options here should be in snake_case, not spine-case.</li>
+</ul>
+</li>
+<li><strong>docker</strong><ul>
+<li><strong>flags</strong> (list of strings): additional flags to pass to the docker daemon when it is started</li>
+</ul>
+</li>
+<li><strong>update</strong><ul>
+<li><strong>group</strong> (string): the update group to follow. Most users will want one of: stable, beta, alpha.</li>
+<li><strong>server</strong> (string): the server to fetch updates from.</li>
+</ul>
+</li>
+<li><strong>locksmith</strong><ul>
+<li><strong>reboot_strategy</strong> (string): the reboot strategy for locksmithd to follow. Must be one of: reboot, etcd-lock, off.</li>
+<li><strong>window_start</strong> (string, required if window-length isn't empty): the start of the window that locksmithd can reboot the machine during</li>
+<li><strong>window_length</strong> (string, required if window-start isn't empty): the duration of the window that locksmithd can reboot the machine during</li>
+<li><strong>group</strong> (string): the locksmith etcd group to be part of for reboot control</li>
+<li><strong>etcd_endpoints</strong> (string): the endpoints of etcd locksmith should use</li>
+<li><strong>etcd_cafile</strong> (string): the tls CA file to use when communicating with etcd</li>
+<li><strong>etcd_certfile</strong> (string): the tls cert file to use when communicating with etcd</li>
+<li><strong>etcd_keyfile</strong> (string): the tls key file to use when communicating with etcd</li>
+</ul>
+</li>
+</ul></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../../..';</script>
+        <script src="../../../js/base.js"></script>
+        <script src="../../../search/require.js"></script>
+        <script src="../../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

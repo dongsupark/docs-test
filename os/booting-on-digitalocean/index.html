@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Running Flatcar Container Linux on DigitalOcean - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="./">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../booting-on-azure/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../booting-on-ec2/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#running-flatcar-container-linux-on-digitalocean">Running Flatcar Container Linux on DigitalOcean</a></li>
+            <li><a href="#container-linux-configs">Container Linux Configs</a></li>
+            <li><a href="#ssh-to-your-droplets">SSH to your droplets</a></li>
+            <li><a href="#launching-droplets">Launching droplets</a></li>
+            <li><a href="#using-flatcar-container-linux">Using Flatcar Container Linux</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="running-flatcar-container-linux-on-digitalocean">Running Flatcar Container Linux on DigitalOcean<a class="headerlink" href="#running-flatcar-container-linux-on-digitalocean" title="Permanent link">&para;</a></h1>
+<p>On Digital Ocean, users can upload Flatcar Container Linux as a <a href="https://www.digitalocean.com/docs/images/custom-images/">custom image</a>. Digital Ocean offers a <a href="https://www.digitalocean.com/docs/images/custom-images/quickstart/">quick start guide</a> that walks you through the process.</p>
+<p>The <em>import URL</em> should be <code class="codehilite">https://&lt;channel&gt;.release.flatcar-linux.net/amd64-usr/&lt;version&gt;/flatcar_production_digitalocean_image.bin.bz2</code>. See the <a href="https://www.flatcar-linux.org/releases/">release page</a> for version and channel history.</p>
+<p>The following command will create a single droplet. For more details, check out <a href="#via-the-api">Launching via the API</a>.</p>
+<div id="do-images">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#stable" data-toggle="tab">Stable Channel</a></li>
+    <li><a href="#beta" data-toggle="tab">Beta Channel</a></li>
+    <li><a href="#alpha" data-toggle="tab">Alpha Channel</a></li>
+  </ul>
+  <div class="tab-content coreos-docs-image-table">
+    <div class="tab-pane" id="alpha">
+      <div class="channel-info">
+        <p>The Alpha channel closely tracks master and is released frequently. The newest versions of system libraries and utilities will be available for testing. The current version is Container Linux 2430.0.0.</p>
+        <a href="https://cloud.digitalocean.com/droplets/new?image=flatcar-alpha" class="btn btn-default">Launch Flatcar Container Linux Droplet</a><br/><br/>
+        <p>Launch via DigitalOcean API by specifying <code>$REGION</code>, <code>$SIZE</code> and <code>$SSH_KEY_ID</code>:</p>
+        <pre>curl --request POST "https://api.digitalocean.com/v2/droplets" \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer $TOKEN" \
+     --data '{"region":"'"${REGION}"'",
+        "image":"flatcar-alpha",
+        "size":"'"$SIZE"'",
+        "user_data": "'"$(cat ~/config.ign)"'",
+        "ssh_keys":["'"$SSH_KEY_ID"'"],
+        "name":"core-1"}'</pre>
+      </div>
+    </div>
+    <div class="tab-pane" id="beta">
+      <div class="channel-info">
+        <p>The Beta channel consists of promoted Alpha releases. The current version is Container Linux 2411.1.0.</p>
+        <a href="https://cloud.digitalocean.com/droplets/new?image=flatcar-beta" class="btn btn-default">Launch Flatcar Container Linux Droplet</a><br/><br/>
+        <p>Launch via DigitalOcean API by specifying <code>$REGION</code>, <code>$SIZE</code> and <code>$SSH_KEY_ID</code>:</p>
+        <pre>curl --request POST "https://api.digitalocean.com/v2/droplets" \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer $TOKEN" \
+     --data '{"region":"'"${REGION}"'",
+        "image":"flatcar-beta",
+        "size":"'"$SIZE"'",
+        "user_data": "'"$(cat ~/config.ign)"'",
+        "ssh_keys":["'"$SSH_KEY_ID"'"],
+        "name":"core-1"}'</pre>
+      </div>
+    </div>
+    <div class="tab-pane active" id="stable">
+      <div class="channel-info">
+        <div class="channel-info">
+        <p>The Stable channel should be used by production clusters. Versions of Container Linux are battle-tested within the Beta and Alpha channels before being promoted. The current version is Container Linux 2345.3.0.</p>
+        <a href="https://cloud.digitalocean.com/droplets/new?image=flatcar-stable" class="btn btn-default">Launch Flatcar Container Linux Droplet</a><br/><br/>
+        <p>Launch via DigitalOcean API by specifying <code>$REGION</code>, <code>$SIZE</code> and <code>$SSH_KEY_ID</code>:</p>
+        <pre>curl --request POST "https://api.digitalocean.com/v2/droplets" \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer $TOKEN" \
+     --data '{"region":"'"${REGION}"'",
+        "image":"flatcar-stable",
+        "size":"'"$SIZE"'",
+        "user_data": "'"$(cat ~/config.ign)"'",
+        "ssh_keys":["'"$SSH_KEY_ID"'"],
+        "name":"core-1"}'</pre>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="container-linux-configs">Container Linux Configs<a class="headerlink" href="#container-linux-configs" title="Permanent link">&para;</a></h2>
+<p>Container Linux allows you to configure machine parameters, configure networking, launch systemd units on startup, and more via Container Linux Configs. These configs are then transpiled into Ignition configs and given to booting machines. Head over to the <a href="../provisioning/">docs to learn about the supported features</a>. Note that DigitalOcean doesn't allow an instance's userdata to be modified after the instance has been launched. This isn't a problem since Ignition only runs on the first boot.</p>
+<p>You can provide a raw Ignition config to Container Linux via the DigitalOcean web console or <a href="#via-the-api">via the DigitalOcean API</a>.</p>
+<p>As an example, this config will configure and start etcd:</p>
+<pre class="codehilite"><code class="language-yaml">etcd:
+  # All options get passed as command line flags to etcd.
+  # Any information inside curly braces comes from the machine at boot time.
+
+  # multi_region and multi_cloud deployments need to use {PUBLIC_IPV4}
+  advertise_client_urls:       &quot;http://{PRIVATE_IPV4}:2379&quot;
+  initial_advertise_peer_urls: &quot;http://{PRIVATE_IPV4}:2380&quot;
+  # listen on both the official ports and the legacy ports
+  # legacy ports can be omitted if your application doesn't depend on them
+  listen_client_urls:          &quot;http://0.0.0.0:2379&quot;
+  listen_peer_urls:            &quot;http://{PRIVATE_IPV4}:2380&quot;
+  # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
+  # specify the initial size of your cluster with ?size=X
+  discovery:                   &quot;https://discovery.etcd.io/&lt;token&gt;&quot;</code></pre>
+
+<h3 id="adding-more-machines">Adding more machines<a class="headerlink" href="#adding-more-machines" title="Permanent link">&para;</a></h3>
+<p>To add more instances to the cluster, just launch more with the same Container Linux Config. New instances will join the cluster regardless of region.</p>
+<h2 id="ssh-to-your-droplets">SSH to your droplets<a class="headerlink" href="#ssh-to-your-droplets" title="Permanent link">&para;</a></h2>
+<p>Container Linux is set up to be a little more secure than other DigitalOcean images. By default, it uses the core user instead of root and doesn't use a password for authentication. You'll need to add an SSH key(s) via the web console or add keys/passwords via your Ignition config in order to log in.</p>
+<p>To connect to a droplet after it's created, run:</p>
+<pre class="codehilite"><code class="language-sh">ssh core@&lt;ip address&gt;</code></pre>
+
+<h2 id="launching-droplets">Launching droplets<a class="headerlink" href="#launching-droplets" title="Permanent link">&para;</a></h2>
+<h3 id="via-the-api">Via the API<a class="headerlink" href="#via-the-api" title="Permanent link">&para;</a></h3>
+<p>For starters, generate a <a href="https://cloud.digitalocean.com/account/api/tokens">Personal Access Token</a> and save it in an environment variable:</p>
+<pre class="codehilite"><code class="language-sh">read TOKEN
+# Enter your Personal Access Token</code></pre>
+
+<p>Upload your SSH key via <a href="https://developers.digitalocean.com/documentation/v2/#ssh-keys">DigitalOcean's API</a> or the web console. Retrieve the SSH key ID via the <a href="https://developers.digitalocean.com/documentation/v2/#list-all-keys">"list all keys"</a> method:</p>
+<pre class="codehilite"><code class="language-sh">curl --request GET &quot;https://api.digitalocean.com/v2/account/keys&quot; \
+     --header &quot;Authorization: Bearer $TOKEN&quot;</code></pre>
+
+<p>Save the key ID from the previous command in an environment variable:</p>
+<pre class="codehilite"><code class="language-sh">read SSH_KEY_ID
+# Enter your SSH key ID</code></pre>
+
+<p>Create a 512MB droplet with private networking in NYC3 from the Container Linux Stable image:</p>
+<pre class="codehilite"><code class="language-sh">curl --request POST &quot;https://api.digitalocean.com/v2/droplets&quot; \
+     --header &quot;Content-Type: application/json&quot; \
+     --header &quot;Authorization: Bearer $TOKEN&quot; \
+     --data '{
+      &quot;region&quot;:&quot;nyc3&quot;,
+      &quot;image&quot;:&quot;coreos-stable&quot;,
+      &quot;size&quot;:&quot;512mb&quot;,
+      &quot;name&quot;:&quot;core-1&quot;,
+      &quot;private_networking&quot;:true,
+      &quot;ssh_keys&quot;:['$SSH_KEY_ID'],
+      &quot;user_data&quot;: &quot;'&quot;$(cat config.ign | sed 's/&quot;/\\&quot;/g')&quot;'&quot;
+}'
+</code></pre>
+
+<p>For more details, check out <a href="https://developers.digitalocean.com/documentation/v2/">DigitalOcean's API documentation</a>.</p>
+<h3 id="via-the-web-console">Via the web console<a class="headerlink" href="#via-the-web-console" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open the <a href="https://cloud.digitalocean.com/droplets/new?image=flatcar-stable">"new droplet"</a> page in the web console.</li>
+<li>Give the machine a hostname, select the size, and choose a region.
+<div class="row">
+  <div class="col-lg-8 col-md-10 col-sm-8 col-xs-12 co-m-screenshot">
+    <img src="img/size.png" />
+    <div class="co-m-screenshot-caption">Choosing a size and hostname</div>
+  </div>
+</div></li>
+<li>Enable User Data and add your Ignition config in the text box.
+<div class="row">
+  <div class="col-lg-8 col-md-10 col-sm-8 col-xs-12 co-m-screenshot">
+    <img src="img/settings.png" />
+    <div class="co-m-screenshot-caption">Droplet settings for networking and Ignition</div>
+  </div>
+</div></li>
+<li>Choose your <a href="#choosing-a-channel">preferred channel</a> of Container Linux.
+<div class="row">
+  <div class="col-lg-8 col-md-10 col-sm-8 col-xs-12 co-m-screenshot">
+    <img src="img/image.png" />
+    <div class="co-m-screenshot-caption">Choosing a Container Linux channel</div>
+  </div>
+</div></li>
+<li>Select your SSH keys.</li>
+</ol>
+<p>Note that DigitalOcean is not able to inject a root password into Flatcar Container Linux images like it does with other images. You'll need to add your keys via the web console or add keys or passwords via your Container Linux Config in order to log in.</p>
+<h2 id="using-flatcar-container-linux">Using Flatcar Container Linux<a class="headerlink" href="#using-flatcar-container-linux" title="Permanent link">&para;</a></h2>
+<p>Now that you have a machine booted it is time to play around. Check out the <a href="../quickstart/">Flatcar Container Linux Quickstart</a> guide or dig into <a href="https://docs.flatcar-linux.org/">more specific topics</a>.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

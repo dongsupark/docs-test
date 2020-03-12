@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Network configuration with networkd - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="./">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../mounting-storage/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../notes-for-distributors/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#network-configuration-with-networkd">Network configuration with networkd</a></li>
+            <li><a href="#static-networking">Static networking</a></li>
+            <li><a href="#turn-off-dhcp-on-specific-interface">Turn off DHCP on specific interface</a></li>
+            <li><a href="#turn-off-ipv6-on-specific-interfaces">Turn off IPv6 on specific interfaces</a></li>
+            <li><a href="#configure-static-routes">Configure static routes</a></li>
+            <li><a href="#configure-multiple-ip-addresses">Configure multiple IP addresses</a></li>
+            <li><a href="#debugging-networkd">Debugging networkd</a></li>
+            <li><a href="#further-reading">Further reading</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="network-configuration-with-networkd">Network configuration with networkd<a class="headerlink" href="#network-configuration-with-networkd" title="Permanent link">&para;</a></h1>
+<p>Flatcar Container Linux machines are preconfigured with <a href="../notes-for-distributors/">networking customized</a> for each platform. You can write your own networkd units to replace or override the units created for each platform. This article covers a subset of networkd functionality. You can view the <a href="http://www.freedesktop.org/software/systemd/man/systemd-networkd.service.html">full docs here</a>.</p>
+<p>Drop a networkd unit in <code class="codehilite">/etc/systemd/network/</code> or inject a unit on boot via a Container Linux Config. Files placed manually on the filesystem will need to reload networkd afterwards with <code class="codehilite">sudo systemctl restart systemd-networkd</code>. Network units injected via a Container Linux Config will be written to the system before networkd is started, so there are no work-arounds needed.</p>
+<p>Let's take a look at two common situations: using a static IP and turning off DHCP.</p>
+<h2 id="static-networking">Static networking<a class="headerlink" href="#static-networking" title="Permanent link">&para;</a></h2>
+<p>To configure a static IP on <code class="codehilite">enp2s0</code>, create <code class="codehilite">static.network</code>:</p>
+<pre class="codehilite"><code class="language-ini">[Match]
+Name=enp2s0
+
+[Network]
+Address=192.168.0.15/24
+Gateway=192.168.0.1
+DNS=1.2.3.4</code></pre>
+
+<p>Place the file in <code class="codehilite">/etc/systemd/network/</code>. To apply the configuration, run:</p>
+<pre class="codehilite"><code class="language-sh">sudo systemctl restart systemd-networkd</code></pre>
+
+<h3 id="container-linux-config">Container Linux Config<a class="headerlink" href="#container-linux-config" title="Permanent link">&para;</a></h3>
+<p>Setting up static networking in your Container Linux Config can be done by writing out the network unit. Be sure to modify the <code class="codehilite">[Match]</code> section with the name of your desired interface, and replace the IPs:</p>
+<pre class="codehilite"><code class="language-yaml">networkd:
+  units:
+    - name: 00-eth0.network
+      contents: |
+        [Match]
+        Name=eth0
+
+        [Network]
+        DNS=1.2.3.4
+        Address=10.0.0.101/24
+        Gateway=10.0.0.1</code></pre>
+
+<h2 id="turn-off-dhcp-on-specific-interface">Turn off DHCP on specific interface<a class="headerlink" href="#turn-off-dhcp-on-specific-interface" title="Permanent link">&para;</a></h2>
+<p>If you'd like to use DHCP on all interfaces except <code class="codehilite">enp2s0</code>, create two files. They'll be checked in lexical order, as described in the <a href="http://www.freedesktop.org/software/systemd/man/systemd-networkd.service.html">full network docs</a>. Any interfaces matching during earlier files will be ignored during later files.</p>
+<h4 id="10-staticnetwork">10-static.network<a class="headerlink" href="#10-staticnetwork" title="Permanent link">&para;</a></h4>
+<pre class="codehilite"><code class="language-ini">[Match]
+Name=enp2s0
+
+[Network]
+Address=192.168.0.15/24
+Gateway=192.168.0.1
+DNS=1.2.3.4</code></pre>
+
+<p>Put your settings-of-last-resort in <code class="codehilite">20-dhcp.network</code>. For example, any interfaces matching <code class="codehilite">en*</code> that weren't matched in <code class="codehilite">10-static.network</code> will be configured with DHCP:</p>
+<h4 id="20-dhcpnetwork">20-dhcp.network<a class="headerlink" href="#20-dhcpnetwork" title="Permanent link">&para;</a></h4>
+<pre class="codehilite"><code class="language-ini">[Match]
+Name=en*
+
+[Network]
+DHCP=yes</code></pre>
+
+<p>To apply the configuration, run <code class="codehilite">sudo systemctl restart systemd-networkd</code>. Check the status with <code class="codehilite">systemctl status systemd-networkd</code> and read the full log with <code class="codehilite">journalctl -u systemd-networkd</code>.</p>
+<h2 id="turn-off-ipv6-on-specific-interfaces">Turn off IPv6 on specific interfaces<a class="headerlink" href="#turn-off-ipv6-on-specific-interfaces" title="Permanent link">&para;</a></h2>
+<p>While IPv6 can be disabled globally at boot by appending <code class="codehilite">ipv6.disable=1</code> to the kernel command line, networkd supports disabling IPv6 on a per-interface basis. When a network unit's <code class="codehilite">[Network]</code> section has either <code class="codehilite">LinkLocalAddressing=ipv4</code> or <code class="codehilite">LinkLocalAddressing=no</code>, networkd will not try to configure IPv6 on the matching interfaces.</p>
+<p>Note however that even when using the above option, networkd will still be expecting to receive router advertisements if IPv6 is not disabled globally. If IPv6 traffic is not being received by the interface (e.g. due to <code class="codehilite">sysctl</code> or <code class="codehilite">ip6tables</code> settings), it will remain in the <code class="codehilite">configuring</code> state and potentially cause timeouts for services waiting for the network to be fully configured. To avoid this, the <code class="codehilite">IPv6AcceptRA=no</code> option should also be set in the <code class="codehilite">[Network]</code> section.</p>
+<p>A network unit file's <code class="codehilite">[Network]</code> section should therefore contain the following to disable IPv6 on its matching interfaces.</p>
+<pre class="codehilite"><code class="language-ini">[Network]
+LinkLocalAddressing=no
+IPv6AcceptRA=no</code></pre>
+
+<h2 id="configure-static-routes">Configure static routes<a class="headerlink" href="#configure-static-routes" title="Permanent link">&para;</a></h2>
+<p>Specify static routes in a systemd network unit's <code class="codehilite">[Route]</code> section. In this example, we create a unit file, <code class="codehilite">10-static.network</code>, and define in it a static route to the <code class="codehilite">172.16.0.0/24</code> subnet:</p>
+<h4 id="10-staticnetwork_1">10-static.network<a class="headerlink" href="#10-staticnetwork_1" title="Permanent link">&para;</a></h4>
+<pre class="codehilite"><code class="language-ini">[Route]
+Gateway=192.168.122.1
+Destination=172.16.0.0/24</code></pre>
+
+<p>To specify the same route in a Container Linux Config, create the systemd network unit there instead:</p>
+<pre class="codehilite"><code class="language-yaml">networkd:
+  units:
+    - name: 10-static.network
+      contents: |
+        [Route]
+        Gateway=192.168.122.1
+        Destination=172.16.0.0/24</code></pre>
+
+<h2 id="configure-multiple-ip-addresses">Configure multiple IP addresses<a class="headerlink" href="#configure-multiple-ip-addresses" title="Permanent link">&para;</a></h2>
+<p>To configure multiple IP addresses on one interface, we define multiple <code class="codehilite">Address</code> keys in the network unit. In the example below, we've also defined a different gateway for each IP address.</p>
+<h4 id="20-multi_ipnetwork">20-multi_ip.network<a class="headerlink" href="#20-multi_ipnetwork" title="Permanent link">&para;</a></h4>
+<pre class="codehilite"><code class="language-ini">[Match]
+Name=eth0
+
+[Network]
+DNS=8.8.8.8
+Address=10.0.0.101/24
+Gateway=10.0.0.1
+Address=10.0.1.101/24
+Gateway=10.0.1.1</code></pre>
+
+<p>To do the same thing through a Container Linux Config:</p>
+<pre class="codehilite"><code class="language-yaml">networkd:
+  units:
+    - name: 20-multi_ip.network
+      contents: |
+        [Match]
+        Name=eth0
+
+        [Network]
+        DNS=8.8.8.8
+        Address=10.0.0.101/24
+        Gateway=10.0.0.1
+        Address=10.0.1.101/24
+        Gateway=10.0.1.1</code></pre>
+
+<h2 id="debugging-networkd">Debugging networkd<a class="headerlink" href="#debugging-networkd" title="Permanent link">&para;</a></h2>
+<p>If you've faced some problems with networkd you can enable debug mode following the instructions below.</p>
+<h3 id="enable-debugging-manually">Enable debugging manually<a class="headerlink" href="#enable-debugging-manually" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-sh">mkdir -p /etc/systemd/system/systemd-networkd.service.d/</code></pre>
+
+<p>Create <a href="../using-systemd-drop-in-units/">Drop-In</a> <code class="codehilite">/etc/systemd/system/systemd-networkd.service.d/10-debug.conf</code> with following content:</p>
+<pre class="codehilite"><code class="language-sh">[Service]
+Environment=SYSTEMD_LOG_LEVEL=debug</code></pre>
+
+<p>And restart <code class="codehilite">systemd-networkd</code> service:</p>
+<pre class="codehilite"><code class="language-sh">systemctl daemon-reload
+systemctl restart systemd-networkd
+journalctl -b -u systemd-networkd</code></pre>
+
+<h3 id="enable-debugging-through-a-container-linux-config">Enable debugging through a Container Linux Config<a class="headerlink" href="#enable-debugging-through-a-container-linux-config" title="Permanent link">&para;</a></h3>
+<p>Define a <a href="../using-systemd-drop-in-units/">Drop-In</a> in a <a href="../provisioning/">Container Linux Config</a>:</p>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: systemd-networkd.service
+      dropins:
+        - name: 10-debug.conf
+          contents: |
+            [Service]
+            Environment=SYSTEMD_LOG_LEVEL=debug</code></pre>
+
+<h2 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<p>If you're interested in more general networkd features, check out the <a href="http://www.freedesktop.org/software/systemd/man/systemd-networkd.service.html">full documentation</a>.</p>
+<p><a class="btn btn-default" href="getting-started-with-systemd.md">Getting Started with systemd</a>
+<a class="btn btn-default" href="reading-the-system-log.md">Reading the System Log</a></p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>
