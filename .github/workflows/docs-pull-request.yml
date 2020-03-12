@@ -5,16 +5,29 @@ on:
 jobs:
   flatcar-docs-prs:
     runs-on: ubuntu-latest
+    env:
+      GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
     steps:
       - uses: actions/checkout@v2
+      - name: auto sync flatcar-website-docs
+        env:
+          FLATCAR_WEBSITE_DOCS_GITHUB_ACTIONS_KEY: ${{ secrets.FLATCAR_WEBSITE_DOCS_GITHUB_ACTIONS_KEY }}
+        run: .github/workflows/sync-flatcar-docs.sh
+      - name: set output variables
+        id: vars
+        run: |
+          echo ::set-output name=pr_title::"update Flatcar docs $(date +%Y-%m-%d)"
+          echo ::set-output name=pr_commit::"auto-generate Flatcar docs, $(date +%Y-%m-%d)."
+          echo ::set-output name=pr_body::"auto-generate Flatcar docs, $(date +%Y-%m-%d)."
       - name: create pull request
         uses: peter-evans/create-pull-request@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           base: site
-          branch: site.test
+          branch: site
+          branch-suffix: timestamp
           author: Flatcar Buildbot <buildbot@flatcar-linux.org>
           committer: Flatcar Buildbot <buildbot@flatcar-linux.org>
-          title: auto update of Flatcar docs
-          commit-message: auto update of Flatcar docs
-          body: auto update of Flatcar docs
+          title: ${{ steps.vars.outputs.pr_title }}
+          commit-message: ${{ steps.vars.outputs.pr_commit }}
+          body: ${{ steps.vars.outputs.pr_body }}
