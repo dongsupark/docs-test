@@ -20,7 +20,7 @@ make fetch-docs
 python3 -m venv .
 source bin/activate
 pip install -r requirements.txt
-sudo gem install httparty liquid
+sudo gem install bundler && bundle
 make build
 rsync --exclude .git -av site/ ..
 
