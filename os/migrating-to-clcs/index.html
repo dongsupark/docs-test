@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Migrating from Cloud-Config to Container Linux Config - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../cluster-architectures/">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../manual-rollbacks/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../mounting-storage/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#migrating-from-cloud-config-to-container-linux-config">Migrating from Cloud-Config to Container Linux Config</a></li>
+            <li><a href="#etcd2">etcd2</a></li>
+            <li><a href="#flannel">flannel</a></li>
+            <li><a href="#locksmith">locksmith</a></li>
+            <li><a href="#update">update</a></li>
+            <li><a href="#units">units</a></li>
+            <li><a href="#ssh_authorized_keys">ssh_authorized_keys</a></li>
+            <li><a href="#hostname">hostname</a></li>
+            <li><a href="#users">users</a></li>
+            <li><a href="#write_files">write_files</a></li>
+            <li><a href="#manage_etc_hosts">manage_etc_hosts</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="migrating-from-cloud-config-to-container-linux-config">Migrating from Cloud-Config to Container Linux Config<a class="headerlink" href="#migrating-from-cloud-config-to-container-linux-config" title="Permanent link">&para;</a></h1>
+<p>Historically, the recommended way to provision a Flatcar Container Linux machine was with a cloud-config. This was a YAML file specifying things like systemd units to run, users that should exist, and files that should be written. This file would be given to a Flatcar Container Linux machine, and saved on disk. Then a utility called coreos-cloudinit running in a systemd unit would read this file, look at the system state, and make necessary changes on every boot.</p>
+<p>Going forward, a new method of provisioning with Container Linux Configs is now recommended.</p>
+<p>This document details how to convert an existing cloud-config into a Container Linux Config. Once a Container Linux Config has been written, it is given to the Config Transpiler to be converted into an Ignition Config. This Ignition Config can then be provided to a booting machine. For more information on this process, take a look at the <a href="../provisioning/">provisioning guide</a>.</p>
+<p>The etcd and flannel examples shown in this document will use dynamic data in the Container Linux Config (anything looking like this: <code class="codehilite">{PRIVATE_IPV4}</code>). Not all types of dynamic data are supported on all cloud providers, and if the machine is not on a cloud provider this feature cannot be used. Please see <a href="https://github.com/coreos/container-linux-config-transpiler/blob/master/doc/dynamic-data.md">here</a> for more information.</p>
+<p>To see all supported options available in a Container Linux Config, please look at the <a href="https://github.com/coreos/container-linux-config-transpiler/blob/master/doc/configuration.md">Container Linux Config schema</a>.</p>
+<h3 id="etcd2">etcd2<a class="headerlink" href="#etcd2" title="Permanent link">&para;</a></h3>
+<p>In a cloud-config, etcd version 2 can be enabled and configured by using the <code class="codehilite">coreos.etcd2.*</code> section. As an example of this:</p>
+<pre class="codehilite"><code class="language-cloud-config">#cloud-config
+
+coreos:
+  etcd2:
+    discovery:                   &quot;https://discovery.etcd.io/&lt;token&gt;&quot;
+    advertise-client-urls:       &quot;http://$public_ipv4:2379&quot;
+    initial-advertise-peer-urls: &quot;http://$private_ipv4:2380&quot;
+    listen-client-urls:          &quot;http://0.0.0.0:2379,http://0.0.0.0:4001&quot;
+    listen-peer-urls:            &quot;http://$private_ipv4:2380,http://$private_ipv4:7001&quot;</code></pre>
+
+<p>etcd can be configured in a more general way with a Container Linux Config. This CL Config will use the etcd-member.service systemd unit rather than the etcd2 service understood by cloud-config and coreos-cloudinit. The etcd-member service will download a version of etcd of the user's choosing and run it. This means that in a Container Linux Config both etcd v2 and v3 can be configured.</p>
+<p>This is done under the etcd section:</p>
+<pre class="codehilite"><code class="language-yaml">etcd:
+    version: 3.1.6</code></pre>
+
+<p>Omitting the version specification declares that the unit file should use the version of etcd matching the running version of Flatcar Container Linux.</p>
+<p>Configuration options in this section can be provided the same way as they were in a cloud-config, with the exception of dashes (<code class="codehilite">-</code>) being replaced with underscores (<code class="codehilite">_</code>) in key names.</p>
+<pre class="codehilite"><code class="language-yaml">etcd:
+  name:                        &quot;{HOSTNAME}&quot;
+  advertise_client_urls:       &quot;{PRIVATE_IPV4}:2379&quot;
+  initial_advertise_peer_urls: &quot;{PRIVATE_IPV4}:2380&quot;
+  listen_client_urls:          &quot;http://0.0.0.0:2379&quot;
+  listen_peer_urls:            &quot;http://{PRIVATE_IPV4}:2380&quot;
+  initial_cluster:             &quot;%m=http://{PRIVATE_IPV4}:2380&quot;</code></pre>
+
+<h3 id="flannel">flannel<a class="headerlink" href="#flannel" title="Permanent link">&para;</a></h3>
+<p>Flannel is easily configurable in a cloud-config the same way etcd is, by using the <code class="codehilite">coreos.flannel.*</code> section.</p>
+<pre class="codehilite"><code class="language-cloud-config">#cloud-config
+
+coreos:
+  flannel:
+      etcd_prefix: &quot;/coreos.com/network2&quot;</code></pre>
+
+<p>The flannel section in a Container Linux Config is used the same way, and a version can optionally be specified for flannel as well.</p>
+<pre class="codehilite"><code class="language-yaml">flannel:
+  version:     0.7.0
+  etcd_prefix: &quot;/coreos.com/network2&quot;</code></pre>
+
+<h3 id="locksmith">locksmith<a class="headerlink" href="#locksmith" title="Permanent link">&para;</a></h3>
+<p>The <code class="codehilite">coreos.locksmith.*</code> section in a cloud-config can be used to configure the locksmith daemon via environment variables.</p>
+<pre class="codehilite"><code class="language-cloud-config">#cloud-config
+
+coreos:
+  locksmith:
+      endpoint: &quot;http://example.com:2379&quot;</code></pre>
+
+<p>Locksmith can be configured in the same way under the locksmith section of a Container Linux Config, but some of the accepted options are slightly different. Also the reboot strategy is set in the locksmith section, instead of the update section. Check out the <a href="https://github.com/coreos/container-linux-config-transpiler/blob/master/doc/configuration.md">Container Linux Config schema</a> to see what options are available.</p>
+<pre class="codehilite"><code class="language-yaml">locksmith:
+  reboot_strategy: &quot;reboot&quot;
+  etcd_endpoints:  &quot;http://example.com:2379&quot;</code></pre>
+
+<h3 id="update">update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
+<p>The <code class="codehilite">coreos.update.*</code> section can be used to configure the reboot strategy, update group, and update server in a cloud-config.</p>
+<pre class="codehilite"><code class="language-cloud-config">#cloud-config
+coreos:
+  update:
+    reboot-strategy: &quot;etcd-lock&quot;
+    group:           &quot;stable&quot;
+    server:          &quot;https://public.update.flatcar-linux.net/v1/update/&quot;</code></pre>
+
+<p>In the update section in a Container Linux Config the group and server can be configured, but the reboot-strategy option has been moved under the locksmith section.</p>
+<pre class="codehilite"><code class="language-yaml">update:
+  group:  &quot;stable&quot;
+  server: &quot;https://public.update.flatcar-linux.net/v1/update/&quot;</code></pre>
+
+<h3 id="units">units<a class="headerlink" href="#units" title="Permanent link">&para;</a></h3>
+<p>The <code class="codehilite">coreos.units.*</code> section in a cloud-config can define arbitrary systemd units that should be started after booting.</p>
+<pre class="codehilite"><code class="language-cloud-config">#cloud-config
+
+coreos:
+  units:
+    - name: &quot;docker-redis.service&quot;
+      command: &quot;start&quot;
+      content: |
+        [Unit]
+        Description=Redis container
+        Author=Me
+        After=docker.service
+
+        [Service]
+        Restart=always
+        ExecStart=/usr/bin/docker start -a redis_server
+        ExecStop=/usr/bin/docker stop -t 2 redis_server</code></pre>
+
+<p>This section could also be used to define systemd drop-in files for existing units.</p>
+<pre class="codehilite"><code class="language-cloud-config">#cloud-config
+
+coreos:
+  units:
+    - name: &quot;docker.service&quot;
+      drop-ins:
+        - name: &quot;50-insecure-registry.conf&quot;
+          content: |
+            [Service]
+            Environment=DOCKER_OPTS='--insecure-registry=&quot;10.0.1.0/24&quot;'</code></pre>
+
+<p>And existing units could also be started without any further configuration.</p>
+<pre class="codehilite"><code class="language-cloud-config">#cloud-config
+
+coreos:
+  units:
+    - name: &quot;etcd2.service&quot;
+      command: &quot;start&quot;</code></pre>
+
+<p>One big difference in Container Linux Config compared to cloud-configs is that the configuration is applied via <a href="https://coreos.com/ignition">Ignition</a> before the machine has fully booted, as opposed to coreos-cloudinit that runs after the machine has fully booted. As a result units cannot be directly started in a Container Linux Config, the unit is instead enabled so that systemd will begin the unit once systemd starts.</p>
+<p><em>Note: in this example an <code class="codehilite">[Install]</code> section has been added so that the unit can be enabled.</em></p>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: &quot;docker-redis.service&quot;
+      enable: true
+      contents: |
+        [Unit]
+        Description=Redis container
+        Author=Me
+        After=docker.service
+
+        [Service]
+        Restart=always
+        ExecStart=/usr/bin/docker start -a redis_server
+        ExecStop=/usr/bin/docker stop -t 2 redis_server
+
+        [Install]
+        WantedBy=multi-user.target</code></pre>
+
+<p>Drop-in files can be provided for units in a Container Linux Config just like in a cloud-config.</p>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: &quot;docker.service&quot;
+      dropins:
+        - name: &quot;50-insecure-registry.conf&quot;
+          contents: |
+            [Service]
+            Environment=DOCKER_OPTS='--insecure-registry=&quot;10.0.1.0/24&quot;'</code></pre>
+
+<p>Existing units can also be enabled without configuration.</p>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: &quot;etcd-member.service&quot;
+      enable: true</code></pre>
+
+<h3 id="ssh_authorized_keys">ssh_authorized_keys<a class="headerlink" href="#ssh_authorized_keys" title="Permanent link">&para;</a></h3>
+<p>In a cloud-config the <code class="codehilite">ssh_authorized_keys</code> section can be used to add ssh public keys to the <code class="codehilite">core</code> user.</p>
+<pre class="codehilite"><code class="language-cloud-config">#cloud-config
+
+ssh_authorized_keys:
+  - &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...&quot;</code></pre>
+
+<p>In a Container Linux Config there is no analogous section to <code class="codehilite">ssh_authorized_keys</code>, but ssh keys for the core user can be set just as easily using the <code class="codehilite">passwd.users.*</code> section:</p>
+<pre class="codehilite"><code class="language-yaml">passwd:
+  users:
+    - name: core
+      ssh_authorized_keys:
+        - &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...&quot;</code></pre>
+
+<h3 id="hostname">hostname<a class="headerlink" href="#hostname" title="Permanent link">&para;</a></h3>
+<p>In a cloud-config the <code class="codehilite">hostname</code> section can be used to set a machine's hostname.</p>
+<pre class="codehilite"><code class="language-cloud-config">#cloud-config
+
+hostname: &quot;coreos1&quot;</code></pre>
+
+<p>The Container Linux Config is intentionally more generalized than a cloud-config, and there is no equivalent hostname section understood in a CL Config. Instead, set the hostname by writing it to <code class="codehilite">/etc/hostname</code> in a CL Config <code class="codehilite">storage.files.*</code> section.</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  files:
+    - filesystem: &quot;root&quot;
+      path:       &quot;/etc/hostname&quot;
+      mode:       0644
+      contents:
+        inline: coreos1</code></pre>
+
+<h3 id="users">users<a class="headerlink" href="#users" title="Permanent link">&para;</a></h3>
+<p>The <code class="codehilite">users</code> section in a cloud-config can be used to add users and specify many properties about them, from groups the user should be in to what the user's shell should be.</p>
+<pre class="codehilite"><code class="language-cloud-config">#cloud-config
+
+users:
+  - name: &quot;elroy&quot;
+    passwd: &quot;$6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...&quot;
+    groups:
+      - &quot;sudo&quot;
+      - &quot;docker&quot;
+    ssh-authorized-keys:
+      - &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...&quot;</code></pre>
+
+<p>This same information can be added to the Container Linux Config in the <code class="codehilite">passwd.users.*</code> section.</p>
+<pre class="codehilite"><code class="language-yaml">passwd:
+  users:
+    - name:          &quot;elroy&quot;
+      password_hash: &quot;$6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...&quot;
+      ssh_authorized_keys:
+        - &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...&quot;
+      groups:
+        - &quot;sudo&quot;
+        - &quot;docker&quot;</code></pre>
+
+<h3 id="write_files">write_files<a class="headerlink" href="#write_files" title="Permanent link">&para;</a></h3>
+<p>The <code class="codehilite">write_files</code> section in a cloud-config can be used to specify files and their contents that should be written to disk on the machine.</p>
+<pre class="codehilite"><code class="language-cloud-config">#cloud-config
+write_files:
+  - path:        &quot;/etc/resolv.conf&quot;
+    permissions: &quot;0644&quot;
+    owner:       &quot;root&quot;
+    content: |
+      nameserver 8.8.8.8</code></pre>
+
+<p>This can be done in a Container Linux Config with the <code class="codehilite">storage.files.*</code> section.</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  files:
+    - filesystem: &quot;root&quot;
+      path:       &quot;/etc/resolv.conf&quot;
+      mode:       0644
+      contents:
+        inline: |
+          nameserver 8.8.8.8</code></pre>
+
+<p>File specifications in this section of a CL Config must define the target filesystem and the file's path relative to the root of that filesystem. This allows files to be written to filesystems other than the root filesystem.</p>
+<p>Under the <code class="codehilite">contents</code> section, the file contents are under a sub-section called <code class="codehilite">inline</code>. This is because a file's contents can be remote by replacing the <code class="codehilite">inline</code> section with a <code class="codehilite">remote</code> section. To see what options are available under the <code class="codehilite">remote</code> section, look at the <a href="https://github.com/coreos/container-linux-config-transpiler/blob/master/doc/configuration.md">Container Linux Config schema</a>.</p>
+<h3 id="manage_etc_hosts">manage_etc_hosts<a class="headerlink" href="#manage_etc_hosts" title="Permanent link">&para;</a></h3>
+<p>The <code class="codehilite">manage_etcd_hosts</code> section in a cloud-config can be used to configure the contents of the <code class="codehilite">/etc/hosts</code> file. Currently only one value is supported, <code class="codehilite">&quot;localhost&quot;</code>, which will cause your system's hostname to resolve to <code class="codehilite">127.0.0.1</code>.</p>
+<pre class="codehilite"><code class="language-cloud-config">#cloud-config
+
+manage_etc_hosts: &quot;localhost&quot;</code></pre>
+
+<p>There is no analogous section in a Container Linux Config, however the <code class="codehilite">/etc/hosts</code> file can be written in the <code class="codehilite">storage.files.*</code> section.</p>
+<pre class="codehilite"><code class="language-yaml">storage:
+  files:
+    - filesystem: &quot;root&quot;
+      path:       &quot;/etc/hosts&quot;
+      mode:       0644
+      contents:
+        inline: |
+          127.0.0.1 localhost
+          ::1       localhost
+          127.0.0.1 example.com</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

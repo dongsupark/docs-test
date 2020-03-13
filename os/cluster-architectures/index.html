@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Flatcar Container Linux cluster architectures - Flatcar Container Linux Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Flatcar Container Linux Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../..">Home</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li >
+                            <a href="../quickstart/">Quick start</a>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Provisioning</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../provisioning/">Using Container Linux Config</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/overview/">Using Config Transpiler</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/dynamic-data/">CL Config Dynamic Data</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/examples/">CL Config Examples</a>
+</li>
+            
+<li >
+    <a href="../../container-linux-config-transpiler/doc/configuration/">CL Config Spec</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Cloud Providers</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-on-ec2/">Amazon EC2</a>
+</li>
+            
+<li >
+    <a href="../booting-on-azure/">Azure</a>
+</li>
+            
+<li >
+    <a href="../booting-on-digitalocean/">Digital Ocean</a>
+</li>
+            
+<li >
+    <a href="../booting-on-google-compute-engine/">Google Compute Engine</a>
+</li>
+            
+<li >
+    <a href="../booting-with-qemu/">QEMU</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Bare Metal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../booting-with-ipxe/">Booting with iPXE</a>
+</li>
+            
+<li >
+    <a href="../booting-with-pxe/">Booting with PXE</a>
+</li>
+            
+<li >
+    <a href="../installing-to-disk/">Installing to Disk</a>
+</li>
+            
+<li >
+    <a href="../booting-with-iso/">Booting from ISO</a>
+</li>
+            
+<li >
+    <a href="../root-filesystem-placement/">Root filesystem placement</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Migrating from CoreOS Container Linux</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../migrate-from-container-linux/">Migrating from CoreOS Container Linux</a>
+</li>
+            
+<li >
+    <a href="../update-from-container-linux/">Updating from CoreOS Container Linux</a>
+</li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Working with Clusters</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Creating Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="./">Cluster architectures</a>
+</li>
+            
+<li >
+    <a href="../update-strategies/">Update strategies</a>
+</li>
+            
+<li >
+    <a href="../cluster-discovery/">Clustering machines</a>
+</li>
+            
+<li >
+    <a href="../verify-images/">Verify Flatcar Container Linux Images with GPG</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Customizing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../network-config-with-networkd/">Using networkd to customize networking</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-drop-in-units/">Using systemd drop-in units</a>
+</li>
+            
+<li >
+    <a href="../using-environment-variables-in-systemd-units/">Using environment variables in systemd units</a>
+</li>
+            
+<li >
+    <a href="../configuring-dns/">Configuring DNS</a>
+</li>
+            
+<li >
+    <a href="../configuring-date-and-timezone/">Configuring date & timezone</a>
+</li>
+            
+<li >
+    <a href="../adding-users/">Adding users</a>
+</li>
+            
+<li >
+    <a href="../other-settings/">Kernel modules / sysctl parameters</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Scaling Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../adding-disk-space/">Adding disk space</a>
+</li>
+            
+<li >
+    <a href="../mounting-storage/">Mounting storage</a>
+</li>
+            
+<li >
+    <a href="../power-management/">Power management</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Managing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../registry-authentication/">Registry authentication</a>
+</li>
+            
+<li >
+    <a href="../iscsi/">iSCSI configuration</a>
+</li>
+            
+<li >
+    <a href="../adding-swap/">Adding swap</a>
+</li>
+            
+<li >
+    <a href="../booting-on-ecs/">Amazon EC2 Container Service</a>
+</li>
+            
+<li >
+    <a href="../getting-started-with-systemd/">Using systemd to manage Docker containers</a>
+</li>
+            
+<li >
+    <a href="../using-systemd-and-udev-rules/">Using systemd and udev rules</a>
+</li>
+            
+<li >
+    <a href="../switching-channels/">Switching release channels</a>
+</li>
+            
+<li >
+    <a href="../scheduling-tasks-with-systemd-timers/">Scheduling tasks with systemd</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Securing Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../customizing-sshd/">Customizing the SSH daemon</a>
+</li>
+            
+<li >
+    <a href="../sssd/">Configuring SSSD on Flatcar Container Linux</a>
+</li>
+            
+<li >
+    <a href="../hardening-guide/">Hardening a Flatcar Container Linux machine</a>
+</li>
+            
+<li >
+    <a href="../trusted-computing-hardware-requirements/">Trusted Computing Hardware Requirements</a>
+</li>
+            
+<li >
+    <a href="../adding-certificate-authorities/">Adding Cert Authorities</a>
+</li>
+            
+<li >
+    <a href="../selinux/">Using SELinux</a>
+</li>
+            
+<li >
+    <a href="../disabling-smt/">Disabling SMT</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Debugging Clusters</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../install-debugging-tools/">Install debugging tools</a>
+</li>
+            
+<li >
+    <a href="../btrfs-troubleshooting/">Working with btrfs</a>
+</li>
+            
+<li >
+    <a href="../reading-the-system-log/">Reading the system log</a>
+</li>
+            
+<li >
+    <a href="../collecting-crash-logs/">Collecting crash logs</a>
+</li>
+            
+<li >
+    <a href="../manual-rollbacks/">Manual Flatcar Container Linux rollbacks</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                
+  <li class="dropdown-submenu">
+    <a href="#">Container Runtimes</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">Docker</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../getting-started-with-docker/">Getting started with Docker</a>
+</li>
+            
+<li >
+    <a href="../customizing-docker/">Customizing Docker</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                            </ul>
+                        </li>
+                <!--Only display pages not under the hidden tag in mkdocs.yml-->
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../btrfs-troubleshooting/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../cluster-discovery/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#flatcar-container-linux-cluster-architectures">Flatcar Container Linux cluster architectures</a></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#docker-dev-environment-on-laptop">Docker dev environment on laptop</a></li>
+            <li><a href="#small-cluster">Small cluster</a></li>
+            <li><a href="#easy-developmenttesting-cluster">Easy development/testing cluster</a></li>
+            <li><a href="#production-cluster-with-central-services">Production cluster with central services</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="flatcar-container-linux-cluster-architectures">Flatcar Container Linux cluster architectures<a class="headerlink" href="#flatcar-container-linux-cluster-architectures" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Depending on the size and expected use of your Flatcar Container Linux cluster, you will have different architectural requirements. A few of the common cluster architectures, as well as their strengths and weaknesses, are described below.</p>
+<p>Most of these scenarios dedicate a few machines, bare metal or virtual, to running central cluster services. These may include etcd and the distributed controllers for applications like Kubernetes, Mesos, and OpenStack. Isolating these services onto a few known machines helps to ensure they are distributed across cabinets or availability zones. It also helps in setting up static networking to allow for easy bootstrapping. This architecture helps to resolve concerns about relying on a discovery service.</p>
+<h2 id="docker-dev-environment-on-laptop">Docker dev environment on laptop<a class="headerlink" href="#docker-dev-environment-on-laptop" title="Permanent link">&para;</a></h2>
+<p><img class="img-center" src="../img/laptop.jpg" alt="Laptop Environment Diagram"/>
+<div class="caption">Laptop development environment with Flatcar Container Linux VM</div></p>
+<table>
+<thead>
+<tr>
+<th>Cost</th>
+<th>Great For</th>
+<th>Set Up Time</th>
+<th>Production</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low</td>
+<td>Laptop development</td>
+<td>Minutes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>If you're developing locally but plan to run containers in production, it's best practice to mirror that environment locally. Run Docker commands on your laptop that control a Flatcar Container Linux VM in VMware Fusion or Virtual box to mirror your container production environment locally.</p>
+<h3 id="configuring-your-laptop">Configuring your laptop<a class="headerlink" href="#configuring-your-laptop" title="Permanent link">&para;</a></h3>
+<p>Start a single Flatcar Container Linux VM with the Docker remote socket enabled in the Container Linux Config (CL Config). Here's what the CL Config looks like:</p>
+<pre class="codehilite"><code class="language-yaml">systemd:
+  units:
+    - name: docker-tcp.socket
+      enable: yes
+      mask: false
+      contents: |
+        [Unit]
+        Description=Docker Socket for the API
+
+        [Socket]
+        ListenStream=2375
+        BindIPv6Only=both
+        Service=docker.service
+
+        [Install]
+        WantedBy=sockets.target
+    - name: enable-docker-tcp.service
+      enable: true
+      contents: |
+        [Unit]
+        Description=Enable the Docker Socket for the API
+
+        [Service]
+        Type=oneshot
+        ExecStart=/usr/bin/systemctl enable docker-tcp.socket</code></pre>
+
+<p>This file is used to provision your local Flatcar Container Linux machine on its first boot. This sets up and enables the Docker API, which is how you can use Docker on your laptop. The Docker CLI manages containers running within the VM, <em>not</em> on your personal operating system.</p>
+<p>Using the CL Config Transpiler, or <code class="codehilite">ct</code>, (<a href="https://github.com/coreos/container-linux-config-transpiler/releases">download</a>) convert the above yaml into an <a href="https://coreos.com/ignition/docs/latest/getting-started.html">Ignition</a>. Alternatively, copy the contents of the Igntion tab in the above example. Once you have the Ignition configuration file, pass it to your provider (<a href="https://coreos.com/ignition/docs/latest/supported-platforms.html">complete list of supported Ignition platforms</a>).</p>
+<p>Once the local VM is running, tell your Docker binary on your personal operating system to use the remote port by exporting an environment variable and start running Docker commands. Run these commands in a terminal <em>on your local operating system (MacOS or Linux), not in the Flatcar Container Linux virtual machine</em>:</p>
+<pre class="codehilite"><code class="language-sh">$ export DOCKER_HOST=tcp://localhost:2375
+$ docker ps</code></pre>
+
+<p>This avoids discrepancies between your development and production environments.</p>
+<h3 id="related-local-installation-tools">Related local installation tools<a class="headerlink" href="#related-local-installation-tools" title="Permanent link">&para;</a></h3>
+<p>There are several different options for testing Flatcar Container Linux locally:</p>
+<ul>
+<li><a href="https://coreos.com/os/docs/latest/booting-with-qemu.html">Flatcar Container Linux on QEMU</a> is a feature rich way of running Flatcar Container Linux locally, provisioned by Ignition configs like the one shown above.</li>
+<li><a href="https://github.com/kubernetes/minikube">Minikube</a> is used for local Kubernetes development. This does not use Flatcar Container Linux but is very fast to setup and is the easiest way to test-drive use Kubernetes.</li>
+</ul>
+<h2 id="small-cluster">Small cluster<a class="headerlink" href="#small-cluster" title="Permanent link">&para;</a></h2>
+<p><img class="img-center" src="../img/small.jpg" alt="Small Flatcar Container Linux Cluster Diagram"/>
+<div class="caption">Small Flatcar Container Linux cluster running etcd on all machines</div></p>
+<table>
+<thead>
+<tr>
+<th>Cost</th>
+<th>Great For</th>
+<th>Set Up Time</th>
+<th>Production</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low</td>
+<td>Small clusters, trying out Flatcar Container Linux</td>
+<td>Minutes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>For small clusters, between 3-9 machines, running etcd on all of the machines allows for high availability without paying for extra machines that just run etcd.</p>
+<p>Getting started is easy &mdash; a single CL Config can be used to provision all machines in your environment.</p>
+<p>Once you have a small cluster up and running, you can install a Kubernetes on the cluster. You can do this easily using <a href="https://github.com/poseidon/typhoon">Typhoon</a>.</p>
+<h3 id="configuring-the-machines">Configuring the machines<a class="headerlink" href="#configuring-the-machines" title="Permanent link">&para;</a></h3>
+<p>For more information on getting started with this architecture, see the Flatcar Container Linux documentation on <a href="https://coreos.com/os/docs/latest#running-coreos">supported platforms</a>. These include <a href="https://coreos.com/os/docs/latest/booting-on-ec2.html">Amazon EC2</a>, <a href="https://coreos.com/os/docs/latest/booting-on-openstack.html">Openstack</a>, <a href="https://coreos.com/os/docs/latest/booting-on-azure.html">Azure</a>, <a href="https://coreos.com/os/docs/latest/booting-on-google-compute-engine.html">Google Compute Platform</a>, <a href="https://coreos.com/matchbox/">bare metal iPXE</a>, <a href="https://coreos.com/os/docs/latest/booting-on-digitalocean.html">Digital Ocean</a>, and many more community supported platforms.</p>
+<p>Boot the desired number of machines with the same CL Config and discovery token. The CL Config specifies which services will be started on each machine.</p>
+<h2 id="easy-developmenttesting-cluster">Easy development/testing cluster<a class="headerlink" href="#easy-developmenttesting-cluster" title="Permanent link">&para;</a></h2>
+<p><img class="img-center" src="../img/dev.jpg" alt="Flatcar Container Linux cluster optimized for development and testing"/>
+<div class="caption">Flatcar Container Linux cluster optimized for development and testing</div></p>
+<table>
+<thead>
+<tr>
+<th>Cost</th>
+<th>Great For</th>
+<th>Set Up Time</th>
+<th>Production</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low</td>
+<td>Development/Testing</td>
+<td>Minutes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>When getting started with Flatcar Container Linux, it's common to frequently boot, reboot, and destroy machines while tweaking your configuration. To avoid the need to generate new discovery URLs and bootstrap etcd, start a single etcd node, and build your cluster around it.</p>
+<p>You can now boot as many machines as you'd like as test workers that read from the etcd node. All the features of Locksmith and etcdctl will continue to work properly but will connect to the etcd node instead of using a local etcd instance. Since etcd isn't running on all of the machines you'll gain a little bit of extra CPU and RAM to play with.</p>
+<p>You can easily provision the remaining (non-etcd) nodes with Kubernetes using <a href="https://github.com/poseidon/typhoon">Typhoon</a> to start running containerized app with your cluster.</p>
+<p>Once this environment is set up, it's ready to be tested. Destroy a machine, and watch Kubernetes reschedule the units, max out the CPU, and rebuild your setup automatically.</p>
+<h3 id="configuration-for-etcd-role">Configuration for etcd role<a class="headerlink" href="#configuration-for-etcd-role" title="Permanent link">&para;</a></h3>
+<p>Since we're only using a single etcd node, there is no need to include a discovery token. There isn't any high availability for etcd in this configuration, but that's assumed to be OK for development and testing. Boot this machine first so you can configure the rest with its IP address, which is specified with the networkd unit.</p>
+<p>The networkd unit is typically used for bare metal installations that require static networking. See your provider's documentation for specific examples.</p>
+<p>Here's the CL Config for the etcd machine:</p>
+<pre class="codehilite"><code class="language-yaml">etcd:
+  version: 3.1.5
+  name: &quot;etcdserver&quot;
+  initial_cluster: &quot;etcdserver=http://10.0.0.101:2380&quot;
+  initial_advertise_peer_urls: &quot;http://10.0.0.101:2380&quot;
+  advertise_client_urls: &quot;http://10.0.0.101:2379&quot;
+  listen_client_urls: &quot;http://0.0.0.0:2379,http://0.0.0.0:4001&quot;
+  listen_peer_urls: &quot;http://0.0.0.0:2380&quot;
+systemd:
+  units:
+    - name: etcd-member.service
+      enable: true
+      dropins:
+        - name: conf1.conf
+          contents: |
+            [Service]
+            Environment=&quot;ETCD_NAME=etcdserver&quot;
+networkd:
+  units:
+    - name: 00-eth0.network
+      contents: |
+        [Match]
+        Name=eth0
+
+        [Network]
+        DNS=1.2.3.4
+        Address=10.0.0.101/24
+        Gateway=10.0.0.1</code></pre>
+
+<h3 id="configuration-for-worker-role">Configuration for worker role<a class="headerlink" href="#configuration-for-worker-role" title="Permanent link">&para;</a></h3>
+<p>This architecture allows you to boot any number of workers, from a single unit to a large cluster designed for load testing. The notable configuration difference for this role is specifying that applications like Kubernetes should use our etcd proxy instead of starting etcd server locally.</p>
+<h2 id="production-cluster-with-central-services">Production cluster with central services<a class="headerlink" href="#production-cluster-with-central-services" title="Permanent link">&para;</a></h2>
+<p><img class="img-center" src="../img/prod.jpg" alt="Flatcar Container Linux cluster optimized for production environments"/>
+<div class="caption">Flatcar Container Linux cluster separated into central services and workers.</div></p>
+<table>
+<thead>
+<tr>
+<th>Cost</th>
+<th>Great For</th>
+<th>Set Up Time</th>
+<th>Production</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High</td>
+<td>Large bare-metal installations</td>
+<td>Hours</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>For large clusters, it's recommended to set aside 3-5 machines to run central services. Once those are set up, you can boot as many workers as you wish. Each of the workers will use your distributed etcd cluster on the central machines via local etcd proxies. This is explained in greater depth below.</p>
+<h3 id="configuration-for-central-services-role">Configuration for central services role<a class="headerlink" href="#configuration-for-central-services-role" title="Permanent link">&para;</a></h3>
+<p>Our central services machines will run services like etcd and Kubernetes controllers that support the rest of the cluster. etcd is configured with static networking and a peers list.</p>
+<p><a href="https://coreos.com/products/managed-linux">Flatcar Container Linux Support</a> customers can also specify a <a href="https://coreos.com/products/coreupdate">CoreUpdate</a> group ID which allows you to subscribe these machines to a different update channel, controlling updates separately from the worker machines.</p>
+<p>Here's an example CL Config for one of the central service machines. Be sure to generate a new discovery token with the initial size of your cluster:</p>
+<pre class="codehilite"><code class="language-yaml">etcd:
+  version: 3.0.15
+  # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
+  # specify the initial size of your cluster with ?size=X
+  discovery: https://discovery.etcd.io/&lt;token&gt;
+  # multi-region and multi-cloud deployments must use $public_ipv4
+  advertise_client_urls: http://10.0.0.101:2379
+  initial_advertise_peer_urls: http://10.0.0.101:2380
+  listen_client_urls: http://0.0.0.0:2379
+  listen_peer_urls: http://10.0.0.101:2380
+systemd:
+  units:
+    - name: etcd-member.service
+      enable: true
+networkd:
+  units:
+    - name: 00-eth0.network
+      contents: |
+        [Match]
+        Name=eth0
+
+        [Network]
+        DNS=1.2.3.4
+        Address=10.0.0.101/24
+        Gateway=10.0.0.1</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>
